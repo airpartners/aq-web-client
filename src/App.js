@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import {Route} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {makeStyles} from '@material-ui/core/styles';
 import * as DBHelper from './DBHelper';
 import DevicePage from "./DevicePage";
 import AboutPage from "./AboutPage";
 import NavigationDrawer from "./NavigationDrawer";
-
-const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
+import {deviceList, getTabId, homeText, isDevicePath} from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,39 +20,50 @@ function App(props) {
     const {container} = props;
     const classes = useStyles();
     const [currentPath, setCurrentPath] = React.useState(window.location.pathname.replace(process.env.PUBLIC_URL + '/', ''));
-    const [currentDevice, setCurrentDevice] = React.useState({name: deviceList[0], data: {}});
-    const [deviceMap, setDeviceMap] = React.useState({});
+    const [currentDevice, setCurrentDevice] = React.useState({name: deviceList[0], data: {}, tab: 0});
+    const [deviceDict, setDeviceDict] = React.useState({});
     useEffect(() => {
-        let isDevicePath = currentPath.includes('SN') || currentPath === '';
-        if (isDevicePath) {
-            updateDevicePage(currentPath ? currentPath : deviceList[0]);
+        if (isDevicePath(currentPath)) {
+            updateDevicePage(currentPath);
         }
     }, []);
+    const getDeviceMetaData = (path) => {
+        let metaData = path.split('/').filter(el => el); // Split and filter out null/empty string
+        let deviceName = metaData.length > 0 ? metaData[0] : deviceList[0];
+        let tabName = metaData.length > 1 ? metaData[1] : homeText;
+        return [deviceName, getTabId(tabName)];
+    };
     const fetchDeviceData = (device) => {
         DBHelper.getData(device).then((data) => {
-            let newState = deviceMap;
+            let newState = deviceDict;
             newState[device] = data;
-            setDeviceMap(newState);
+            setDeviceDict(newState);
         }).catch((e) => {
             console.log(e);
         })
     };
     const updateDevicePage = (path) => {
+        let [device, tabId] = getDeviceMetaData(path);
         // Fetch device data if needed
-        if (!(path in deviceMap)) {
-            fetchDeviceData(path);
-            console.log(deviceMap);
+        if (!(device in deviceDict)) {
+            fetchDeviceData(device);
+            console.log(deviceDict);
         }
-        setCurrentDevice({name: path, data: deviceMap[path]});
+        setCurrentDevice({tab: tabId, name: device, data: deviceDict[device]});
 
     };
     const setPath = (event, path) => {
         event.stopPropagation();
+        setCurrentPath(path);
         // Update current device if path points to a device path
-        if (deviceList.includes(path) && path !== currentDevice.name) {
+        if (isDevicePath(path)) {
             updateDevicePage(path);
         }
-        setCurrentPath(path);
+    };
+    const setTabValue = (tab) => {
+        setCurrentDevice(prevState => {
+            return {...prevState, tab: tab};
+        });
     };
 
     return (
@@ -61,27 +71,31 @@ function App(props) {
             <CssBaseline/>
             {/* Navigation Drawer */}
             <NavigationDrawer container={container}
-                              deviceList={deviceList}
+                              currentDevice={currentDevice}
                               currentPath={currentPath}
                               setPath={(e, path) => setPath(e, path)}/>
 
             {/* Main Content */}
             <main>
                 <div className={classes.toolbar}/>
-                <Route exact path={process.env.PUBLIC_URL + '/'} render={() => (
-                    <DevicePage device={currentDevice}/>
-                )}/>
-                {deviceList.map((device) => (
-                    <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
-                        <DevicePage device={currentDevice}/>
+                <Switch>
+                    {deviceList.map((device) => (
+                        <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
+                            <DevicePage device={currentDevice}
+                                        setTabValue={(val) => setTabValue(val)}/>
+                        )}/>
+                    ))}
+                    <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
+                        <AboutPage/>
                     )}/>
-                ))}
-                <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
-                    <AboutPage/>
-                )}/>
-                <Route path={process.env.PUBLIC_URL + '/Q&A'} render={() => (
-                    <AboutPage/>
-                )}/>
+                    <Route path={process.env.PUBLIC_URL + '/Q&A'} render={() => (
+                        <AboutPage/>
+                    )}/>
+                    <Route path={process.env.PUBLIC_URL + '/'} render={() => (
+                        <DevicePage device={currentDevice}
+                                    setTabValue={(val) => setTabValue(val)}/>
+                    )}/>
+                </Switch>
             </main>
         </div>
     );

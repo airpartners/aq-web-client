@@ -16,10 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import {Link} from "react-router-dom";
-
-const drawerWidth = 240;
-const aboutUsText = 'About Us';
-const qaaText = 'Q&A';
+import {drawerWidth, deviceList, aboutUsText, qaaText, getTabName} from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,23 +52,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const {container, deviceList, currentPath, setPath} = props;
+    const {container, currentDevice, currentPath, setPath} = props;
+    const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const classes = useStyles();
     const drawer = (
         <div>
             <div className={classes.toolbar}/>
             <Divider/>
             <List>
                 {deviceList.map((device) => (
-                    <ListItem button component={Link} to={process.env.PUBLIC_URL + '/' + device}
+                    <ListItem button component={Link}
+                              to={process.env.PUBLIC_URL + '/' + device + '/' + getTabName(currentDevice.tab)}
                               key={device}
-                              selected={currentPath === device || (currentPath === '' && device === deviceList[0])}
-                              onClick={(e) => setPath(e, device)}>
+                              selected={currentPath.includes(device) || (currentPath === '' && device === deviceList[0])}
+                              onClick={(e) => setPath(e, device + '/' + getTabName(currentDevice.tab))}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
                         <ListItemText primary={device}/>
                     </ListItem>
