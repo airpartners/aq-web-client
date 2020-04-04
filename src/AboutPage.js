@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AboutUsComponent() {
+function AboutPage() {
     const classes = useStyles();
     return (
         <div className={classes.content}>
@@ -22,4 +22,4 @@ function AboutUsComponent() {
         </div>);
 }
 
-export default AboutUsComponent;
+export default AboutPage;

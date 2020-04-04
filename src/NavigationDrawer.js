@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function NavigationDrawerComponent(props) {
+function NavigationDrawer(props) {
     const {container, deviceList, currentPath, setPath} = props;
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -140,4 +140,4 @@ function NavigationDrawerComponent(props) {
         </div>);
 }
 
-export default NavigationDrawerComponent;
+export default NavigationDrawer;

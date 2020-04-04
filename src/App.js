@@ -3,9 +3,9 @@ import {Route} from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {makeStyles} from '@material-ui/core/styles';
 import * as DBHelper from './DBHelper';
-import DevicePageComponent from "./DevicePageComponent";
-import AboutUsComponent from "./AboutPageComponent";
-import NavigationDrawerComponent from "./NavigationDrawerComponent";
+import DevicePage from "./DevicePage";
+import AboutPage from "./AboutPage";
+import NavigationDrawer from "./NavigationDrawer";
 
 const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
 
@@ -60,27 +60,27 @@ function App(props) {
         <div className={classes.root}>
             <CssBaseline/>
             {/* Navigation Drawer */}
-            <NavigationDrawerComponent container={container}
-                                       deviceList={deviceList}
-                                       currentPath={currentPath}
-                                       setPath={(e, path) => setPath(e, path)}/>
+            <NavigationDrawer container={container}
+                              deviceList={deviceList}
+                              currentPath={currentPath}
+                              setPath={(e, path) => setPath(e, path)}/>
 
             {/* Main Content */}
             <main>
                 <div className={classes.toolbar}/>
                 <Route exact path={process.env.PUBLIC_URL + '/'} render={() => (
-                    <DevicePageComponent device={currentDevice}/>
+                    <DevicePage device={currentDevice}/>
                 )}/>
                 {deviceList.map((device) => (
                     <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
-                        <DevicePageComponent device={currentDevice}/>
+                        <DevicePage device={currentDevice}/>
                     )}/>
                 ))}
                 <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
-                    <AboutUsComponent/>
+                    <AboutPage/>
                 )}/>
                 <Route path={process.env.PUBLIC_URL + '/Q&A'} render={() => (
-                    <AboutUsComponent/>
+                    <AboutPage/>
                 )}/>
             </main>
         </div>

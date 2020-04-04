@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function DevicePageComponent(props) {
+function DevicePage(props) {
     const [tabValue, setTabValue] = React.useState(0);
     const classes = useStyles();
     const {device} = props;
@@ -48,4 +48,4 @@ function DevicePageComponent(props) {
         </div>);
 }
 
-export default DevicePageComponent;
+export default DevicePage;
