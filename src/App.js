@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {Link, Route} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -12,16 +13,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import DeviceIcon from '@material-ui/icons/Pages';
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import DetailIcon from '@material-ui/icons/BubbleChart';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import * as DBHelper from './DBHelper';
+import DevicePageComponent from "./DevicePageComponent";
+import AboutUsComponent from "./AboutPageComponent";
 
 const drawerWidth = 240;
 const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
@@ -66,61 +64,69 @@ function App(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [tabValue, setTabValue] = React.useState(0);
-    const [currentPath, setCurrentPath] = React.useState(deviceList[0]);
+    const [currentPath, setCurrentPath] = React.useState(window.location.pathname.replace(process.env.PUBLIC_URL + '/', ''));
     const [currentDevice, setCurrentDevice] = React.useState({name: deviceList[0], data: {}});
-    const [deviceData, setDeviceData] = React.useState({});
+    const [deviceMap, setDeviceMap] = React.useState({});
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    useEffect(() => {
+        let isDevicePath = currentPath.includes('SN') || currentPath === '';
+        if (isDevicePath) {
+            updateDevicePage(currentPath ? currentPath : deviceList[0]);
+        }
+    }, []);
     const fetchDeviceData = (device) => {
         DBHelper.getData(device).then((data) => {
-            let newState = deviceData;
+            let newState = deviceMap;
             newState[device] = data;
-            setDeviceData(newState);
+            setDeviceMap(newState);
         }).catch((e) => {
             console.log(e);
         })
     };
-    const updatePage = (path) => {
-        // Update current device
-        if (deviceList.includes(path) && path !== currentDevice.name) {
-            // Fetch device data if needed
-            if (!(path in deviceData)) {
-                fetchDeviceData(path);
-                console.log(deviceData);
-            }
-            setCurrentDevice({name: path, data: deviceData[path]});
+    const updateDevicePage = (path) => {
+        // Fetch device data if needed
+        if (!(path in deviceMap)) {
+            fetchDeviceData(path);
+            console.log(deviceMap);
         }
+        setCurrentDevice({name: path, data: deviceMap[path]});
+
     };
     const setPath = (event, path) => {
         event.stopPropagation();
-        if (currentPath !== path) {
-            updatePage(path);
-            setCurrentPath(path);
+        // Update current device if path points to a device path
+        if (deviceList.includes(path) && path !== currentDevice.name) {
+            updateDevicePage(path);
         }
+        setCurrentPath(path);
     };
-
     const drawer = (
         <div>
             <div className={classes.toolbar}/>
             <Divider/>
             <List>
-                {deviceList.map((text) => (
-                    <ListItem button key={text} selected={currentPath === text} onClick={(e) => setPath(e, text)}>
+                {deviceList.map((device) => (
+                    <ListItem button component={Link} to={process.env.PUBLIC_URL + '/' + device}
+                              key={device} selected={currentPath === device}
+                              onClick={(e) => setPath(e, device)}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
-                        <ListItemText primary={text}/>
+                        <ListItemText primary={device}/>
                     </ListItem>
                 ))}
             </List>
             <Divider/>
             <List>
-                <ListItem button key={aboutUsText} selected={currentPath === aboutUsText}
+                <ListItem button component={Link} to={process.env.PUBLIC_URL + '/about-us'}
+                          key={aboutUsText} selected={currentPath === 'about-us'}
                           onClick={(e) => setPath(e, aboutUsText)}>
                     <ListItemIcon><InfoIcon/></ListItemIcon>
                     <ListItemText primary={aboutUsText}/>
                 </ListItem>
-                <ListItem button key={qaaText} selected={currentPath === qaaText} onClick={(e) => setPath(e, qaaText)}>
+                <ListItem button component={Link} to={process.env.PUBLIC_URL + '/Q&A'}
+                          key={qaaText} selected={currentPath === qaaText}
+                          onClick={(e) => setPath(e, qaaText)}>
                     <ListItemIcon><HelpIcon/></ListItemIcon>
                     <ListItemText primary={qaaText}/>
                 </ListItem>
@@ -176,34 +182,20 @@ function App(props) {
             {/* Main Content */}
             <main>
                 <div className={classes.toolbar}/>
-                <div>
-                    <div className={classes.content} style={{marginBottom: "56px"}}>
-                        <Typography paragraph>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum porttitor justo,
-                            vel efficitur justo bibendum a. Ut mollis vel nulla quis pretium. Vestibulum aliquam dapibus
-                            lectus, in venenatis ex dictum iaculis. Nulla fermentum ornare tortor, vitae ullamcorper
-                            sem. Phasellus est ligula, auctor vel ex in, finibus tincidunt nisl. Suspendisse dictum ex a
-                            velit fringilla, sit amet ultricies justo fringilla. Donec consectetur magna eget orci
-                            porttitor vestibulum. Donec at luctus lorem. Fusce euismod commodo massa, non ornare nisl
-                            cursus sed. Nam bibendum justo odio, non hendrerit lectus dictum at. Cras eros orci,
-                            faucibus commodo maximus ac, laoreet a lacus. Nam pulvinar aliquet efficitur. Pellentesque
-                            in mattis eros. Mauris vitae metus sapien. Phasellus non turpis sed nisl dignissim
-                            efficitur. Phasellus pulvinar turpis at ultrices tempor.
-                        </Typography>
-                    </div>
-                    <BottomNavigation
-                        style={{position: "fixed", width: `calc(100% - ${drawerWidth}px)`, bottom: 0}}
-                        value={tabValue}
-                        onChange={(event, newValue) => {
-                            setTabValue(newValue);
-                        }}
-                        showLabels
-                        className={classes.root}>
-                        <BottomNavigationAction label="Home" icon={<HomeIcon/>}/>
-                        <BottomNavigationAction label="Map" icon={<LocationOnIcon/>}/>
-                        <BottomNavigationAction label="Detail" icon={<DetailIcon/>}/>
-                    </BottomNavigation>
-                </div>
+                {deviceList.map((device) => (
+                    <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
+                        <DevicePageComponent device={currentDevice}/>
+                    )}/>
+                ))}
+                <Route exact path={process.env.PUBLIC_URL + '/'} render={() => (
+                    <DevicePageComponent device={currentDevice}/>
+                )}/>
+                <Route path={process.env.PUBLIC_URL + '/about-us'} key={aboutUsText} render={() => (
+                    <AboutUsComponent/>
+                )}/>
+                <Route path={process.env.PUBLIC_URL + '/Q&A'} key={qaaText} render={() => (
+                    <AboutUsComponent/>
+                )}/>
             </main>
         </div>
     );
