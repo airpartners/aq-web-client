@@ -70,7 +70,7 @@ function NavigationDrawer(props) {
                 {deviceList.map((device) => (
                     <ListItem button component={Link} to={process.env.PUBLIC_URL + '/' + device}
                               key={device}
-                              selected={currentPath === device || currentPath === '' && device === deviceList[0]}
+                              selected={currentPath === device || (currentPath === '' && device === deviceList[0])}
                               onClick={(e) => setPath(e, device)}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
                         <ListItemText primary={device}/>
