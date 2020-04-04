@@ -9,13 +9,20 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+        marginBottom: "56px",
     },
+    botNav: {
+        display: 'flex',
+        position: "fixed",
+        width: `calc(100% - ${drawerWidth}px)`,
+        bottom: 0,
+        [theme.breakpoints.down('xs')]: {
+            width: '100%',
+        },
+    }
 }));
 
 function DevicePageComponent(props) {
@@ -24,19 +31,16 @@ function DevicePageComponent(props) {
     const {device} = props;
     return (
         <div>
-            <div className={classes.content} style={{marginBottom: "56px"}}>
+            <div className={classes.content}>
                 <Typography paragraph>
                     {device.name}
                 </Typography>
             </div>
             <BottomNavigation
-                style={{position: "fixed", width: `calc(100% - ${drawerWidth}px)`, bottom: 0}}
+                className={classes.botNav}
                 value={tabValue}
-                onChange={(event, newValue) => {
-                    setTabValue(newValue);
-                }}
-                showLabels
-                className={classes.root}>
+                onChange={(event, newValue) => {setTabValue(newValue);}}
+                showLabels>
                 <BottomNavigationAction label="Home" icon={<HomeIcon/>}/>
                 <BottomNavigationAction label="Map" icon={<LocationOnIcon/>}/>
                 <BottomNavigationAction label="Detail" icon={<DetailIcon/>}/>
