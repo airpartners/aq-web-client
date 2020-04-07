@@ -86,6 +86,7 @@ function App(props) {
                     {deviceList.map((device) => (
                         <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
                             <DevicePage device={currentDevice}
+                                        deviceDict={deviceDict}
                                         setTabValue={(val) => setTabValue(val)}/>
                         )}/>
                     ))}
@@ -97,6 +98,7 @@ function App(props) {
                     )}/>
                     <Route path={process.env.PUBLIC_URL + '/'} render={() => (
                         <DevicePage device={currentDevice}
+                                    deviceDict={deviceDict}
                                     setTabValue={(val) => setTabValue(val)}/>
                     )}/>
                 </Switch>

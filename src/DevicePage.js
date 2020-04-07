@@ -33,22 +33,22 @@ const useStyles = makeStyles((theme) => ({
  */
 function DevicePage(props) {
     const classes = useStyles();
-    const {device, setTabValue} = props;
+    const {device, deviceDict, setTabValue} = props;
     return (
         <div>
             <div className={classes.content}>
                 <Switch>
                     <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + homeText} render={() => (
-                        <DeviceHome device={device}/>
+                        <DeviceHome device={device} deviceDict={deviceDict}/>
                     )}/>
                     <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + mapText} render={() => (
-                        <DeviceMap device={device}/>
+                        <DeviceMap device={device} deviceDict={deviceDict}/>
                     )}/>
                     <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + detailText} render={() => (
-                        <DeviceDetail device={device}/>
+                        <DeviceDetail device={device} deviceDict={deviceDict}/>
                     )}/>
                     <Route path={process.env.PUBLIC_URL + '/'} render={() => (
-                        <DeviceHome device={device}/>
+                        <DeviceHome device={device} deviceDict={deviceDict}/>
                     )}/>
                 </Switch>
             </div>

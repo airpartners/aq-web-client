@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 
 function DeviceHome(props) {
     const classes = useStyles();
-    const {device} = props;
+    const {device, deviceDict} = props;
     return (
         <div>
             <Typography paragraph>
