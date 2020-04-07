@@ -14,6 +14,9 @@ function DeviceHome(props) {
             <Typography paragraph>
                 {device.name} Home
             </Typography>
+            <Typography paragraph>
+                {JSON.stringify(device.data)}
+            </Typography>
         </div>);
 }
 

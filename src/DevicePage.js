@@ -47,7 +47,7 @@ function DevicePage(props) {
                     <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + detailText} render={() => (
                         <DeviceDetail device={device}/>
                     )}/>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name} render={() => (
+                    <Route path={process.env.PUBLIC_URL + '/'} render={() => (
                         <DeviceHome device={device}/>
                     )}/>
                 </Switch>

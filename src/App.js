@@ -6,7 +6,7 @@ import * as DBHelper from './DBHelper';
 import DevicePage from "./DevicePage";
 import AboutPage from "./AboutPage";
 import NavigationDrawer from "./NavigationDrawer";
-import {deviceList, getTabId, homeText, isDevicePath} from "./Utils";
+import {detailText, deviceList, getTabId, homeText, isDevicePath, mapText} from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,26 +31,30 @@ function App(props) {
         let metaData = path.split('/').filter(el => el); // Split and filter out null/empty string
         let deviceName = metaData.length > 0 ? metaData[0] : deviceList[0];
         let tabName = metaData.length > 1 ? metaData[1] : homeText;
+        if (!deviceList.includes(deviceName)) {
+            deviceName = deviceList[0];
+        }
+        if (![homeText, mapText, detailText].includes(tabName)) {
+            tabName = homeText;
+        }
         return [deviceName, getTabId(tabName)];
-    };
-    const fetchDeviceData = (device) => {
-        DBHelper.getData(device).then((data) => {
-            let newState = deviceDict;
-            newState[device] = data;
-            setDeviceDict(newState);
-        }).catch((e) => {
-            console.log(e);
-        })
     };
     const updateDevicePage = (path) => {
         let [device, tabId] = getDeviceMetaData(path);
+        setCurrentDevice(prevState => ({...prevState, tab: tabId, name: device}));
         // Fetch device data if needed
         if (!(device in deviceDict)) {
-            fetchDeviceData(device);
-            console.log(deviceDict);
+            DBHelper.getData(device).then((data) => {
+                let newState = deviceDict;
+                newState[device] = data;
+                setDeviceDict(newState);
+                setCurrentDevice(prevState => ({...prevState, data: newState[device]}));
+            }).catch((e) => {
+                console.log(e);
+            });
+        } else {
+            setCurrentDevice(prevState => ({...prevState, data: deviceDict[device]}));
         }
-        setCurrentDevice({tab: tabId, name: device, data: deviceDict[device]});
-
     };
     const setPath = (event, path) => {
         event.stopPropagation();
