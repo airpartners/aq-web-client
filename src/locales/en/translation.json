@@ -1,0 +1,11 @@
+{
+  "DrawerNav": {
+    "About us": "About us",
+    "Q&A": "Q&A"
+  },
+  "BottomNav": {
+    "Home": "Home",
+    "Detail": "Detail",
+    "Map": "Map"
+  }
+}

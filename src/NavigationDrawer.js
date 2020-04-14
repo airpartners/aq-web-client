@@ -16,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import {Link} from "react-router-dom";
-import {drawerWidth, deviceList, aboutUsText, qaaText, getTabName} from "./Utils";
+import {drawerWidth, deviceList, getTabName} from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const {container, currentDevice, currentPath, setPath} = props;
+    const {t, currentDevice, currentPath, setPath} = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -66,10 +66,10 @@ function NavigationDrawer(props) {
             <List>
                 {deviceList.map((device) => (
                     <ListItem button component={Link}
-                              to={process.env.PUBLIC_URL + '/' + device + '/' + getTabName(currentDevice.tab)}
+                              to={process.env.PUBLIC_URL + '/' + device + '/' + getTabName(currentDevice.tab, t)}
                               key={device}
                               selected={currentPath.includes(device) || (currentPath === '' && device === deviceList[0])}
-                              onClick={(e) => setPath(e, device + '/' + getTabName(currentDevice.tab))}>
+                              onClick={(e) => setPath(e, device + '/' + getTabName(currentDevice.tab, t))}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
                         <ListItemText primary={device}/>
                     </ListItem>
@@ -78,16 +78,16 @@ function NavigationDrawer(props) {
             <Divider/>
             <List>
                 <ListItem button component={Link} to={process.env.PUBLIC_URL + '/about-us'}
-                          key={aboutUsText} selected={currentPath === 'about-us'}
-                          onClick={(e) => setPath(e, aboutUsText)}>
+                          key={t('DrawerNav.About us')} selected={currentPath === 'about-us'}
+                          onClick={(e) => setPath(e, t('DrawerNav.About us'))}>
                     <ListItemIcon><InfoIcon/></ListItemIcon>
-                    <ListItemText primary={aboutUsText}/>
+                    <ListItemText primary={t('DrawerNav.About us')}/>
                 </ListItem>
                 <ListItem button component={Link} to={process.env.PUBLIC_URL + '/Q&A'}
-                          key={qaaText} selected={currentPath === qaaText}
-                          onClick={(e) => setPath(e, qaaText)}>
+                          key={t('DrawerNav.Q&A')} selected={currentPath === '/Q&A'}
+                          onClick={(e) => setPath(e, t('DrawerNav.Q&A'))}>
                     <ListItemIcon><HelpIcon/></ListItemIcon>
-                    <ListItemText primary={qaaText}/>
+                    <ListItemText primary={t('DrawerNav.Q&A')}/>
                 </ListItem>
             </List>
         </div>
@@ -116,7 +116,6 @@ function NavigationDrawer(props) {
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Hidden smUp implementation="css">
                     <Drawer
-                        container={container}
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={mobileOpen}

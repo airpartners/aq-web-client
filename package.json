@@ -10,9 +10,12 @@
     "@testing-library/user-event": "^7.2.1",
     "base-64": "^0.1.0",
     "clsx": "latest",
-    "react-router-dom": "^5.1.2",
+    "i18next": "^19.4.1",
+    "i18next-browser-languagedetector": "^4.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^9.0.10",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },
   "scripts": {

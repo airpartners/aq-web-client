@@ -7,12 +7,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DeviceMap(props) {
+    const {t} = props;
     const classes = useStyles();
     const {device, deviceDict} = props;
     return (
         <div>
             <Typography paragraph>
-                {device.name} Map
+                {device.name} {t('BottomNav.Map')}
             </Typography>
         </div>);
 }

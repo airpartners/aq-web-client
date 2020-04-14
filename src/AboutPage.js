@@ -12,12 +12,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AboutPage() {
+function AboutPage(props) {
+    const {t} = props;
     const classes = useStyles();
     return (
         <div className={classes.content}>
             <Typography paragraph>
-                About Us
+                {t('DrawerNav.About us')}
             </Typography>
         </div>);
 }

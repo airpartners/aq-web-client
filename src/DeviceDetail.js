@@ -7,12 +7,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DeviceDetail(props) {
+    const {t} = props;
     const classes = useStyles();
     const {device, deviceDict} = props;
     return (
         <div>
             <Typography paragraph>
-                {device.name} Detail
+                {device.name} {t('BottomNav.Detail')}
             </Typography>
         </div>);
 }

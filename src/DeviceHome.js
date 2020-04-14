@@ -7,12 +7,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DeviceHome(props) {
+    const {t} = props;
     const classes = useStyles();
     const {device, deviceDict} = props;
     return (
         <div>
             <Typography paragraph>
-                {device.name} Home
+                {device.name} {t('BottomNav.Home')}
             </Typography>
             <Typography paragraph>
                 {JSON.stringify(device.data)}

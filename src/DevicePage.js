@@ -6,7 +6,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Link, Route, Switch} from "react-router-dom";
-import {detailText, drawerWidth, homeText, mapText} from "./Utils";
+import {drawerWidth} from "./Utils";
 import DeviceHome from "./DeviceHome";
 import DeviceDetail from "./DeviceDetail";
 import DeviceMap from "./DeviceMap";
@@ -33,22 +33,22 @@ const useStyles = makeStyles((theme) => ({
  */
 function DevicePage(props) {
     const classes = useStyles();
-    const {device, deviceDict, setTabValue} = props;
+    const {t, device, deviceDict, setTabValue} = props;
     return (
         <div>
             <div className={classes.content}>
                 <Switch>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + homeText} render={() => (
-                        <DeviceHome device={device} deviceDict={deviceDict}/>
+                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Home')} render={() => (
+                        <DeviceHome t={t} device={device} deviceDict={deviceDict}/>
                     )}/>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + mapText} render={() => (
-                        <DeviceMap device={device} deviceDict={deviceDict}/>
+                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Map')} render={() => (
+                        <DeviceMap t={t} device={device} deviceDict={deviceDict}/>
                     )}/>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + detailText} render={() => (
-                        <DeviceDetail device={device} deviceDict={deviceDict}/>
+                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Detail')} render={() => (
+                        <DeviceDetail t={t} device={device} deviceDict={deviceDict}/>
                     )}/>
                     <Route path={process.env.PUBLIC_URL + '/'} render={() => (
-                        <DeviceHome device={device} deviceDict={deviceDict}/>
+                        <DeviceHome t={t} device={device} deviceDict={deviceDict}/>
                     )}/>
                 </Switch>
             </div>
@@ -57,12 +57,12 @@ function DevicePage(props) {
                 value={device.tab}
                 onChange={(event, newValue) => {setTabValue(newValue);}}
                 showLabels>
-                <BottomNavigationAction component={Link} label={homeText} icon={<HomeIcon/>}
-                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + homeText}/>
-                <BottomNavigationAction component={Link} label={mapText} icon={<LocationOnIcon/>}
-                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + mapText}/>
-                <BottomNavigationAction component={Link} label={detailText} icon={<DetailIcon/>}
-                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + detailText}/>
+                <BottomNavigationAction component={Link} label={t('BottomNav.Home')} icon={<HomeIcon/>}
+                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Home')}/>
+                <BottomNavigationAction component={Link} label={t('BottomNav.Map')} icon={<LocationOnIcon/>}
+                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Map')}/>
+                <BottomNavigationAction component={Link} label={t('BottomNav.Detail')} icon={<DetailIcon/>}
+                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Detail')}/>
             </BottomNavigation>
         </div>);
 }
