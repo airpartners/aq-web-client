@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        marginBottom: "56px",
+        marginBottom: '56px',
     },
     botNav: {
         display: 'flex',
-        position: "fixed",
+        position: 'fixed',
         width: `calc(100% - ${drawerWidth}px)`,
         bottom: 0,
         [theme.breakpoints.down('xs')]: {

@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
+    main: {
+        width: '100%',
+    },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
 }));
@@ -81,7 +84,7 @@ function App(props) {
                               setPath={(e, path) => setPath(e, path)}/>
 
             {/* Main Content */}
-            <main>
+            <main className={classes.main}>
                 <div className={classes.toolbar}/>
                 <Switch>
                     {deviceList.map((device) => (
