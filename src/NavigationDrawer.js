@@ -106,7 +106,7 @@ function NavigationDrawer(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        AIRPARTNERS
+                        {currentDevice.name}
                     </Typography>
                 </Toolbar>
             </AppBar>

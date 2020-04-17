@@ -1,10 +1,11 @@
-import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import WeatherComponent from "./WeatherComponent";
+import PollutantsComponent from "./PollutantsComponent";
+import AirQualityComponent from "./AirQualityComponent";
+import AtAGlanceComponent from "./AtAGlanceComponent";
 
-const useStyles = makeStyles((theme) => ({
-
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 function DeviceHome(props) {
     const {t} = props;
@@ -12,12 +13,17 @@ function DeviceHome(props) {
     const {device, deviceDict} = props;
     return (
         <div>
-            <Typography paragraph>
-                {device.name} {t('BottomNav.Home')}
-            </Typography>
-            <Typography paragraph>
-                {JSON.stringify(device.data)}
-            </Typography>
+            {/* At a glance */}
+            <AtAGlanceComponent device={device} t={t}/>
+
+            {/* Air Quality */}
+            <AirQualityComponent device={device} t={t}/>
+
+            {/* Pollutants */}
+            <PollutantsComponent device={device} t={t}/>
+
+            {/* Weather */}
+            <WeatherComponent device={device} t={t}/>
         </div>);
 }
 

@@ -6,5 +6,13 @@
   "BottomNav": {
     "Home": "Casa",
     "Map": "Mapa"
-  }
+  },
+  "Weather": "Weather",
+  "Temperature": "Temperature",
+  "Humidity": "Humidity",
+  "Wind": "Wind",
+  "Pollutants": "Pollutants",
+  "Air Quality": "Air Quality",
+  "Now": "Now",
+  "Recommendations": "Recommendations"
 }
