@@ -15,16 +15,21 @@ function BubbleSVG(props) {
 
     return (<svg width={width} height={height} viewBox={viewBox} xmlns="http://www.w3.org/2000/svg">
             <path stroke="black" fill="white" strokeWidth="2"
-                  d={`M ${padding} ${padding + diameter / 2} A ${diameter / 2} ${diameter / 2} 0 0 0 ${padding + diameter} ${padding + diameter / 2}`}/>
+                  d={`M ${padding} ${padding + radius} 
+                      A ${radius} ${radius} 0 0 0 ${padding + diameter} ${padding + radius}`}/>
             <path stroke="black" fill="white" strokeWidth="2"
-                  d={`M ${padding} ${padding + diameter / 2} A ${diameter / 2} ${diameter / 2} 0 0 1 ${padding + diameter} ${padding + diameter / 2}`}/>
-            <path fill={color} strokeWidth="2"
-                  d={`M ${padding + offsetX} ${padding + diameter / 2 - offsetY} A ${diameter / 2} ${diameter / 2} 0 ${largeArcFlag} 0 ${padding + diameter - offsetX} ${padding + diameter / 2 - offsetY}`}/>
-            {/*Safe lines*/}
-            <line x1={diameter + padding * 2} y1={diameter / 2 + padding} x2={diameter + padding}
-                  y2={diameter / 2 + padding}
-                  stroke="#212121"/>
-            <line x1={padding} y1={diameter / 2 + padding} x2={diameter + padding} y2={diameter / 2 + padding}
+                  d={`M ${padding} ${padding + radius} 
+                      A ${radius} ${radius} 0 0 1 ${padding + diameter} ${padding + radius}`}/>
+            <path fill={color} stroke="black" strokeWidth="2"
+                  d={`M ${padding + offsetX} ${padding + radius - offsetY} 
+                      A ${radius} ${radius} 0 ${largeArcFlag} 0 ${padding + diameter - offsetX} ${padding + radius - offsetY}
+                      L ${padding + offsetX} ${padding + radius - offsetY}`}/>
+            {/* Safe lines */}
+            <line x1={diameter + padding * 2} y1={radius + padding}
+                  x2={diameter + padding} y2={radius + padding}
+                  stroke="black"/>
+            <line x1={padding} y1={radius + padding}
+                  x2={diameter + padding} y2={radius + padding}
                   stroke="#C5CAE9"
                   strokeWidth="3"
                   strokeDasharray="3 3"/>
