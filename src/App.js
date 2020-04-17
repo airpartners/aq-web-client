@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import './App.css';
 import {Route, Switch} from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {makeStyles} from '@material-ui/core/styles';

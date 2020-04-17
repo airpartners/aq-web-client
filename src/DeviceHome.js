@@ -4,8 +4,14 @@ import WeatherComponent from "./WeatherComponent";
 import PollutantsComponent from "./PollutantsComponent";
 import AirQualityComponent from "./AirQualityComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
+import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        padding: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+    }
+}));
 
 function DeviceHome(props) {
     const {t} = props;
@@ -14,16 +20,24 @@ function DeviceHome(props) {
     return (
         <div>
             {/* At a glance */}
-            <AtAGlanceComponent device={device} t={t}/>
+            <Paper elevation={1} className={classes.paper}>
+                <AtAGlanceComponent device={device} t={t}/>
+            </Paper>
 
             {/* Air Quality */}
-            <AirQualityComponent device={device} t={t}/>
+            <Paper elevation={1} className={classes.paper}>
+                <AirQualityComponent device={device} t={t}/>
+            </Paper>
 
             {/* Pollutants */}
-            <PollutantsComponent device={device} t={t}/>
+            <Paper elevation={1} className={classes.paper}>
+                <PollutantsComponent device={device} t={t}/>
+            </Paper>
 
             {/* Weather */}
-            <WeatherComponent device={device} t={t}/>
+            <Paper elevation={1} className={classes.paper}>
+                <WeatherComponent device={device} t={t}/>
+            </Paper>
         </div>);
 }
 
