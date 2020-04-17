@@ -14,5 +14,13 @@
   "Pollutants": "Pollutants",
   "Air Quality": "Air Quality",
   "Now": "Now",
-  "Recommendations": "Recommendations"
+  "Recommendations": "Recommendations",
+  "Recommendation": {
+    "Bad": "Avoid outdoor activity\nTurn on your HEPA Air Purifier\nClose windows",
+    "Fine": "Limit outside exposure\nTurn on your HEPA Air Purifier",
+    "Good": "Good time for being outside\nTurn off HEPA Air Purifier"
+  },
+  "Bad": "Bad",
+  "Fine": "Fine",
+  "Good": "Good"
 }
