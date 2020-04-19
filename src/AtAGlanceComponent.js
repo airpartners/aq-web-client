@@ -46,7 +46,7 @@ function AtAGlanceComponent(props) {
             {device.data.data &&
             <div>
                 <h2>{t('Now')}</h2>
-                <CloudSVG fill={getColor(airQuality)}/>
+                <CloudSVG color={getColor(airQuality)}/>
                 <h2>{t('Recommendations')}</h2>
                 <p>{getRecommendation(airQuality)}</p>
             </div>}
