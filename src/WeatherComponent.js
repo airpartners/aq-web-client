@@ -1,6 +1,9 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import DropletSVG from "./assets/svg/DropletSVG";
+import ThermometerSVG from "./assets/svg/ThermometerSVG";
+import {Navigation} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -14,17 +17,33 @@ function WeatherComponent(props) {
             <div>
                 <h2>{t('Weather')}</h2>
                 <Grid container justify="center" spacing={3}>
-                    <Grid item xs>
-                        <p>{device.data.data[0].temp_manifold + "\u00b0 F"}</p>
-                        <p>{t('Temperature')}</p>
+                    <Grid container item xs alignItems="center">
+                        <Grid>
+                            <ThermometerSVG/>
+                        </Grid>
+                        <Grid>
+                            <p>{device.data.data[0].temp_manifold + "\u00b0 F"}</p>
+                            <p>{t('Temperature')}</p>
+                        </Grid>
                     </Grid>
-                    <Grid item xs>
-                        <p>{device.data.data[0].rh_manifold + " %"}</p>
-                        <p>{t('Humidity')}</p>
+                    <Grid container item xs alignItems="center">
+                        <Grid>
+                            <DropletSVG/>
+                        </Grid>
+                        <Grid>
+                            <p>{device.data.data[0].rh_manifold + " %"}</p>
+                            <p>{t('Humidity')}</p>
+                        </Grid>
                     </Grid>
-                    <Grid item xs>
-                        <p>{device.data.data[0].wind_speed + " m/s"}</p>
-                        <p>{t('Wind')}</p>
+                    <Grid container item xs alignItems="center">
+                        <Grid>
+                            <Navigation style={{color: "#303F9F", fontSize: 50}}
+                                        transform={`rotate(${device.data.data[0].wind_dir})`}/>
+                        </Grid>
+                        <Grid>
+                            <p>{device.data.data[0].wind_speed + " m/s"}</p>
+                            <p>{t('Wind')}</p>
+                        </Grid>
                     </Grid>
                 </Grid>
             </div>}
