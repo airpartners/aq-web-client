@@ -1,5 +1,6 @@
 import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import Colors from "../Colors";
 
 function DropletSVG(props) {
     return (
@@ -17,7 +18,7 @@ function DropletSVG(props) {
 }
 
 DropletSVG.defaultProps = {
-    color: "#303F9F",
+    color: Colors.primaryColor,
     strokeWidth: "3",
     size: 60,
 }

@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import DropletSVG from "./assets/svg/DropletSVG";
 import ThermometerSVG from "./assets/svg/ThermometerSVG";
 import {Navigation} from "@material-ui/icons";
+import Colors from "./assets/Colors";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -37,7 +38,7 @@ function WeatherComponent(props) {
                     </Grid>
                     <Grid container item xs alignItems="center">
                         <Grid>
-                            <Navigation style={{color: "#303F9F", fontSize: 50}}
+                            <Navigation style={{color: Colors.primaryColor, fontSize: 50}}
                                         transform={`rotate(${device.data.data[0].wind_dir})`}/>
                         </Grid>
                         <Grid>

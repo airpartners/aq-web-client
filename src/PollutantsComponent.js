@@ -1,6 +1,7 @@
 import React from "react";
 import CanvasJSReact from './assets/js/canvasjs.react';
 import {makeStyles} from "@material-ui/core/styles";
+import Colors from "./assets/Colors";
 
 const useStyles = makeStyles((theme) => ({}))
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -29,6 +30,7 @@ function PollutantsComponent(props) {
         data: [{
             type: "spline",
             toolTipContent: "Week {x}: {y}%",
+            color: Colors.primaryColor,
             dataPoints: [
                 { x: 1, y: 64 },
                 { x: 2, y: 61 },

@@ -1,4 +1,5 @@
 import React from "react";
+import Colors from "../Colors";
 
 function BubbleSVG(props) {
     let {padding, width, percent, color} = props;
@@ -41,7 +42,7 @@ BubbleSVG.defaultProps = {
     padding: 10,
     width: 200,
     percent: 50,
-    color: "#3FB571",
+    color: Colors.green,
 }
 
 export default BubbleSVG;

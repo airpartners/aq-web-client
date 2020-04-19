@@ -7,8 +7,20 @@ import * as DBHelper from './DBHelper';
 import DevicePage from "./DevicePage";
 import AboutPage from "./AboutPage";
 import NavigationDrawer from "./NavigationDrawer";
-import { withNamespaces } from 'react-i18next';
+import {withNamespaces} from 'react-i18next';
 import {deviceList, getTabId, isDevicePath} from "./Utils";
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import Colors from "./assets/Colors";
+
+// Create our own theme
+const theme = createMuiTheme({
+        palette: {
+            primary: {
+                main: Colors.primaryColor,
+            },
+        }
+    },
+)
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -76,41 +88,43 @@ function App(props) {
     };
 
     return (
-        <div className={classes.root}>
-            <CssBaseline/>
-            {/* Navigation Drawer */}
-            <NavigationDrawer t={t}
-                              currentDevice={currentDevice}
-                              currentPath={currentPath}
-                              setPath={(e, path) => setPath(e, path)}/>
+        <MuiThemeProvider theme={theme}>
+            <div className={classes.root}>
+                <CssBaseline/>
+                {/* Navigation Drawer */}
+                <NavigationDrawer t={t}
+                                  currentDevice={currentDevice}
+                                  currentPath={currentPath}
+                                  setPath={(e, path) => setPath(e, path)}/>
 
-            {/* Main Content */}
-            <main className={classes.main}>
-                <div className={classes.toolbar}/>
-                <Switch>
-                    {deviceList.map((device) => (
-                        <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
+                {/* Main Content */}
+                <main className={classes.main}>
+                    <div className={classes.toolbar}/>
+                    <Switch>
+                        {deviceList.map((device) => (
+                            <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => (
+                                <DevicePage t={t}
+                                            device={currentDevice}
+                                            deviceDict={deviceDict}
+                                            setTabValue={(val) => setTabValue(val)}/>
+                            )}/>
+                        ))}
+                        <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
+                            <AboutPage t={t}/>
+                        )}/>
+                        <Route path={process.env.PUBLIC_URL + '/Q&A'} render={() => (
+                            <AboutPage t={t}/>
+                        )}/>
+                        <Route path={process.env.PUBLIC_URL + '/'} render={() => (
                             <DevicePage t={t}
                                         device={currentDevice}
                                         deviceDict={deviceDict}
                                         setTabValue={(val) => setTabValue(val)}/>
                         )}/>
-                    ))}
-                    <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
-                        <AboutPage t={t}/>
-                    )}/>
-                    <Route path={process.env.PUBLIC_URL + '/Q&A'} render={() => (
-                        <AboutPage t={t}/>
-                    )}/>
-                    <Route path={process.env.PUBLIC_URL + '/'} render={() => (
-                        <DevicePage t={t}
-                                    device={currentDevice}
-                                    deviceDict={deviceDict}
-                                    setTabValue={(val) => setTabValue(val)}/>
-                    )}/>
-                </Switch>
-            </main>
-        </div>
+                    </Switch>
+                </main>
+            </div>
+        </MuiThemeProvider>
     );
 }
 

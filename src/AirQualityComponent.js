@@ -1,6 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import BubbleSVG from "./assets/svg/BubbleSVG";
+import Colors from "./assets/Colors";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -13,8 +14,8 @@ function AirQualityComponent(props) {
             {device.data.data &&
             <div>
                 <h2>{t('Air Quality')}</h2>
-                <BubbleSVG color="#B53F3F" percent={80}/>
-                <BubbleSVG color="#F2C94C" percent={40}/>
+                <BubbleSVG color={Colors.red} percent={80}/>
+                <BubbleSVG color={Colors.yellow} percent={40}/>
                 <BubbleSVG/>
             </div>}
         </div>);

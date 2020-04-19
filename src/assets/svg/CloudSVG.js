@@ -1,4 +1,5 @@
 import React from "react";
+import Colors from "../Colors";
 
 function CloudSVG(props) {
     const width = props.size;
@@ -16,8 +17,8 @@ function CloudSVG(props) {
 
 CloudSVG.defaultProps = {
     size: "315",
-    color: "#F2C94C",
-    strokeColor: "#303F9F",
+    color: Colors.yellow,
+    strokeColor: Colors.primaryColor,
     strokeWidth: "3",
 }
 

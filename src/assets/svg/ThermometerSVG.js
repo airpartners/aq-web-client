@@ -1,5 +1,6 @@
 import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import Colors from "../Colors";
 
 function ThermometerSVG(props) {
     return (
@@ -15,7 +16,7 @@ function ThermometerSVG(props) {
 }
 
 ThermometerSVG.defaultProps = {
-    color: "#303F9F",
+    color: Colors.primaryColor,
     size: 60,
 }
 

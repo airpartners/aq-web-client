@@ -1,6 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import CloudSVG from "./assets/svg/CloudSVG";
+import Colors from "./assets/Colors";
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -24,11 +25,11 @@ function AtAGlanceComponent(props) {
     const getColor = (indicator) => {
         switch (indicator) {
             case t('Bad'):
-                return "#B53F3F";
+                return Colors.red;
             case t('Fine'):
-                return "#F2C94C";
+                return Colors.yellow;
             default:
-                return "#3FB571";
+                return Colors.green;
         }
     };
     const getRecommendation = (indicator) => {
