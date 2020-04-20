@@ -17,7 +17,7 @@ function WeatherComponent(props) {
             {device.data.data &&
             <div>
                 <h2>{t('Weather')}</h2>
-                <Grid container justify="center" spacing={3}>
+                <Grid container justify="center">
                     <Grid container item xs alignItems="center">
                         <Grid>
                             <ThermometerSVG/>
