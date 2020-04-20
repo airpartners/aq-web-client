@@ -2,8 +2,15 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import CloudSVG from "./assets/svg/CloudSVG";
 import Colors from "./assets/Colors";
+import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles((theme) => ({}));
+const cloudWidth = 315;
+
+const useStyles = makeStyles((theme) => ({
+    cloud: {
+        width: cloudWidth,
+    }
+}));
 
 function AtAGlanceComponent(props) {
     const {t} = props;
@@ -47,7 +54,10 @@ function AtAGlanceComponent(props) {
             {device.data.data &&
             <div>
                 <h2>{t('Now')}</h2>
-                <CloudSVG color={getColor(airQuality)}/>
+                <Grid className={classes.cloud} container justify="center">
+                    <CloudSVG width={cloudWidth} color={getColor(airQuality)}/>
+                    <h2 style={{color: getColor(airQuality)}}>{airQuality}</h2>
+                </Grid>
                 <h2>{t('Recommendations')}</h2>
                 <p>{getRecommendation(airQuality)}</p>
             </div>}
