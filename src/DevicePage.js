@@ -31,16 +31,18 @@ const useStyles = makeStyles((theme) => ({
  */
 function DevicePage(props) {
     const classes = useStyles();
-    const {t, device, deviceDict, setTabValue} = props;
-    const deviceHome = <DeviceHome t={t} device={device} deviceDict={deviceDict}/>;
-    const deviceMap = <DeviceMap t={t} device={device} deviceDict={deviceDict}/>;
+    const {t, bottomTab, deviceName, deviceDict, setTabValue} = props;
+    const device = deviceDict[deviceName];
+    const deviceHome = <DeviceHome t={t} device={device}/>;
+    const deviceMap = <DeviceMap t={t} deviceName={deviceName} deviceDict={deviceDict}/>;
+
     return (
         <div>
             <div className={classes.content}>
                 <Switch>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Home')}
+                    <Route path={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Home')}
                            render={() => deviceHome}/>
-                    <Route path={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Map')}
+                    <Route path={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Map')}
                            render={() => deviceMap}/>
                     <Route path={process.env.PUBLIC_URL + '/'}
                            render={() => deviceHome}/>
@@ -48,15 +50,15 @@ function DevicePage(props) {
             </div>
             <BottomNavigation
                 className={classes.botNav}
-                value={device.tab}
+                value={bottomTab}
                 onChange={(event, newValue) => {
                     setTabValue(newValue);
                 }}
                 showLabels>
                 <BottomNavigationAction component={Link} label={t('BottomNav.Home')} icon={<HomeIcon/>}
-                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Home')}/>
+                                        to={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Home')}/>
                 <BottomNavigationAction component={Link} label={t('BottomNav.Map')} icon={<LocationOnIcon/>}
-                                        to={process.env.PUBLIC_URL + '/' + device.name + '/' + t('BottomNav.Map')}/>
+                                        to={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Map')}/>
             </BottomNavigation>
         </div>);
 }

@@ -14,7 +14,7 @@ function WeatherComponent(props) {
     const {device} = props;
     return (
         <div>
-            {device.data.data &&
+            {device.data &&
             <div>
                 <h2>{t('Weather')}</h2>
                 <Grid container justify="center">
@@ -23,7 +23,7 @@ function WeatherComponent(props) {
                             <ThermometerSVG/>
                         </Grid>
                         <Grid>
-                            <p>{device.data.data[0].temp_manifold + "\u00b0 F"}</p>
+                            <p>{device.data[0].temp_manifold + "\u00b0 F"}</p>
                             <p>{t('Temperature')}</p>
                         </Grid>
                     </Grid>
@@ -32,17 +32,17 @@ function WeatherComponent(props) {
                             <DropletSVG/>
                         </Grid>
                         <Grid>
-                            <p>{device.data.data[0].rh_manifold + " %"}</p>
+                            <p>{device.data[0].rh_manifold + " %"}</p>
                             <p>{t('Humidity')}</p>
                         </Grid>
                     </Grid>
                     <Grid container item xs alignItems="center">
                         <Grid>
                             <Navigation style={{color: Colors.primaryColor, fontSize: 50}}
-                                        transform={`rotate(${device.data.data[0].wind_dir})`}/>
+                                        transform={`rotate(${device.data[0].wind_dir})`}/>
                         </Grid>
                         <Grid>
-                            <p>{device.data.data[0].wind_speed + " m/s"}</p>
+                            <p>{device.data[0].wind_speed + " m/s"}</p>
                             <p>{t('Wind')}</p>
                         </Grid>
                     </Grid>

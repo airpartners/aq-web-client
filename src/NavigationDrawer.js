@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const {t, currentDevice, currentPath, setPath} = props;
+    const {t, bottomTab, deviceName, currentPath, setPath} = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -64,14 +64,14 @@ function NavigationDrawer(props) {
             <div className={classes.toolbar}/>
             <Divider/>
             <List>
-                {deviceList.map((device) => (
+                {deviceList.map((deviceId) => (
                     <ListItem button component={Link}
-                              to={process.env.PUBLIC_URL + '/' + device + '/' + getTabName(currentDevice.tab, t)}
-                              key={device}
-                              selected={currentPath.includes(device) || (currentPath === '' && device === deviceList[0])}
-                              onClick={(e) => setPath(e, device + '/' + getTabName(currentDevice.tab, t))}>
+                              to={process.env.PUBLIC_URL + '/' + deviceId + '/' + getTabName(bottomTab, t)}
+                              key={deviceId}
+                              selected={currentPath.includes(deviceId) || (currentPath === '' && deviceId === deviceList[0])}
+                              onClick={(e) => setPath(e, deviceId + '/' + getTabName(bottomTab, t))}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
-                        <ListItemText primary={device}/>
+                        <ListItemText primary={deviceId}/>
                     </ListItem>
                 ))}
             </List>
@@ -106,7 +106,7 @@ function NavigationDrawer(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        {currentDevice.name}
+                        {deviceName}
                     </Typography>
                 </Toolbar>
             </AppBar>

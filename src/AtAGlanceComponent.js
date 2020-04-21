@@ -51,7 +51,7 @@ function AtAGlanceComponent(props) {
     };
     return (
         <div>
-            {device.data.data &&
+            {device.data &&
             <div>
                 <h2>{t('Now')}</h2>
                 <Grid className={classes.cloud} container justify="center">

@@ -9,11 +9,12 @@ const useStyles = makeStyles((theme) => ({
 function DeviceMap(props) {
     const {t} = props;
     const classes = useStyles();
-    const {device, deviceDict} = props;
+    const {deviceName, deviceDict} = props;
+    const device = deviceDict[deviceName];
     return (
         <div>
             <Typography paragraph>
-                {device.name} {t('BottomNav.Map')}
+                {deviceName} {t('BottomNav.Map')}
             </Typography>
         </div>);
 }

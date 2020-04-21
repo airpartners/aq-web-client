@@ -11,7 +11,7 @@ function AirQualityComponent(props) {
     const {device} = props;
     return (
         <div>
-            {device.data.data &&
+            {device.data &&
             <div>
                 <h2>{t('Air Quality')}</h2>
                 <BubbleSVG color={Colors.red} percent={80}/>

@@ -71,7 +71,7 @@ function PollutantsComponent(props) {
     }
     return (
         <div>
-            {device.data.data &&
+            {device.data &&
             <div>
                 <h2>{t('Pollutants')}</h2>
                 <Tabs className={classes.tabView}
