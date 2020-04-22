@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         width: `calc(100% - ${drawerWidth}px)`,
         bottom: 0,
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             width: '100%',
         },
     }
