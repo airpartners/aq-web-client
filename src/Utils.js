@@ -7,6 +7,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+          lat: 42.37,
+          lng: -72.03,
+        },
     },
     'SN000-046': {
         id: 'SN000-046',
@@ -14,6 +18,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+            lat: 42.36,
+            lng: -71,
+        },
     },
     'SN000-049': {
         id: 'SN000-049',
@@ -21,6 +29,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+            lat: 42.38,
+            lng: -71.01,
+        },
     },
     'SN000-062': {
         id: 'SN000-062',
@@ -28,6 +40,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+            lat: 42.365,
+            lng: -71.03,
+        },
     },
     'SN000-067': {
         id: 'SN000-067',
@@ -35,6 +51,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+            lat: 42.34,
+            lng: -71.02,
+        },
     },
     'SN000-072': {
         id: 'SN000-072',
@@ -42,6 +62,10 @@ export const deviceInitData = {
         data: null,
         meta: null,
         lastUpdated: null,
+        geo: {
+            lat: 42.38,
+            lng: -71.015,
+        },
     }
 };
 
@@ -100,7 +124,6 @@ export const getDeviceMetaData = (path, t) => {
     if (![t('BottomNav.Home'), t('BottomNav.Map'), t('BottomNav.Detail')].includes(tabName)) {
         tabName = t('BottomNav.Home');
     }
-    console.log(deviceId);
     return [deviceId, getTabId(tabName, t)];
 };
 

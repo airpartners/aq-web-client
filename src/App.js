@@ -44,12 +44,14 @@ function App(props) {
         if (isDevicePath(currentPath)) {
             updateDevicePage(currentPath);
         }
+        getAllData();
     }, []);
-    const updateDevicePage = (path) => {
-        let [deviceId, tabId] = getDeviceMetaData(path, t);
-        setCurrentDevice(deviceId);
-        setBottomTab(tabId);
-        // Fetch device data if needed
+    const getAllData = () => {
+        for (let deviceId of deviceList) {
+            getDeviceData(deviceId);
+        }
+    }
+    const getDeviceData = (deviceId) => {
         if (needUpdate(deviceDict, deviceId)) {
             DBHelper.getData(deviceId).then((data) => {
                 let newDevice = deviceDict[deviceId];
@@ -61,6 +63,13 @@ function App(props) {
                 console.log(e);
             });
         }
+    }
+    const updateDevicePage = (path) => {
+        let [deviceId, tabId] = getDeviceMetaData(path, t);
+        setCurrentDevice(deviceId);
+        setBottomTab(tabId);
+        // Fetch device data if needed
+        getDeviceData(deviceId);
     };
     const setPath = (event, path) => {
         event.stopPropagation();

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "base-64": "^0.1.0",
     "clsx": "latest",
+    "google-map-react": "^1.1.7",
     "i18next": "^19.4.1",
     "i18next-browser-languagedetector": "^4.0.2",
     "react": "^16.13.1",

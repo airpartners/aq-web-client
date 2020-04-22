@@ -7,6 +7,10 @@ import AtAGlanceComponent from "./AtAGlanceComponent";
 import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
+    content: {
+        margin: theme.spacing(3),
+        paddingBottom: theme.spacing(3),
+    },
     paper: {
         padding: theme.spacing(3),
         marginBottom: theme.spacing(3)
@@ -18,7 +22,7 @@ function DeviceHome(props) {
     const classes = useStyles();
     const {device} = props;
     return (
-        <div>
+        <div className={classes.content}>
             {/* At a glance */}
             <Paper elevation={1} className={classes.paper}>
                 <AtAGlanceComponent device={device} t={t}/>
