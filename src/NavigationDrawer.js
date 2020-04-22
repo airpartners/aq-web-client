@@ -16,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import {Link} from "react-router-dom";
-import {drawerWidth, deviceList, getTabName} from "./Utils";
+import {drawerWidth, deviceList, getTabName, isDevicePath} from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,7 +68,7 @@ function NavigationDrawer(props) {
                     <ListItem button component={Link}
                               to={process.env.PUBLIC_URL + '/' + id + '/' + getTabName(bottomTab, t)}
                               key={id}
-                              selected={id === deviceId || (currentPath === '' && id === deviceList[0])}
+                              selected={(currentPath === '' && id === deviceList[0]) || (isDevicePath(currentPath) && id === deviceId)}
                               onClick={(e) => setPath(e, id + '/' + getTabName(bottomTab, t))}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
                         <ListItemText primary={deviceDict[id].name}/>
@@ -78,14 +78,14 @@ function NavigationDrawer(props) {
             <Divider/>
             <List>
                 <ListItem button component={Link} to={process.env.PUBLIC_URL + '/about-us'}
-                          key={t('DrawerNav.About us')} selected={currentPath === 'about-us'}
-                          onClick={(e) => setPath(e, t('DrawerNav.About us'))}>
+                          key='about-us' selected={currentPath === 'about-us'}
+                          onClick={(e) => setPath(e, 'about-us')}>
                     <ListItemIcon><InfoIcon/></ListItemIcon>
                     <ListItemText primary={t('DrawerNav.About us')}/>
                 </ListItem>
                 <ListItem button component={Link} to={process.env.PUBLIC_URL + '/Q&A'}
-                          key={t('DrawerNav.Q&A')} selected={currentPath === '/Q&A'}
-                          onClick={(e) => setPath(e, t('DrawerNav.Q&A'))}>
+                          key='Q&A' selected={currentPath === '/Q&A'}
+                          onClick={(e) => setPath(e, 'Q&A')}>
                     <ListItemIcon><HelpIcon/></ListItemIcon>
                     <ListItemText primary={t('DrawerNav.Q&A')}/>
                 </ListItem>
