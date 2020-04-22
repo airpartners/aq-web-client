@@ -3,12 +3,14 @@ import {makeStyles} from "@material-ui/core/styles";
 import CloudSVG from "./assets/svg/CloudSVG";
 import Colors from "./assets/Colors";
 import Grid from "@material-ui/core/Grid";
-
-const cloudWidth = 315;
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
     cloud: {
-        width: cloudWidth,
+        [theme.breakpoints.down('xs')]: {
+            width: CloudSVG.medium,
+        },
+        width: CloudSVG.large,
     }
 }));
 
@@ -16,6 +18,9 @@ function AtAGlanceComponent(props) {
     const {t} = props;
     const classes = useStyles();
     const {device} = props;
+    const isMobile = useMediaQuery(theme => theme.breakpoints.down('xs'));
+    const cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
+
     const getAirQuality = (device) => {
         // TODO: Update this func to work with real data
         let r = Math.floor((Math.random() * 3) + 1);
@@ -55,7 +60,7 @@ function AtAGlanceComponent(props) {
             <div>
                 <h2>{t('Now')}</h2>
                 <Grid className={classes.cloud} container justify="center">
-                    <CloudSVG width={cloudWidth} color={getColor(airQuality)}/>
+                    <CloudSVG size={cloudWidth} color={getColor(airQuality)}/>
                     <h2 style={{color: getColor(airQuality)}}>{airQuality}</h2>
                 </Grid>
                 <h2>{t('Recommendations')}</h2>
