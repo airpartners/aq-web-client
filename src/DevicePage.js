@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
  */
 function DevicePage(props) {
     const classes = useStyles();
-    const {t, bottomTab, deviceName, deviceDict, setTabValue} = props;
-    const device = deviceDict[deviceName];
+    const {t, bottomTab, deviceId, deviceDict, setTabValue} = props;
+    const device = deviceDict[deviceId];
     const deviceHome = <DeviceHome t={t} device={device}/>;
-    const deviceMap = <DeviceMap t={t} deviceName={deviceName} deviceDict={deviceDict}/>;
+    const deviceMap = <DeviceMap t={t} deviceId={deviceId} deviceDict={deviceDict}/>;
 
     return (
         <div>

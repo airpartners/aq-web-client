@@ -10,15 +10,15 @@ headers.append('Content-Type', 'application/json');
 headers.append('Accept', 'application/json');
 headers.append('Authorization', token);
 
-function getEndpoint(deviceName, page, perPage) {
+function getEndpoint(deviceId, page, perPage) {
     if (window.location.hostname === "localhost")
-        return window.location.origin + '/data/' + deviceName + '.json';
+        return window.location.origin + '/data/' + deviceId + '.json';
     else
-        return `${BASE_URL}/${deviceName}/data/?page=${page}&per_page=${perPage}&limit=${LIMIT}`;
+        return `${BASE_URL}/${deviceId}/data/?page=${page}&per_page=${perPage}&limit=${LIMIT}`;
 }
 
-export const getData = (deviceName = 'SN000-072', page = 1, perPage = 1000) =>
-    fetch(getEndpoint(deviceName, page, perPage), {
+export const getData = (deviceId = 'SN000-072', page = 1, perPage = 1000) =>
+    fetch(getEndpoint(deviceId, page, perPage), {
         headers: headers,
         credentials: 'include',
         method: 'GET'

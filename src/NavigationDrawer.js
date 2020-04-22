@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const {t, bottomTab, deviceName, currentPath, setPath} = props;
+    const {t, bottomTab, deviceId, deviceDict, currentPath, setPath} = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -64,14 +64,14 @@ function NavigationDrawer(props) {
             <div className={classes.toolbar}/>
             <Divider/>
             <List>
-                {deviceList.map((deviceId) => (
+                {deviceList.map((id) => (
                     <ListItem button component={Link}
-                              to={process.env.PUBLIC_URL + '/' + deviceId + '/' + getTabName(bottomTab, t)}
-                              key={deviceId}
-                              selected={currentPath.includes(deviceId) || (currentPath === '' && deviceId === deviceList[0])}
-                              onClick={(e) => setPath(e, deviceId + '/' + getTabName(bottomTab, t))}>
+                              to={process.env.PUBLIC_URL + '/' + id + '/' + getTabName(bottomTab, t)}
+                              key={id}
+                              selected={id === deviceId || (currentPath === '' && id === deviceList[0])}
+                              onClick={(e) => setPath(e, id + '/' + getTabName(bottomTab, t))}>
                         <ListItemIcon><DeviceIcon/></ListItemIcon>
-                        <ListItemText primary={deviceId}/>
+                        <ListItemText primary={deviceDict[id].name}/>
                     </ListItem>
                 ))}
             </List>
@@ -106,7 +106,7 @@ function NavigationDrawer(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        {deviceName}
+                        {deviceDict[deviceId].name}
                     </Typography>
                 </Toolbar>
             </AppBar>

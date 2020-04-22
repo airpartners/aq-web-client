@@ -46,17 +46,17 @@ function App(props) {
         }
     }, []);
     const updateDevicePage = (path) => {
-        let [deviceName, tabId] = getDeviceMetaData(path, t);
-        setCurrentDevice(deviceName);
+        let [deviceId, tabId] = getDeviceMetaData(path, t);
+        setCurrentDevice(deviceId);
         setBottomTab(tabId);
         // Fetch device data if needed
-        if (needUpdate(deviceDict, deviceName)) {
-            DBHelper.getData(deviceName).then((data) => {
-                let newDevice = deviceDict[deviceName];
+        if (needUpdate(deviceDict, deviceId)) {
+            DBHelper.getData(deviceId).then((data) => {
+                let newDevice = deviceDict[deviceId];
                 newDevice.data = data.data;
                 newDevice.meta = data.meta;
                 newDevice.lastUpdated = new Date();
-                setDeviceDict(prevState => ({...prevState, deviceName: newDevice}));
+                setDeviceDict(prevState => ({...prevState, deviceId: newDevice}));
             }).catch((e) => {
                 console.log(e);
             });
@@ -72,7 +72,7 @@ function App(props) {
     };
     const devicePage = <DevicePage t={t}
                                    bottomTab={bottomTab}
-                                   deviceName={currentDevice}
+                                   deviceId={currentDevice}
                                    deviceDict={deviceDict}
                                    setTabValue={(val) => setBottomTab(val)}/>;
     return (
@@ -82,7 +82,8 @@ function App(props) {
                 {/* Navigation Drawer */}
                 <NavigationDrawer t={t}
                                   bottomTab={bottomTab}
-                                  deviceName={currentDevice}
+                                  deviceId={currentDevice}
+                                  deviceDict={deviceDict}
                                   currentPath={currentPath}
                                   setPath={(e, path) => setPath(e, path)}/>
 

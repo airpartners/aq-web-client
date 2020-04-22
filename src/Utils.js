@@ -92,15 +92,16 @@ export const isDevicePath = (path) => {
  */
 export const getDeviceMetaData = (path, t) => {
     let metaData = path.split('/').filter(el => el); // Split and filter out null/empty string
-    let deviceName = metaData.length > 0 ? metaData[0] : deviceList[0];
+    let deviceId = metaData.length > 0 ? metaData[0] : deviceList[0];
     let tabName = metaData.length > 1 ? metaData[1] : t('BottomNav.Home');
-    if (!deviceList.includes(deviceName)) {
-        deviceName = deviceList[0];
+    if (!deviceList.includes(deviceId)) {
+        deviceId = deviceList[0];
     }
     if (![t('BottomNav.Home'), t('BottomNav.Map'), t('BottomNav.Detail')].includes(tabName)) {
         tabName = t('BottomNav.Home');
     }
-    return [deviceName, getTabId(tabName, t)];
+    console.log(deviceId);
+    return [deviceId, getTabId(tabName, t)];
 };
 
 /**
@@ -108,11 +109,11 @@ export const getDeviceMetaData = (path, t) => {
  * - Data has just been initialized (lastUpdated == null)
  * - Last updated was 5 minutes ago or longer
  * @param deviceDict: dictionary of our device data
- * @param deviceName: name of the current device
+ * @param deviceId: id of the current device
  * @returns {boolean}: true if update is needed
  */
-export const needUpdate = (deviceDict, deviceName) => {
-    let lastUpdated = deviceDict[deviceName].lastUpdated;
+export const needUpdate = (deviceDict, deviceId) => {
+    let lastUpdated = deviceDict[deviceId].lastUpdated;
     if (!lastUpdated)
         return true;
     let now = new Date();
