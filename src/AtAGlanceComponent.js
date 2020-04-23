@@ -63,6 +63,12 @@ function AtAGlanceComponent(props) {
                     <CloudSVG size={cloudWidth} color={getColor(airQuality)}/>
                     <h2 style={{color: getColor(airQuality)}}>{airQuality}</h2>
                 </Grid>
+                <Grid className={classes.cloud} container justify="flex-end">
+                    <p>{t('Last updated at') + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })}</p>
+                </Grid>
                 <h2>{t('Recommendations')}</h2>
                 <p>{getRecommendation(airQuality)}</p>
             </div>}
