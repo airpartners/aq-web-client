@@ -2,7 +2,6 @@ import React from "react";
 import CanvasJSReact from './assets/js/canvasjs.react';
 import {makeStyles} from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
-import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
@@ -17,56 +16,93 @@ function PollutantsComponent(props) {
     const {t} = props;
     const classes = useStyles();
     const {device} = props;
-    const [value, setValue] = React.useState(0);
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+    const [pollutantId, setPollutantId] = React.useState(0);
+    const handleTabChange = (event, newId) => {
+        setPollutantId(newId);
+    };
+    const isPollutantDataAvailable = (device, pollutant) => {
+        return Array.isArray(device.data) && device.data.length && device.data[0][pollutant];
+    };
+    const getPollutant = (id) => {
+        switch (id) {
+            case 0:
+                return "pm25";
+            case 1:
+                return "co";
+            case 2:
+                return "no2";
+            case 3:
+                return "o3";
+            default:
+                return "invalid";
+        }
+    };
+    const getUnit = (id) => {
+        switch (id) {
+            case 0:
+                return "ug/m3";
+            case 1:
+                return "ppm";
+            case 2:
+                return "ppb";
+            case 3:
+                return "ppb";
+            default:
+                return "invalid";
+        }
+    };
+    const getData = (device, pollutantId) => {
+        let pollutant = getPollutant(pollutantId);
+        if (!isPollutantDataAvailable(device, pollutant))
+            return [];
+        // Filter data
+        let data = [];
+        let time = new Date(device.data[0].timestamp_local);
+        data.push({x: time, y: device.data[0][pollutant]});
+        for (let d of device.data) {
+            let dTime = new Date(d.timestamp_local);
+            let timeDiff = (time - dTime) / 1000 / 60; // in minutes
+            if (timeDiff > 60) {
+                data.push({x: dTime, y: d[pollutant]});
+                time = dTime;
+            }
+            if (data.length > 24)
+                break;
+        }
+        return data;
     };
     const options = {
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2", // "light1", "dark1", "dark2"
         title: {
-            text: "Bounce Rate by Week of Year"
+            text: ""
         },
         axisY: {
-            title: "Bounce Rate",
+            title: getUnit(pollutantId),
             includeZero: false,
-            suffix: "%"
+            stripLines: [{
+                value: 0.045,
+                color: Colors.green,
+                labelFontColor: Colors.green,
+                lineDashType: "dash",
+                thickness: 3,
+                label: "Safe"
+            }]
         },
         axisX: {
-            title: "Week of Year",
-            prefix: "W",
-            interval: 2
+            title: "Time",
+            interval: 2,
+            crosshair: {
+                enabled: true,
+                snapToDataPoint: true
+            }
         },
         data: [{
             type: "spline",
-            toolTipContent: "Week {x}: {y}%",
             color: Colors.primaryColor,
-            dataPoints: [
-                {x: 1, y: 64},
-                {x: 2, y: 61},
-                {x: 3, y: 64},
-                {x: 4, y: 62},
-                {x: 5, y: 64},
-                {x: 6, y: 60},
-                {x: 7, y: 58},
-                {x: 8, y: 59},
-                {x: 9, y: 53},
-                {x: 10, y: 54},
-                {x: 11, y: 61},
-                {x: 12, y: 60},
-                {x: 13, y: 55},
-                {x: 14, y: 60},
-                {x: 15, y: 56},
-                {x: 16, y: 60},
-                {x: 17, y: 59.5},
-                {x: 18, y: 63},
-                {x: 19, y: 58},
-                {x: 20, y: 54},
-                {x: 21, y: 59},
-                {x: 22, y: 64},
-                {x: 23, y: 59}
-            ]
+            xValueFormatString: "DDD hh:mm",
+            dataPoints: getData(device, pollutantId),
         }]
     }
     return (
@@ -75,8 +111,8 @@ function PollutantsComponent(props) {
             <div>
                 <h2>{t('Pollutants')}</h2>
                 <Tabs className={classes.tabView}
-                      value={value}
-                      onChange={handleChange}
+                      value={pollutantId}
+                      onChange={handleTabChange}
                       indicatorColor="primary"
                       textColor="primary"
                       centered>
