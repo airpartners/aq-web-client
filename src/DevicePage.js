@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
     botNav: {
         display: 'flex',
         position: 'fixed',
-        width: `calc(100% - ${drawerWidth}px)`,
+        width: '100%',
         bottom: 0,
-        [theme.breakpoints.down('md')]: {
-            width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
         },
     }
 }));
