@@ -111,9 +111,9 @@ function NavigationDrawer(props) {
                 </Toolbar>
             </AppBar>
 
-            {/* Responsive Drawer */}
+            {/* Responsive Drawer. The implementation can be swapped with js to avoid SEO duplication of links. */}
             <nav className={classes.drawer} aria-label="device list">
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+                {/* Drawer for mobile */}
                 <Hidden mdUp implementation="css">
                     <Drawer
                         variant="temporary"
@@ -125,6 +125,7 @@ function NavigationDrawer(props) {
                         {drawer}
                     </Drawer>
                 </Hidden>
+                {/* Drawer for desktop and tablet */}
                 <Hidden smDown implementation="css">
                     <Drawer
                         classes={{paper: classes.drawerPaper,}}

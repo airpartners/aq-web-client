@@ -55,10 +55,10 @@ function PollutantsComponent(props) {
         let pollutant = getPollutant(pollutantId);
         if (!isPollutantDataAvailable(device, pollutant))
             return [];
-        // Filter data
-        let data = [];
+
+        // Filter data so that only pick data points that are at least one hour apart
         let time = new Date(device.data[0].timestamp_local);
-        data.push({x: time, y: device.data[0][pollutant]});
+        let data = [{x: time, y: device.data[0][pollutant]}];
         for (let d of device.data) {
             let dTime = new Date(d.timestamp_local);
             let timeDiff = (time - dTime) / 1000 / 60; // in minutes

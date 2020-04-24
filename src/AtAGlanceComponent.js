@@ -21,6 +21,11 @@ function AtAGlanceComponent(props) {
     const isMobile = useMediaQuery(theme => theme.breakpoints.down('xs'));
     const cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
 
+    /**
+     * Get the Air Quality condition from device data
+     * @param device: a device instance
+     * @returns {string}: translated text of air quality condition
+     */
     const getAirQuality = (device) => {
         // TODO: Update this func to work with real data
         let r = Math.floor((Math.random() * 3) + 1);
@@ -34,6 +39,12 @@ function AtAGlanceComponent(props) {
         }
     };
     const airQuality = getAirQuality(device);
+
+    /**
+     * Get corresponding color from the indicator
+     * @param indicator: translated text for bad, fine and good
+     * @returns {string} HEX color
+     */
     const getColor = (indicator) => {
         switch (indicator) {
             case t('Bad'):
@@ -44,6 +55,12 @@ function AtAGlanceComponent(props) {
                 return Colors.green;
         }
     };
+
+    /**
+     * Get corresponding recommendations from the indicator
+     * @param indicator: translated text for bad, fine and good
+     * @returns {string} translated recommendations
+     */
     const getRecommendation = (indicator) => {
         switch (indicator) {
             case t('Bad'):

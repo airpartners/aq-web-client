@@ -18,6 +18,7 @@ function WeatherComponent(props) {
             <div>
                 <h2>{t('Weather')}</h2>
                 <Grid container justify="center">
+                    {/* Temperature status */}
                     <Grid container item xs alignItems="center">
                         <Grid>
                             <ThermometerSVG/>
@@ -27,6 +28,7 @@ function WeatherComponent(props) {
                             <p>{t('Temperature')}</p>
                         </Grid>
                     </Grid>
+                    {/* Humidity status */}
                     <Grid container item xs alignItems="center">
                         <Grid>
                             <DropletSVG/>
@@ -36,6 +38,7 @@ function WeatherComponent(props) {
                             <p>{t('Humidity')}</p>
                         </Grid>
                     </Grid>
+                    {/* Wind status */}
                     <Grid container item xs alignItems="center">
                         <Grid>
                             <Navigation style={{color: Colors.primaryColor, fontSize: 50}}

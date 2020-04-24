@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 /**
- * DevicePage is a container for DeviceHome, and DeviceMap
+ * DevicePage is a container for DeviceHome and DeviceMap
  */
 function DevicePage(props) {
     const classes = useStyles();
@@ -37,6 +37,7 @@ function DevicePage(props) {
 
     return (
         <div>
+            {/* Main content: either DeviceHome or DeviceMap */}
             <div className={classes.content}>
                 <Switch>
                     <Route path={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Home')}
@@ -47,12 +48,12 @@ function DevicePage(props) {
                            render={() => deviceHome}/>
                 </Switch>
             </div>
+
+            {/* Bottom Navigation to switch between DeviceHome and DeviceMap*/}
             <BottomNavigation
                 className={classes.botNav}
                 value={bottomTab}
-                onChange={(event, newValue) => {
-                    setTabValue(newValue);
-                }}
+                onChange={(event, newValue) => {setTabValue(newValue)}}
                 showLabels>
                 <BottomNavigationAction component={Link} label={t('BottomNav.Home')} icon={<HomeIcon/>}
                                         to={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Home')}/>

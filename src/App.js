@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import './App.css';
 import {Route, Switch} from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {makeStyles} from '@material-ui/core/styles';
@@ -41,9 +40,6 @@ function App(props) {
     const [currentDevice, setCurrentDevice] = React.useState(deviceList[0]);
     const [deviceDict, setDeviceDict] = React.useState(deviceInitData);
     useEffect(() => {
-        if (isDevicePath(currentPath)) {
-            updateDevicePage(currentPath);
-        }
         getAllData();
     }, []);
     const getAllData = () => {
@@ -100,8 +96,8 @@ function App(props) {
                 <main className={classes.main}>
                     <div className={classes.toolbar}/>
                     <Switch>
-                        {deviceList.map((device) => (
-                            <Route path={process.env.PUBLIC_URL + '/' + device} key={device} render={() => devicePage}/>
+                        {deviceList.map((deviceId) => (
+                            <Route path={process.env.PUBLIC_URL + '/' + deviceId} key={deviceId} render={() => devicePage}/>
                         ))}
                         <Route path={process.env.PUBLIC_URL + '/about-us'} render={() => (
                             <AboutPage t={t}/>

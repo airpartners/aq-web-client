@@ -7,17 +7,28 @@ import {Navigation, NotListedLocation} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     content: {
-        height: `calc(100vh - 120px)`,
+        height: `calc(100vh - 120px)`, // Height - Top and Bottom bars
         width: '100%',
     }
 }));
 
 const mapApiKey = 'AIzaSyCE7xH50-i4RcG5HygoL1SKXi3dLbstQtI';
 
+/**
+ * Check if a device has geo data.
+ * @param device: a device instance
+ * @returns {boolean}: true if geo data is available
+ */
 const isGeoDataAvailable = (device) => {
     return Array.isArray(device.data) && device.data.length && device.data[0].geo;
 }
 
+/**
+ * Get (lat, lng) from the device data if available,
+ * otherwise return the default (lat, lng) in Utils.js
+ * @param device: a device instance
+ * @returns {{lng: number, lat: number}}
+ */
 const getLatLng = (device) => {
     if (isGeoDataAvailable(device)) {
         return {lat: device.data[0].geo.lat, lng: device.data[0].geo.lon}; // Lat lng from the data
@@ -31,7 +42,13 @@ function DeviceMap(props) {
     const classes = useStyles();
     const {deviceId, deviceDict} = props;
     const focusedDevice = deviceDict[deviceId];
-    const latLng = getLatLng(focusedDevice);
+    const latLng = getLatLng(focusedDevice); // LatLng of the focused device
+    /**
+     * Generate marker for the device based on id. If the device does not have geo location,
+     * use the default question mark marker with the default (lat, lng) in Utils.js
+     * @param id: of the device
+     * @returns {*}: a Marker Component
+     */
     const getMarker = (id) => {
         let device = deviceDict[id];
         if (isGeoDataAvailable(device)) {
@@ -60,7 +77,6 @@ function DeviceMap(props) {
 // Map styling options
 const mapOptions = {
     mapTypeControl: false, styles: [
-
         {
             "elementType": "geometry",
             "stylers": [

@@ -1,3 +1,8 @@
+/**
+ * This file is specifically for localization.
+ * Documentation can be found here:
+ * https://react.i18next.com/legacy-v9/step-by-step-guide
+ */
 import i18n from "i18next";
 import LngDetector from "i18next-browser-languagedetector";
 import {reactI18nextModule} from "react-i18next";
@@ -6,7 +11,7 @@ import translationEN from './locales/en/translation.json';
 import translationES from './locales/es/translation.json';
 import translationESMX from './locales/es-MX/translation.json';
 
-// the translations
+// Add translation resources here
 const resources = {
     en: {
         translation: translationEN
