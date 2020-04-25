@@ -4,13 +4,15 @@ import {makeStyles} from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import {Pollutants} from "./Utils";
+
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const useStyles = makeStyles((theme) => ({
     tabView: {
         marginBottom: theme.spacing(3),
     }
 }))
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function PollutantsComponent(props) {
     const {t} = props;
@@ -26,29 +28,38 @@ function PollutantsComponent(props) {
     const getPollutant = (id) => {
         switch (id) {
             case 0:
-                return "pm25";
+                return Pollutants.PM25.id;
             case 1:
-                return "co";
+                return Pollutants.CO.id;
             case 2:
-                return "no2";
-            case 3:
-                return "o3";
+                return Pollutants.NO2.id;
             default:
-                return "invalid";
+                return Pollutants.O3.id;
         }
     };
     const getUnit = (id) => {
         switch (id) {
             case 0:
-                return "ug/m3";
+                return Pollutants.PM25.unit;
             case 1:
-                return "ppm";
+                return Pollutants.CO.unit;
             case 2:
-                return "ppb";
-            case 3:
-                return "ppb";
+                return Pollutants.NO2.unit;
             default:
-                return "invalid";
+                return Pollutants.O3.unit;
+        }
+    };
+    const getSafeValue = (id) => {
+        return 0.045; // TODO: remove this when safe values are determined
+        switch (id) {
+            case 0:
+                return Pollutants.PM25.safe;
+            case 1:
+                return Pollutants.CO.safe;
+            case 2:
+                return Pollutants.NO2.safe;
+            default:
+                return Pollutants.O3.safe;
         }
     };
     const getData = (device, pollutantId) => {
@@ -82,12 +93,12 @@ function PollutantsComponent(props) {
             title: getUnit(pollutantId),
             includeZero: false,
             stripLines: [{
-                value: 0.045,
+                value: getSafeValue(pollutantId),
                 color: Colors.green,
                 labelFontColor: Colors.green,
                 lineDashType: "dash",
                 thickness: 3,
-                label: "Safe"
+                label: t('Safe')
             }]
         },
         axisX: {
@@ -116,10 +127,10 @@ function PollutantsComponent(props) {
                       indicatorColor="primary"
                       textColor="primary"
                       centered>
-                    <Tab label="PM2.5"/>
-                    <Tab label="CO"/>
-                    <Tab label="NO2"/>
-                    <Tab label="O3"/>
+                    <Tab label={Pollutants.PM25.name}/>
+                    <Tab label={Pollutants.CO.name}/>
+                    <Tab label={Pollutants.NO2.name}/>
+                    <Tab label={Pollutants.O3.name}/>
                 </Tabs>
                 <CanvasJSChart options={options}/>
             </div>}

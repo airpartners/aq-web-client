@@ -8,8 +8,8 @@ export const deviceInitData = {
         meta: null,
         lastUpdated: null,
         geo: {
-          lat: 42.37,
-          lng: -72.03,
+            lat: 42.37,
+            lng: -72.03,
         },
     },
     'SN000-046': {
@@ -66,6 +66,38 @@ export const deviceInitData = {
             lat: 42.38,
             lng: -71.015,
         },
+    }
+};
+export const Pollutants = {
+    PM25: {
+        id: "pm25",
+        name: "PM2.5",
+        unit: "ug/m3",
+        safe: "??",
+    },
+    PM10: {
+        id: "pm10",
+        name: "PM10",
+        unit: "ug/m3",
+        safe: "??",
+    },
+    CO: {
+        id: "co",
+        name: "CO",
+        unit: "ppm",
+        safe: "??",
+    },
+    NO2: {
+        id: "no2",
+        name: "NO2",
+        unit: "ppb",
+        safe: "??",
+    },
+    O3: {
+        id: "o3",
+        name: "O3",
+        unit: "ppb",
+        safe: "??",
     }
 };
 

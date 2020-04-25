@@ -60,9 +60,9 @@ BubbleSVG.defaultProps = {
     width: 200,
     percent: 50,
     color: Colors.green,
-    currentText: "?? ug/m3",
-    pollutantText: "PM2.5",
-    standardText1: "?? ug/m3",
+    currentText: "?? ug/m3", // The current concentration
+    pollutantText: "PM2.5", // The name of the pollutant
+    standardText1: "?? ug/m3", // The safe concentration
     standardText2: "EPA 1 hour",
     standardText3: "standard",
     currentTextLength: 56,
