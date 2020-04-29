@@ -1,14 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import GoogleMapReact from 'google-map-react';
-import {deviceList} from "./Utils";
+import {deviceInitData, deviceList} from "./Utils";
 import Colors from "./assets/Colors";
 import {Navigation, NotListedLocation} from "@material-ui/icons";
+import MarkerComponent from "./MarkerComponent";
+import AtAGlanceComponent from "./AtAGlanceComponent";
+import CloudSVG from "./assets/svg/CloudSVG";
 
 const useStyles = makeStyles((theme) => ({
     content: {
         height: `calc(100vh - 120px)`, // Height - Top and Bottom bars
         width: '100%',
+    },
+    marker: {
+        cursor: 'pointer',
+        color: Colors.primaryColor,
+        fontSize: 30,
     }
 }));
 
@@ -38,11 +46,15 @@ const getLatLng = (device) => {
 }
 
 function DeviceMap(props) {
-    const {t} = props;
     const classes = useStyles();
-    const {deviceId, deviceDict} = props;
-    const focusedDevice = deviceDict[deviceId];
-    const latLng = getLatLng(focusedDevice); // LatLng of the focused device
+    const {t, deviceId, deviceDict} = props;
+    const [focusedDevice, setFocusedDevice] = React.useState(deviceDict[deviceId]);
+    const [showInfo, setShowInfo] = React.useState(false);
+    let latLng = getLatLng(focusedDevice); // LatLng of the focused device
+    useEffect(() => {
+        latLng = getLatLng(focusedDevice);
+    }, [focusedDevice]);
+
     /**
      * Generate marker for the device based on id. If the device does not have geo location,
      * use the default question mark marker with the default (lat, lng) in Utils.js
@@ -51,22 +63,48 @@ function DeviceMap(props) {
      */
     const getMarker = (id) => {
         let device = deviceDict[id];
+        let marker, infoWindow;
         if (isGeoDataAvailable(device)) {
-            return <Navigation key={id} lat={getLatLng(device).lat} lng={getLatLng(device).lng}
-                               style={{color: Colors.primaryColor, fontSize: 30}}
-                               transform={`rotate(${device.data[0].wind_dir})`}/>
+            marker = <Navigation className={classes.marker} style={{color: Colors.primaryColor}}
+                                 transform={`rotate(${device.data[0].wind_dir})`}/>
+            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} t={t}/>
         } else {
-            return <NotListedLocation key={id} lat={getLatLng(device).lat} lng={getLatLng(device).lng}
-                                      style={{color: Colors.primaryColor, fontSize: 30}}/>
+            marker = <NotListedLocation className={classes.marker} style={{color: Colors.primaryColor}}/>
+            infoWindow = <div>Data Not Available</div>
+        }
+        return <MarkerComponent key={id} lat={getLatLng(device).lat} lng={getLatLng(device).lng}
+                                showInfo={showInfo && id === focusedDevice.id} marker={marker} infoWindow={infoWindow}/>
+    }
+
+    /**
+     * Function handles event when a marker is click
+     * @param key: of the marker (basically just device id)
+     */
+    const onMarkerClicked = (key) => {
+        if (!showInfo) {
+            // show info window if no info window appears yet
+            setFocusedDevice(deviceDict[key]);
+            setShowInfo(true);
+        } else {
+            // if info window already appears
+            if (focusedDevice.id === key) {
+                // if click on the same device, turn off info window
+                setShowInfo(false);
+            } else {
+                // else change focused device so that info window will change to that device
+                setFocusedDevice(deviceDict[key]);
+            }
         }
     }
     return (
         <div className={classes.content}>
+            {/* GoogleMapReact documentation: https://github.com/google-map-react/google-map-react */}
             <GoogleMapReact
                 bootstrapURLKeys={{key: mapApiKey}}
                 defaultCenter={latLng}
                 defaultZoom={14}
-                options={mapOptions}>
+                options={mapOptions}
+                onChildClick={onMarkerClicked}>
                 {deviceList.map((id) => (
                     getMarker(id)
                 ))}
