@@ -14,9 +14,8 @@ const useStyles = makeStyles((theme) => ({}));
 // - Update current concentration values
 // - Localize all texts using the `t` variable
 function AirQualityComponent(props) {
-    const {t} = props;
     const classes = useStyles();
-    const {device} = props;
+    const {t, device} = props;
     return (
         <div>
             {device.data &&

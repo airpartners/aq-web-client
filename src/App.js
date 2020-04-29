@@ -40,6 +40,7 @@ function App(props) {
     const [currentDevice, setCurrentDevice] = React.useState(deviceList[0]);
     const [deviceDict, setDeviceDict] = React.useState(deviceInitData);
     useEffect(() => {
+        updateDevicePage(currentPath);
         getAllData();
     }, []);
     const getAllData = () => {
@@ -64,6 +65,7 @@ function App(props) {
         let [deviceId, tabId] = getDeviceMetaData(path, t);
         setCurrentDevice(deviceId);
         setBottomTab(tabId);
+        console.log(tabId)
         // Fetch device data if needed
         getDeviceData(deviceId);
     };

@@ -22,6 +22,7 @@ CloudSVG.defaultProps = {
     strokeColor: Colors.primaryColor,
     strokeWidth: "3",
 }
+CloudSVG.small = 150;
 CloudSVG.medium = 200;
 CloudSVG.large = 315;
 export default CloudSVG;

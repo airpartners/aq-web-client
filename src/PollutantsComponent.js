@@ -15,9 +15,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function PollutantsComponent(props) {
-    const {t} = props;
     const classes = useStyles();
-    const {device} = props;
+    const {t, device} = props;
     const [pollutantId, setPollutantId] = React.useState(0);
     const handleTabChange = (event, newId) => {
         setPollutantId(newId);

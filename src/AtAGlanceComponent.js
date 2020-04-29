@@ -5,21 +5,18 @@ import Colors from "./assets/Colors";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-const useStyles = makeStyles((theme) => ({
-    cloud: {
-        [theme.breakpoints.down('xs')]: {
-            width: CloudSVG.medium,
-        },
-        width: CloudSVG.large,
-    }
-}));
-
 function AtAGlanceComponent(props) {
-    const {t} = props;
-    const classes = useStyles();
-    const {device} = props;
+    let {t, device, cloudWidth} = props;
     const isMobile = useMediaQuery(theme => theme.breakpoints.down('xs'));
-    const cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
+    if (!cloudWidth)
+        cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
+
+    const useStyles = makeStyles((theme) => ({
+        cloud: {
+            width: cloudWidth,
+        }
+    }));
+    const classes = useStyles();
 
     /**
      * Get the Air Quality condition from device data
@@ -76,7 +73,7 @@ function AtAGlanceComponent(props) {
             {device.data &&
             <div>
                 <h2>{t('Now')}</h2>
-                <Grid className={classes.cloud} container justify="center">
+                <Grid className={classes.cloud} container justify="center" direction="column" alignItems="center">
                     <CloudSVG size={cloudWidth} color={getColor(airQuality)}/>
                     <h2 style={{color: getColor(airQuality)}}>{airQuality}</h2>
                 </Grid>

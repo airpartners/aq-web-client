@@ -18,9 +18,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DeviceHome(props) {
-    const {t} = props;
     const classes = useStyles();
-    const {device} = props;
+    const {t, device} = props;
     return (
         <div className={classes.content}>
             {/* At a glance */}

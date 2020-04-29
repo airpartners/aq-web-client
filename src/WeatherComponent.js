@@ -9,9 +9,8 @@ import Colors from "./assets/Colors";
 const useStyles = makeStyles((theme) => ({}));
 
 function WeatherComponent(props) {
-    const {t} = props;
     const classes = useStyles();
-    const {device} = props;
+    const {t, device} = props;
     return (
         <div>
             {device.data &&
