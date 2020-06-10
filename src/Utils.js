@@ -1,4 +1,4 @@
-export const drawerWidth = 240;
+export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
 export const deviceInitData = {
     'SN000-045': {
