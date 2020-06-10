@@ -39,9 +39,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `npm run deploy`
 
-Builds the app and pushes it to the gh-pages branch. The build is hosted at the aq-web-client [project page](https://airpartners.github.io/aq-web-client) of the airpartners organization github pages site.
-
-Currently the build cannot access the data. Probably some kind of path issue when building.
+Builds the app and pushes it to the gh-pages branch. The build is hosted at the aq-web-client [project page](https://airpartners.github.io/aq-web-client) of the [airpartners organization github pages site](https://airpartners.github.io).
 
 ## Learn More
 

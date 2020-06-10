@@ -13,6 +13,8 @@ headers.append('Authorization', token);
 function getEndpoint(deviceId, page, perPage) {
     if (window.location.hostname === "localhost")
         return window.location.origin + '/data/' + deviceId + '.json';
+    else if (window.location.hostname === "airpartners.github.io")
+        return 'https://airpartners.github.io/aq-web-client' + '/data/' + deviceId + '.json';
     else
         return `${BASE_URL}/${deviceId}/data/?page=${page}&per_page=${perPage}&limit=${LIMIT}`;
 }
