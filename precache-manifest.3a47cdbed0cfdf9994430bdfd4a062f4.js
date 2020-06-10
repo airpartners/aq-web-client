@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "10ed2de85129ee9c4ea237e9e00ced7e",
+    "revision": "c2c7bc6c7b2b605791c7d39a1d883010",
     "url": "/aq-web-client/index.html"
   },
   {
-    "revision": "e270d3b5f3d8c6552758",
+    "revision": "935ca5df816364fe3aa0",
     "url": "/aq-web-client/static/css/main.0b64b747.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/aq-web-client/static/js/2.a734f623.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e270d3b5f3d8c6552758",
-    "url": "/aq-web-client/static/js/main.fcee1bef.chunk.js"
+    "revision": "935ca5df816364fe3aa0",
+    "url": "/aq-web-client/static/js/main.ce55ff22.chunk.js"
   },
   {
     "revision": "f3c5f96901a7d6c9659b",
