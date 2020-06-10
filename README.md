@@ -37,6 +37,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `npm run deploy`
+
+Builds the app and pushes it to the gh-pages branch. The build is hosted at the aq-web-client [project page](https://airpartners.github.io/aq-web-client) of the airpartners organization github pages site.
+
+Currently the build cannot access the data. Probably some kind of path issue when building.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
