@@ -1,12 +1,12 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import CloudSVG from "./assets/svg/CloudSVG";
 import Colors from "./assets/Colors";
 import Grid from "@material-ui/core/Grid";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function AtAGlanceComponent(props) {
-    let {t, device, cloudWidth} = props;
+    let { t, device, cloudWidth } = props;
     const isMobile = useMediaQuery(theme => theme.breakpoints.down('xs'));
     if (!cloudWidth)
         cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
@@ -25,12 +25,20 @@ function AtAGlanceComponent(props) {
      */
     const getAirQuality = (device) => {
         // TODO: Update this func to work with real data
-        let r = Math.floor((Math.random() * 3) + 1);
-        switch (r) {
-            case 1:
+        // let r = Math.floor((Math.random() * 3) + 1);
+        switch (device.id) {
+            case 'SN000-045':
                 return t('Bad');
-            case 2:
+            case 'SN000-046':
                 return t('Fine');
+            case 'SN000-049':
+                return t('Good');
+            case 'SN000-062':
+                return t('Fine');
+            case 'SN000-067':
+                return t('Bad');
+            case 'SN000-072':
+                return t('Good');
             default:
                 return t('Good');
         }
@@ -71,21 +79,21 @@ function AtAGlanceComponent(props) {
     return (
         <div>
             {device.data &&
-            <div>
-                <h2>{t('Now')}</h2>
-                <Grid className={classes.cloud} container justify="center" direction="column" alignItems="center">
-                    <CloudSVG size={cloudWidth} color={getColor(airQuality)}/>
-                    <h2 style={{color: getColor(airQuality)}}>{airQuality}</h2>
-                </Grid>
-                <Grid className={classes.cloud} container justify="flex-end">
-                    <p>{t('Last updated at') + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    })}</p>
-                </Grid>
-                <h2>{t('Recommendations')}</h2>
-                <p>{getRecommendation(airQuality)}</p>
-            </div>}
+                <div>
+                    <h2>{t('Now')}</h2>
+                    <Grid className={classes.cloud} container justify="center" direction="column" alignItems="center">
+                        <CloudSVG size={cloudWidth} color={getColor(airQuality)} />
+                        <h2 style={{ color: getColor(airQuality) }}>{airQuality}</h2>
+                    </Grid>
+                    <Grid className={classes.cloud} container justify="flex-end">
+                        <p>{t('Last updated at') + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })}</p>
+                    </Grid>
+                    <h2>{t('Recommendations')}</h2>
+                    <p>{getRecommendation(airQuality)}</p>
+                </div>}
         </div>);
 }
 
