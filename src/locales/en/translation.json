@@ -7,6 +7,12 @@
     "Home": "Home",
     "Map": "Map"
   },
+  "Routes": {
+    "About us": "about-us",
+    "Q&A": "q&a",
+    "Home": "Home",
+    "Map": "Map"
+  },
   "Weather": "Weather",
   "Temperature": "Temperature",
   "Humidity": "Humidity",

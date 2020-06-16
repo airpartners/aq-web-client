@@ -16,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import { Link } from "react-router-dom";
-import { drawerWidth, deviceList, getTabName, isDevicePath } from "./Utils";
+import { drawerWidth, deviceList } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,17 +52,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const { t, bottomTab, deviceId, deviceDict, currentPath, setPath } = props;
+    const { t, path, bottomTab, deviceDict } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const toggleDrawerAndSetPath = (e, s) => {
-        setPath(e, s);
-        handleDrawerToggle();
-    };
+    const appBarText = deviceList.includes(path) ? deviceDict[path].name : path;
     const drawer = (clickBehavior) => (
         <div>
             <div className={classes.toolbar} />
@@ -70,10 +67,10 @@ function NavigationDrawer(props) {
             <List>
                 {deviceList.map((id) => (
                     <ListItem button component={Link}
-                        to={process.env.PUBLIC_URL + '/' + id + '/' + getTabName(bottomTab, t)}
+                        to={`${process.env.PUBLIC_URL}/${id}/${bottomTab}`}
                         key={id}
-                        selected={(currentPath === '' && id === deviceList[0]) || (isDevicePath(currentPath) && id === deviceId)}
-                        onClick={(e) => clickBehavior(e, id + '/' + getTabName(bottomTab, t))}>
+                        selected={id === path}
+                        onClick={clickBehavior}>
                         <ListItemIcon><DeviceIcon /></ListItemIcon>
                         <ListItemText primary={deviceDict[id].name} />
                     </ListItem>
@@ -81,15 +78,15 @@ function NavigationDrawer(props) {
             </List>
             <Divider />
             <List>
-                <ListItem button component={Link} to={process.env.PUBLIC_URL + '/about-us'}
-                    key='about-us' selected={currentPath === 'about-us'}
-                    onClick={(e) => clickBehavior(e, 'about-us')}>
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/${t('Routes.About us')}`}
+                    key='about-us' selected={path === t('Routes.About us')}
+                    onClick={clickBehavior}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary={t('DrawerNav.About us')} />
                 </ListItem>
-                <ListItem button component={Link} to={process.env.PUBLIC_URL + '/Q&A'}
-                    key='Q&A' selected={currentPath === '/Q&A'}
-                    onClick={(e) => clickBehavior(e, 'Q&A')}>
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/${t('Routes.Q&A')}`}
+                    key='Q&A' selected={path === t('Routes.Q&A')}
+                    onClick={clickBehavior}>
                     <ListItemIcon><HelpIcon /></ListItemIcon>
                     <ListItemText primary={t('DrawerNav.Q&A')} />
                 </ListItem>
@@ -110,7 +107,7 @@ function NavigationDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        {deviceDict[deviceId].name}
+                        {appBarText}
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -126,7 +123,7 @@ function NavigationDrawer(props) {
                         onClose={handleDrawerToggle}
                         classes={{ paper: classes.drawerPaper, }}
                         ModalProps={{ keepMounted: true, }}>
-                        {drawer(toggleDrawerAndSetPath)}
+                        {drawer(handleDrawerToggle)}
                     </Drawer>
                 </Hidden>
                 {/* Drawer for desktop and tablet */}
@@ -135,7 +132,7 @@ function NavigationDrawer(props) {
                         classes={{ paper: classes.drawerPaper, }}
                         variant="permanent"
                         open>
-                        {drawer(setPath)}
+                        {drawer()}
                     </Drawer>
                 </Hidden>
             </nav>
