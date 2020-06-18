@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/aq-web-client/static/css/main.0b64b747.chunk.css",
-    "main.js": "/aq-web-client/static/js/main.5f24c49a.chunk.js",
-    "main.js.map": "/aq-web-client/static/js/main.5f24c49a.chunk.js.map",
+    "main.js": "/aq-web-client/static/js/main.078ab8a6.chunk.js",
+    "main.js.map": "/aq-web-client/static/js/main.078ab8a6.chunk.js.map",
     "runtime-main.js": "/aq-web-client/static/js/runtime-main.b0b02169.js",
     "runtime-main.js.map": "/aq-web-client/static/js/runtime-main.b0b02169.js.map",
-    "static/js/2.d2168a4c.chunk.js": "/aq-web-client/static/js/2.d2168a4c.chunk.js",
-    "static/js/2.d2168a4c.chunk.js.map": "/aq-web-client/static/js/2.d2168a4c.chunk.js.map",
+    "static/js/2.8b2c33b0.chunk.js": "/aq-web-client/static/js/2.8b2c33b0.chunk.js",
+    "static/js/2.8b2c33b0.chunk.js.map": "/aq-web-client/static/js/2.8b2c33b0.chunk.js.map",
     "index.html": "/aq-web-client/index.html",
-    "precache-manifest.0c75450f02fce6751b16deccf5950991.js": "/aq-web-client/precache-manifest.0c75450f02fce6751b16deccf5950991.js",
+    "precache-manifest.172f5d7ba2b6aa79ad74afe2bd95f73e.js": "/aq-web-client/precache-manifest.172f5d7ba2b6aa79ad74afe2bd95f73e.js",
     "service-worker.js": "/aq-web-client/service-worker.js",
     "static/css/main.0b64b747.chunk.css.map": "/aq-web-client/static/css/main.0b64b747.chunk.css.map",
-    "static/js/2.d2168a4c.chunk.js.LICENSE.txt": "/aq-web-client/static/js/2.d2168a4c.chunk.js.LICENSE.txt"
+    "static/js/2.8b2c33b0.chunk.js.LICENSE.txt": "/aq-web-client/static/js/2.8b2c33b0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b0b02169.js",
-    "static/js/2.d2168a4c.chunk.js",
+    "static/js/2.8b2c33b0.chunk.js",
     "static/css/main.0b64b747.chunk.css",
-    "static/js/main.5f24c49a.chunk.js"
+    "static/js/main.078ab8a6.chunk.js"
   ]
 }
