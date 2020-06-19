@@ -4,7 +4,7 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyByyEO8A3-mCIjcTYoVXC6_9C2NGskBvzA",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "ade-airparnters.firebaseapp.com",
     databaseURL: "https://ade-airparnters.firebaseio.com",
     projectId: "ade-airparnters",
@@ -16,8 +16,12 @@ const firebaseConfig = {
 
 function FirebaseComponent(props){
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    // TODO: find import for this when needed.
+    //var database = firebase.database();
 
     return (
         <div>
@@ -28,7 +32,7 @@ function FirebaseComponent(props){
 }
 
 
-
+export default FirebaseComponent;
 
 {/* TODO: Add SDKs for Firebase products that you want to use
     https://firebase.google.com/docs/web/setup#available-libraries 
