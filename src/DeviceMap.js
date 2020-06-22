@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import GoogleMapReact from 'google-map-react';
-import {deviceInitData, deviceList} from "./Utils";
+import { deviceList } from "./Utils";
 import Colors from "./assets/Colors";
-import {Navigation, NotListedLocation} from "@material-ui/icons";
+import { Navigation, NotListedLocation } from "@material-ui/icons";
 import MarkerComponent from "./MarkerComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
 import CloudSVG from "./assets/svg/CloudSVG";
@@ -39,21 +39,24 @@ const isGeoDataAvailable = (device) => {
  */
 const getLatLng = (device) => {
     if (isGeoDataAvailable(device)) {
-        return {lat: device.data[0].geo.lat, lng: device.data[0].geo.lon}; // Lat lng from the data
+        return { lat: device.data[0].geo.lat, lng: device.data[0].geo.lon }; // Lat lng from the data
     } else {
-        return {lat: device.geo.lat, lng: device.geo.lng}; // Default lat lng
+        return { lat: device.geo.lat, lng: device.geo.lng }; // Default lat lng
     }
 }
 
 function DeviceMap(props) {
     const classes = useStyles();
-    const {t, deviceId, deviceDict} = props;
-    const [focusedDevice, setFocusedDevice] = React.useState(deviceDict[deviceId]);
-    const [showInfo, setShowInfo] = React.useState(false);
-    let latLng = getLatLng(focusedDevice); // LatLng of the focused device
+    const { t, deviceId, deviceDict } = props;
+    const [focusedDevice, setFocusedDevice] = useState(deviceDict[deviceId]);
+    const [showInfo, setShowInfo] = useState(false);
+    const [latLng, setLatLng] = useState(getLatLng(deviceDict[deviceId]));
     useEffect(() => {
-        latLng = getLatLng(focusedDevice);
+        setLatLng(getLatLng(focusedDevice));
     }, [focusedDevice]);
+    useEffect(() => {
+        setFocusedDevice(props.deviceDict[props.deviceId]);
+    }, [props.deviceId]);
 
     /**
      * Generate marker for the device based on id. If the device does not have geo location,
@@ -65,15 +68,15 @@ function DeviceMap(props) {
         let device = deviceDict[id];
         let marker, infoWindow;
         if (isGeoDataAvailable(device)) {
-            marker = <Navigation className={classes.marker} style={{color: Colors.primaryColor}}
-                                 transform={`rotate(${device.data[0].wind_dir})`}/>
-            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} t={t}/>
+            marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
+                transform={`rotate(${device.data[0].wind_dir})`} />
+            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} t={t} />
         } else {
-            marker = <NotListedLocation className={classes.marker} style={{color: Colors.primaryColor}}/>
+            marker = <NotListedLocation className={classes.marker} style={{ color: Colors.primaryColor }} />
             infoWindow = <div>Data Not Available</div>
         }
         return <MarkerComponent key={id} lat={getLatLng(device).lat} lng={getLatLng(device).lng}
-                                showInfo={showInfo && id === focusedDevice.id} marker={marker} infoWindow={infoWindow}/>
+            t={t} showInfo={showInfo && id === focusedDevice.id} marker={marker} infoWindow={infoWindow} />
     }
 
     /**
@@ -100,8 +103,9 @@ function DeviceMap(props) {
         <div className={classes.content}>
             {/* GoogleMapReact documentation: https://github.com/google-map-react/google-map-react */}
             <GoogleMapReact
-                bootstrapURLKeys={{key: mapApiKey}}
+                bootstrapURLKeys={{ key: mapApiKey }}
                 defaultCenter={latLng}
+                center={latLng}
                 defaultZoom={14}
                 options={mapOptions}
                 onChildClick={onMarkerClicked}>

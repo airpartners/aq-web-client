@@ -7,6 +7,12 @@
     "Home": "Casa",
     "Map": "Mapa"
   },
+  "Routes": {
+    "About us": "sobre-nosotros",
+    "Q&A": "preguntas-y-respuestas",
+    "Home": "Casa",
+    "Map": "Mapa"
+  },
   "Weather": "Weather",
   "Temperature": "Temperature",
   "Humidity": "Humidity",

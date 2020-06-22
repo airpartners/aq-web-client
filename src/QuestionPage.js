@@ -18,7 +18,7 @@ function QuestionPage(props) {
     return (
         <div className={classes.content}>
             <Typography paragraph>
-                Q&A
+                {t('DrawerNav.Q&A')}
             </Typography>
         </div>);
 }
