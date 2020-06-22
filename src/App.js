@@ -5,6 +5,8 @@ import { deviceList } from "./Utils";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Colors from "./assets/Colors";
 import ContentContainer from "./ContentContainer";
+import * as firebase from "firebase/app";
+import FirebaseComponent from "./FirebaseComponent";
 
 // Create our own theme
 const theme = createMuiTheme({
@@ -33,6 +35,7 @@ function App(props) {
                     <Redirect to={`${process.env.PUBLIC_URL}/${deviceList[0]}/${t('Routes.Home')}`} />
                 </Route>
             </Switch>
+            <FirebaseComponent/>
         </MuiThemeProvider>
     );
 }
