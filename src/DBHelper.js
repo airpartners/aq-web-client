@@ -10,11 +10,14 @@ headers.append('Content-Type', 'application/json');
 headers.append('Accept', 'application/json');
 headers.append('Authorization', token);
 
+const HOSTS_TO_USE_LOCAL_DATA = ["localhost",
+    "airpartners.github.io", // github pages
+    "airpartners-ade.web.app", // firebase
+    "airpartners-ade.firebaseapp.com"]; // firebase
+
 function getEndpoint(deviceId, page, perPage) {
-    if (window.location.hostname === "localhost")
+    if (HOSTS_TO_USE_LOCAL_DATA.includes(window.location.hostname))
         return window.location.origin + '/data/' + deviceId + '.json';
-    else if (window.location.hostname === "airpartners.github.io")
-        return 'https://airpartners.github.io/aq-web-client/data/' + deviceId + '.json';
     else
         return `${BASE_URL}/${deviceId}/data/?page=${page}&per_page=${perPage}&limit=${LIMIT}`;
 }
