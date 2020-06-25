@@ -5,13 +5,13 @@ import "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: "ade-airparnters.firebaseapp.com",
-    databaseURL: "https://ade-airparnters.firebaseio.com",
-    projectId: "ade-airparnters",
-    storageBucket: "ade-airparnters.appspot.com",
-    messagingSenderId: "831140017575",
-    appId: "1:831140017575:web:33b93a1383a9367ae6f282",
-    measurementId: "G-4W9PM87VRH"
+    authDomain: "airpartners-ade.firebaseapp.com",
+    databaseURL: "https://airpartners-ade.firebaseio.com",
+    projectId: "airpartners-ade",
+    storageBucket: "airpartners-ade.appspot.com",
+    messagingSenderId: "762370846619",
+    appId: "1:762370846619:web:f8622746c06c9091ebbb3e",
+    measurementId: "G-0D2K51JJQM"
 }
 
 function FirebaseComponent(props){
@@ -26,7 +26,7 @@ function FirebaseComponent(props){
     return (
         <div>
             {/* The core Firebase JS SDK is always required and must be listed first */}
-            <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
         </div>
     );
 }
