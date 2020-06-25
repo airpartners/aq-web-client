@@ -61,7 +61,7 @@ function NavigationDrawer(props) {
     };
     const appBarText = deviceList.includes(path) ? deviceDict[path].name : path;
     const drawer = (clickBehavior) => (
-        <div>
+        <div class="webonly">
             <div className={classes.toolbar} />
             <Divider />
             <List>
