@@ -1,7 +1,7 @@
 import React from "react";
 import * as firebase from "firebase/app";
 
-import "firebase/firestore";
+import "firebase/database";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,12 +14,22 @@ const firebaseConfig = {
     measurementId: "G-0D2K51JJQM"
 }
 
+function getUserFullName(name) {
+    return firebase.app().database().ref('/users/' + name).once('value').then(function(snapshot) {
+        var username = (snapshot.val() && snapshot.val().full_name) || 'Anonymous';
+        console.log("Hi " + username);
+      });
+}
+
 function FirebaseComponent(props){
+
     // Initialize Firebase
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     }
 
+    console.log("will the db work?");
+    getUserFullName("nina");
     // TODO: find import for this when needed.
     //var database = firebase.database();
 

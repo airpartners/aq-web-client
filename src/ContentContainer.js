@@ -85,7 +85,8 @@ function ContentContainer(props) {
             <NavigationDrawer t={t}
                 path={path}
                 bottomTab={bottomTab}
-                deviceDict={deviceDict} />
+                deviceDict={deviceDict}
+            />
 
             {/* Main Content */}
             <main className={classes.main}>
