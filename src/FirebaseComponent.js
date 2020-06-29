@@ -46,6 +46,8 @@ function FirebaseComponent(props) {
         firebase.initializeApp(firebaseConfig);
     }
 
+    console.log("will the db work?");
+    getUserFullName("nina");
     // TODO: find import for this when needed.
     //var database = firebase.database();
 
