@@ -7,7 +7,7 @@ import AboutPage from "./AboutPage";
 import QuestionPage from "./QuestionPage";
 import NavigationDrawer from "./NavigationDrawer";
 import { deviceList, deviceInitData, needUpdate } from "./Utils";
-import * as DBHelper from "./DBHelper";
+import { getData } from "./FirebaseComponent";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,10 +52,11 @@ function ContentContainer(props) {
             setIsFetching(prevState => ({ ...prevState, [deviceId]: true }));
             // make deep copy so references aren't shared with old state
             const newDevice = JSON.parse(JSON.stringify(deviceDict[deviceId]));
-            DBHelper.getData(deviceId).then((data) => {
-                newDevice.data = data.data;
-                newDevice.meta = data.meta;
+            // getData(deviceId).then((data) => {
+            getData('SN000-088').then((data) => { // TODO: temp until east boston sensors are back online
+                newDevice.data = [data];
                 newDevice.lastUpdated = new Date();
+                console.log(newDevice);
                 // have to set states here since fetch is async
                 setDeviceDict(prevState => ({ ...prevState, [deviceId]: newDevice }));
                 setIsFetching(prevState => ({ ...prevState, [deviceId]: false }));
