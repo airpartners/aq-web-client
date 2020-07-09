@@ -16,7 +16,6 @@ const firebaseConfig = {
 
 export const getData = async (deviceId = 'SN000-072') => {
     const snapshot = await firebase.app().database().ref(`/${deviceId}/latest`).once('value');
-    console.log(snapshot.val());
     return snapshot.val();
 }
 
