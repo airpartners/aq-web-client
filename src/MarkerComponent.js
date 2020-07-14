@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 // Documentation for Marker and InfoWindow:
 // https://github.com/google-map-react/google-map-react-examples/blob/master/src/examples/MarkerInfoWindow.js
 function MarkerComponent(props) {
-    const { t, showInfo, marker, infoWindow } = props;
+    const { showInfo, marker, infoWindow } = props;
     const classes = useStyles();
 
     return (
@@ -20,7 +20,7 @@ function MarkerComponent(props) {
             {marker}
             {showInfo && (infoWindow.props.device ?
                 <Link className={classes.link}
-                    to={`${process.env.PUBLIC_URL}/${infoWindow.props.device.id}/${t('Routes.Home')}`}>
+                    to={`${process.env.PUBLIC_URL}/${infoWindow.props.device.id}/Home`}>
                     <InfoWindowComponent contentComponent={infoWindow} />
                 </Link>
                 : <InfoWindowComponent contentComponent={infoWindow} />)}

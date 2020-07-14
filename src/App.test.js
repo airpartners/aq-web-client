@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import './i18n';
 import { deviceList, deviceInitData } from './Utils';
 
 test('renders nav with all locations', () => {

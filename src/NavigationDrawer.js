@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationDrawer(props) {
-    const { t, path, bottomTab, deviceDict } = props;
+    const { queryParams, strings, path, bottomTab, deviceDict } = props;
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -67,7 +67,7 @@ function NavigationDrawer(props) {
             <List>
                 {deviceList.map((id) => (
                     <ListItem button component={Link}
-                        to={`${process.env.PUBLIC_URL}/${id}/${bottomTab}`}
+                        to={`${process.env.PUBLIC_URL}/${id}/${bottomTab}${queryParams}`}
                         key={id}
                         selected={id === path}
                         onClick={clickBehavior}>
@@ -78,17 +78,17 @@ function NavigationDrawer(props) {
             </List>
             <Divider />
             <List>
-                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/${t('Routes.About us')}`}
-                    key='about-us' selected={path === t('Routes.About us')}
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/about-us${queryParams}`}
+                    key='about-us' selected={path === "about-us"}
                     onClick={clickBehavior}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
-                    <ListItemText primary={t('DrawerNav.About us')} />
+                    <ListItemText primary={strings["DrawerNav"]["About us"]} />
                 </ListItem>
-                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/${t('Routes.Q&A')}`}
-                    key='Q&A' selected={path === t('Routes.Q&A')}
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/q&a${queryParams}`}
+                    key='Q&A' selected={path === "q&a"}
                     onClick={clickBehavior}>
                     <ListItemIcon><HelpIcon /></ListItemIcon>
-                    <ListItemText primary={t('DrawerNav.Q&A')} />
+                    <ListItemText primary={strings["DrawerNav"]["Q&A"]} />
                 </ListItem>
             </List>
         </div>

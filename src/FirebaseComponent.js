@@ -15,6 +15,26 @@ const firebaseConfig = {
 }
 
 export const getData = async (deviceId = 'SN000-072') => {
+    switch (deviceId) {
+        case 'SN000-045':
+            deviceId = 'SN000-081';
+            break;
+        case 'SN000-046':
+            deviceId = 'SN000-082';
+            break;
+        case 'SN000-049':
+            deviceId = 'SN000-085';
+            break;
+        case 'SN000-062':
+            deviceId = 'SN000-088';
+            break;
+        case 'SN000-067':
+            deviceId = 'SN000-089';
+            break;
+        case 'SN000-072':
+            deviceId = 'SN000-094';
+            break;
+    }
     const snapshot = await firebase.app().database().ref(`/${deviceId}/latest`).once('value');
     return snapshot.val();
 }
