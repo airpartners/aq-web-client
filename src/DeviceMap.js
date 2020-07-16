@@ -6,7 +6,6 @@ import Colors from "./assets/Colors";
 import { Navigation, NotListedLocation } from "@material-ui/icons";
 import MarkerComponent from "./MarkerComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
-import CloudSVG from "./assets/svg/CloudSVG";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -56,7 +55,7 @@ function DeviceMap(props) {
     }, [focusedDevice]);
     useEffect(() => {
         setFocusedDevice(props.deviceDict[props.deviceId]);
-    }, [props.deviceId]);
+    }, [props.deviceId, props.deviceDict]);
 
     /**
      * Generate marker for the device based on id. If the device does not have geo location,

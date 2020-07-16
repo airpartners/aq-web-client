@@ -34,6 +34,8 @@ export const getData = async (deviceId = 'SN000-072') => {
         case 'SN000-072':
             deviceId = 'SN000-094';
             break;
+        default:
+            deviceId = 'SN000-088';
     }
     const snapshot = await firebase.app().database().ref(`/${deviceId}/latest`).once('value');
     return snapshot.val();
