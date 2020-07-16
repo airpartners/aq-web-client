@@ -3,6 +3,7 @@ const Colors = {
     yellow: "#F2C94C",
     green: "#3FB571",
     primaryColor: "#303F9F",
+    secondaryColor: "#eb861a",
     grey: "#C5CAE9",
 }
 

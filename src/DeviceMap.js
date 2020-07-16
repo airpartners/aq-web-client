@@ -70,7 +70,7 @@ function DeviceMap(props) {
         if (isGeoDataAvailable(device)) {
             marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
                 transform={`rotate(${device.latest.wind_dir})`} />
-            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} strings={strings} />
+            infoWindow = <AtAGlanceComponent device={device} strings={strings} />
         } else {
             marker = <NotListedLocation className={classes.marker} style={{ color: Colors.primaryColor }} />
             infoWindow = <div>Data Not Available</div>

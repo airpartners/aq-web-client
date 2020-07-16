@@ -15,7 +15,7 @@ function WeatherComponent(props) {
         <div>
             {device.latest &&
                 <div>
-                    <h2>{strings['Weather']}</h2>
+                    <h2>{strings['WeatherComponent']['Weather']}</h2>
                     <Grid container justify="center">
                         {/* Temperature status */}
                         <Grid container item xs alignItems="center">
@@ -24,7 +24,7 @@ function WeatherComponent(props) {
                             </Grid>
                             <Grid>
                                 <p>{device.latest.temp_manifold + "\u00b0 F"}</p>
-                                <p>{strings['Temperature']}</p>
+                                <p>{strings['WeatherComponent']['Temperature']}</p>
                             </Grid>
                         </Grid>
                         {/* Humidity status */}
@@ -34,7 +34,7 @@ function WeatherComponent(props) {
                             </Grid>
                             <Grid>
                                 <p>{device.latest.rh_manifold + " %"}</p>
-                                <p>{strings['Humidity']}</p>
+                                <p>{strings['WeatherComponent']['Humidity']}</p>
                             </Grid>
                         </Grid>
                         {/* Wind status */}
@@ -45,7 +45,7 @@ function WeatherComponent(props) {
                             </Grid>
                             <Grid>
                                 <p>{device.latest.wind_speed + " m/s"}</p>
-                                <p>{strings['Wind']}</p>
+                                <p>{strings['WeatherComponent']['Wind']}</p>
                             </Grid>
                         </Grid>
                     </Grid>
