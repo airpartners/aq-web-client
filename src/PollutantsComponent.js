@@ -22,7 +22,7 @@ function PollutantsComponent(props) {
         setPollutantId(newId);
     };
     const isPollutantDataAvailable = (device, pollutant) => {
-        return Array.isArray(device.data) && device.data.length && (typeof device.data[0][pollutant] !== 'undefined');
+        return device.graph && (typeof device.graph[0][pollutant] !== 'undefined');
     };
     const getPollutant = (id) => {
         switch (id) {
@@ -67,9 +67,9 @@ function PollutantsComponent(props) {
             return [];
 
         // Filter data so that only pick data points that are at least one hour apart
-        let time = new Date(device.data[0].timestamp_local);
-        let data = [{ x: time, y: device.data[0][pollutant] }];
-        for (let d of device.data) {
+        let time = new Date(device.graph[0].timestamp_local);
+        let data = [{ x: time, y: device.graph[0][pollutant] }];
+        for (let d of device.graph) {
             let dTime = new Date(d.timestamp_local);
             let timeDiff = (time - dTime) / 1000 / 60; // in minutes
             if (timeDiff > 60) {
@@ -117,7 +117,7 @@ function PollutantsComponent(props) {
     }
     return (
         <div>
-            {device.data &&
+            {device.graph &&
                 <div>
                     <h2>{strings['Pollutants']}</h2>
                     <Tabs className={classes.tabView}

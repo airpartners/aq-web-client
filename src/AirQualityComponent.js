@@ -29,8 +29,8 @@ function truncateCurrentDataText(value, pollutant) {
 }
 
 // TODO: All values are dummy data. Need to update
-// - Color based on device.data
-// - Percent of the filled region in the bubble based on device.data
+// - Color based on device.latest
+// - Percent of the filled region in the bubble based on device.latest
 // - Update standard safe values
 // - Localize units
 function AirQualityComponent(props) {
@@ -38,7 +38,7 @@ function AirQualityComponent(props) {
     const { strings, device } = props;
     return (
         <div>
-            {device.data &&
+            {device.latest &&
                 <div>
                     <h2>{strings['Air Quality']}</h2>
                     <Grid container>
@@ -47,7 +47,7 @@ function AirQualityComponent(props) {
                                 standardText1={`${Pollutants.PM25.safe} ${Pollutants.PM25.unit}`}
                                 standardText2={strings["Bubble"]["PM2.5"]["standardText2"]}
                                 standardText3={strings["Bubble"]["PM2.5"]["standardText3"]}
-                                currentText={`${truncateCurrentDataText(device.data[0].pm25, "PM2.5")}
+                                currentText={`${truncateCurrentDataText(device.latest.pm25, "PM2.5")}
                                 ${Pollutants.PM25.unit}`}
                                 pollutantText={Pollutants.PM25.name}
                                 currentTextLength={55} pollutantTextLength={45} />
@@ -55,7 +55,7 @@ function AirQualityComponent(props) {
                                 standardText1={`${Pollutants.CO.safe} ${Pollutants.CO.unit}`}
                                 standardText2={strings["Bubble"]["CO"]["standardText2"]}
                                 standardText3={strings["Bubble"]["CO"]["standardText3"]}
-                                currentText={`${truncateCurrentDataText(device.data[0].co, "CO")}
+                                currentText={`${truncateCurrentDataText(device.latest.co, "CO")}
                                 ${Pollutants.CO.unit}`}
                                 pollutantText={Pollutants.CO.name}
                                 currentTextLength={50} pollutantTextLength={20} />
@@ -65,7 +65,7 @@ function AirQualityComponent(props) {
                                 standardText1={`${Pollutants.NO2.safe} ${Pollutants.NO2.unit}`}
                                 standardText2={strings["Bubble"]["NO2"]["standardText2"]}
                                 standardText3={strings["Bubble"]["NO2"]["standardText3"]}
-                                currentText={`${truncateCurrentDataText(device.data[0].no2, "NO2")}
+                                currentText={`${truncateCurrentDataText(device.latest.no2, "NO2")}
                                 ${Pollutants.NO2.unit}`}
                                 pollutantText={Pollutants.NO2.name}
                                 currentTextLength={50} pollutantTextLength={28} />
@@ -73,7 +73,7 @@ function AirQualityComponent(props) {
                                 standardText1={`${Pollutants.O3.safe} ${Pollutants.O3.unit}`}
                                 standardText2={strings["Bubble"]["O3"]["standardText2"]}
                                 standardText3={strings["Bubble"]["O3"]["standardText3"]}
-                                currentText={`${truncateCurrentDataText(device.data[0].o3, "O3")}
+                                currentText={`${truncateCurrentDataText(device.latest.o3, "O3")}
                                 ${Pollutants.O3.unit}`}
                                 pollutantText={Pollutants.O3.name}
                                 currentTextLength={50} pollutantTextLength={18} />

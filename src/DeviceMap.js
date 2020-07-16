@@ -28,7 +28,7 @@ const mapApiKey = 'AIzaSyCE7xH50-i4RcG5HygoL1SKXi3dLbstQtI';
  * @returns {boolean}: true if geo data is available
  */
 const isGeoDataAvailable = (device) => {
-    return Array.isArray(device.data) && device.data.length && device.data[0].geo;
+    return device.latest && device.latest.geo;
 }
 
 /**
@@ -39,7 +39,7 @@ const isGeoDataAvailable = (device) => {
  */
 const getLatLng = (device) => {
     if (isGeoDataAvailable(device)) {
-        return { lat: device.data[0].geo.lat, lng: device.data[0].geo.lon }; // Lat lng from the data
+        return { lat: device.latest.geo.lat, lng: device.latest.geo.lon }; // Lat lng from the data
     } else {
         return { lat: device.geo.lat, lng: device.geo.lng }; // Default lat lng
     }
@@ -69,7 +69,7 @@ function DeviceMap(props) {
         let marker, infoWindow;
         if (isGeoDataAvailable(device)) {
             marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
-                transform={`rotate(${device.data[0].wind_dir})`} />
+                transform={`rotate(${device.latest.wind_dir})`} />
             infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} strings={strings} />
         } else {
             marker = <NotListedLocation className={classes.marker} style={{ color: Colors.primaryColor }} />

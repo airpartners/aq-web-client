@@ -70,8 +70,8 @@ function ContentContainer(props) {
             setIsFetching(prevState => ({ ...prevState, [deviceId]: true }));
             // make deep copy so references aren't shared with old state
             const newDevice = JSON.parse(JSON.stringify(deviceDict[deviceId]));
-            getData(deviceId).then((data) => {
-                newDevice.data = [data];
+            getData(deviceId).then((latest) => {
+                newDevice.latest = latest;
                 newDevice.lastUpdated = new Date();
                 // have to set states here since fetch is async
                 setDeviceDict(prevState => ({ ...prevState, [deviceId]: newDevice }));

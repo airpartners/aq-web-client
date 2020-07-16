@@ -78,7 +78,7 @@ function AtAGlanceComponent(props) {
     };
     return (
         <div>
-            {device.data &&
+            {device.latest &&
                 <div>
                     <h2>{strings['Now']}</h2>
                     <Grid className={classes.cloud} container justify="center" direction="column" alignItems="center">
