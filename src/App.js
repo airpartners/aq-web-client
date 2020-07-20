@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { withNamespaces } from 'react-i18next';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import { deviceList } from "./Utils";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Colors from "./assets/Colors";
@@ -19,25 +18,23 @@ const theme = createMuiTheme({
 )
 
 function App(props) {
-    const { t } = props;
-
     return (
         <MuiThemeProvider theme={theme}>
             <Switch>
                 <Route path={`${process.env.PUBLIC_URL}/:path/:subPath`}>
-                    <ContentContainer t={t} />
+                    <ContentContainer />
                 </Route>
                 <Route path={`${process.env.PUBLIC_URL}/:path`}>
-                    <ContentContainer t={t} />
+                    <ContentContainer />
                 </Route>
                 {/* Redirects all routes that don't match the pattern above */}
                 <Route path="/">
-                    <Redirect to={`${process.env.PUBLIC_URL}/${deviceList[0]}/${t('Routes.Home')}`} />
+                    <Redirect to={`${process.env.PUBLIC_URL}/${deviceList[0]}/Home${useLocation().search}`} />
                 </Route>
             </Switch>
-            <FirebaseComponent/>
+            <FirebaseComponent />
         </MuiThemeProvider>
     );
 }
 
-export default withNamespaces()(App);
+export default App;

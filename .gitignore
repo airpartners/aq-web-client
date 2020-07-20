@@ -24,3 +24,6 @@ yarn-error.log*
 
 # API KEYS
 .env
+
+# firebase
+.firebase

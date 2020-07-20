@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import DevicePage from "./DevicePage";
@@ -7,7 +7,9 @@ import AboutPage from "./AboutPage";
 import QuestionPage from "./QuestionPage";
 import NavigationDrawer from "./NavigationDrawer";
 import { deviceList, deviceInitData, needUpdate } from "./Utils";
-import * as DBHelper from "./DBHelper";
+import { getData } from "./FirebaseComponent";
+import { parse } from 'query-string';
+import * as Translations from "./Translations"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,9 +23,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ContentContainer(props) {
-    const { t } = props;
     const { path, subPath } = useParams();
-    const [bottomTab, setBottomTab] = useState(t('Routes.Home'));
+    let queryParams = useLocation().search;
+
+    // strip the first two characters of lang queryParam
+    const lang = parse(queryParams).lang ? parse(queryParams).lang.slice(0, 2) : "";
+    // devices use full language and country code but only "en" and "es" are supported
+    // by the web app right now
+
+    const [strings, setStrings] = useState(Translations.en);
+    const [bottomTab, setBottomTab] = useState("Home");
     const [deviceDict, setDeviceDict] = useState(deviceInitData);
     const [isFetching, setIsFetching] = useState(deviceList.reduce((o, key) => ({ ...o, [key]: false }), {}));
     const classes = useStyles();
@@ -41,6 +50,14 @@ function ContentContainer(props) {
     }, [subPath]);
 
     useEffect(() => {
+        if (Translations.supported.includes(lang)) {
+            setStrings(Translations[lang]);
+        } else {
+            queryParams = "";
+        }
+    }, [lang]);
+
+    useEffect(() => {
         // only runs once due to empty dependency array
         for (let deviceId of deviceList) {
             updateDeviceIfNeeded(deviceId);
@@ -52,9 +69,8 @@ function ContentContainer(props) {
             setIsFetching(prevState => ({ ...prevState, [deviceId]: true }));
             // make deep copy so references aren't shared with old state
             const newDevice = JSON.parse(JSON.stringify(deviceDict[deviceId]));
-            DBHelper.getData(deviceId).then((data) => {
-                newDevice.data = data.data;
-                newDevice.meta = data.meta;
+            getData(deviceId).then((data) => {
+                newDevice.data = [data];
                 newDevice.lastUpdated = new Date();
                 // have to set states here since fetch is async
                 setDeviceDict(prevState => ({ ...prevState, [deviceId]: newDevice }));
@@ -68,11 +84,11 @@ function ContentContainer(props) {
     let componentsToRender;
     if (deviceList.includes(path)) {
         const deviceId = path;
-        componentsToRender = <DevicePage t={t} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
-    } else if (path === t('Routes.About us')) {
-        componentsToRender = <AboutPage t={t} />;
-    } else if (path === t('Routes.Q&A')) {
-        componentsToRender = <QuestionPage t={t} />;
+        componentsToRender = <DevicePage queryParams={queryParams} strings={strings} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
+    } else if (path === "about-us") {
+        componentsToRender = <AboutPage strings={strings} />;
+    } else if (path === "q&a") {
+        componentsToRender = <QuestionPage strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);
@@ -82,7 +98,9 @@ function ContentContainer(props) {
         <div className={classes.root}>
             <CssBaseline />
             {/* Navigation Drawer */}
-            <NavigationDrawer t={t}
+            <NavigationDrawer
+                queryParams={queryParams}
+                strings={strings}
                 path={path}
                 bottomTab={bottomTab}
                 deviceDict={deviceDict} />

@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 function AtAGlanceComponent(props) {
-    let { t, device, cloudWidth } = props;
+    let { strings, device, cloudWidth } = props;
     const isMobile = useMediaQuery(theme => theme.breakpoints.down('xs'));
     if (!cloudWidth)
         cloudWidth = isMobile ? CloudSVG.medium : CloudSVG.large;
@@ -28,19 +28,19 @@ function AtAGlanceComponent(props) {
         // let r = Math.floor((Math.random() * 3) + 1);
         switch (device.id) {
             case 'SN000-045':
-                return t('Bad');
+                return strings['Bad'];
             case 'SN000-046':
-                return t('Fine');
+                return strings['Fine'];
             case 'SN000-049':
-                return t('Good');
+                return strings['Good'];
             case 'SN000-062':
-                return t('Fine');
+                return strings['Fine'];
             case 'SN000-067':
-                return t('Bad');
+                return strings['Bad'];
             case 'SN000-072':
-                return t('Good');
+                return strings['Good'];
             default:
-                return t('Good');
+                return strings['Good'];
         }
     };
     const airQuality = getAirQuality(device);
@@ -52,9 +52,9 @@ function AtAGlanceComponent(props) {
      */
     const getColor = (indicator) => {
         switch (indicator) {
-            case t('Bad'):
+            case strings['Bad']:
                 return Colors.red;
-            case t('Fine'):
+            case strings['Fine']:
                 return Colors.yellow;
             default:
                 return Colors.green;
@@ -68,30 +68,30 @@ function AtAGlanceComponent(props) {
      */
     const getRecommendation = (indicator) => {
         switch (indicator) {
-            case t('Bad'):
-                return t('Recommendation.Bad');
-            case t('Fine'):
-                return t('Recommendation.Fine');
+            case strings['Bad']:
+                return strings['Recommendation']['Bad'];
+            case strings['Fine']:
+                return strings['Recommendation']['Fine'];
             default:
-                return t('Recommendation.Good');
+                return strings['Recommendation']['Good'];
         }
     };
     return (
         <div>
             {device.data &&
                 <div>
-                    <h2>{t('Now')}</h2>
+                    <h2>{strings['Now']}</h2>
                     <Grid className={classes.cloud} container justify="center" direction="column" alignItems="center">
                         <CloudSVG size={cloudWidth} color={getColor(airQuality)} />
                         <h2 style={{ color: getColor(airQuality) }}>{airQuality}</h2>
                     </Grid>
                     <Grid className={classes.cloud} container justify="flex-end">
-                        <p>{t('Last updated at') + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
+                        <p>{strings['Last updated at'] + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</p>
                     </Grid>
-                    <h2>{t('Recommendations')}</h2>
+                    <h2>{strings['Recommendations']}</h2>
                     <p>{getRecommendation(airQuality)}</p>
                 </div>}
         </div>);

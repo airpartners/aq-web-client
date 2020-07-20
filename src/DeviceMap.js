@@ -47,7 +47,7 @@ const getLatLng = (device) => {
 
 function DeviceMap(props) {
     const classes = useStyles();
-    const { t, deviceId, deviceDict } = props;
+    const { strings, deviceId, deviceDict } = props;
     const [focusedDevice, setFocusedDevice] = useState(deviceDict[deviceId]);
     const [showInfo, setShowInfo] = useState(false);
     const [latLng, setLatLng] = useState(getLatLng(deviceDict[deviceId]));
@@ -70,13 +70,13 @@ function DeviceMap(props) {
         if (isGeoDataAvailable(device)) {
             marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
                 transform={`rotate(${device.data[0].wind_dir})`} />
-            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} t={t} />
+            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} strings={strings} />
         } else {
             marker = <NotListedLocation className={classes.marker} style={{ color: Colors.primaryColor }} />
             infoWindow = <div>Data Not Available</div>
         }
         return <MarkerComponent key={id} lat={getLatLng(device).lat} lng={getLatLng(device).lng}
-            t={t} showInfo={showInfo && id === focusedDevice.id} marker={marker} infoWindow={infoWindow} />
+            showInfo={showInfo && id === focusedDevice.id} marker={marker} infoWindow={infoWindow} />
     }
 
     /**

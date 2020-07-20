@@ -1,5 +1,5 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import WeatherComponent from "./WeatherComponent";
 import PollutantsComponent from "./PollutantsComponent";
 import AirQualityComponent from "./AirQualityComponent";
@@ -19,27 +19,27 @@ const useStyles = makeStyles((theme) => ({
 
 function DeviceHome(props) {
     const classes = useStyles();
-    const {t, device} = props;
+    const { strings, device } = props;
     return (
         <div className={classes.content}>
             {/* At a glance */}
             <Paper elevation={1} className={classes.paper}>
-                <AtAGlanceComponent device={device} t={t}/>
+                <AtAGlanceComponent device={device} strings={strings} />
             </Paper>
 
             {/* Air Quality */}
             <Paper elevation={1} className={classes.paper}>
-                <AirQualityComponent device={device} t={t}/>
+                <AirQualityComponent device={device} strings={strings} />
             </Paper>
 
             {/* Pollutants */}
             <Paper elevation={1} className={classes.paper}>
-                <PollutantsComponent device={device} t={t}/>
+                <PollutantsComponent device={device} strings={strings} />
             </Paper>
 
             {/* Weather */}
             <Paper elevation={1} className={classes.paper}>
-                <WeatherComponent device={device} t={t}/>
+                <WeatherComponent device={device} strings={strings} />
             </Paper>
         </div>);
 }

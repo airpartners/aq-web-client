@@ -1,10 +1,10 @@
 import React from "react";
 import CanvasJSReact from './assets/js/canvasjs.react';
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import {Pollutants} from "./Utils";
+import { Pollutants } from "./Utils";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
 
 function PollutantsComponent(props) {
     const classes = useStyles();
-    const {t, device} = props;
+    const { strings, device } = props;
     const [pollutantId, setPollutantId] = React.useState(0);
     const handleTabChange = (event, newId) => {
         setPollutantId(newId);
     };
     const isPollutantDataAvailable = (device, pollutant) => {
-        return Array.isArray(device.data) && device.data.length && device.data[0][pollutant];
+        return Array.isArray(device.data) && device.data.length && (typeof device.data[0][pollutant] !== 'undefined');
     };
     const getPollutant = (id) => {
         switch (id) {
@@ -68,12 +68,12 @@ function PollutantsComponent(props) {
 
         // Filter data so that only pick data points that are at least one hour apart
         let time = new Date(device.data[0].timestamp_local);
-        let data = [{x: time, y: device.data[0][pollutant]}];
+        let data = [{ x: time, y: device.data[0][pollutant] }];
         for (let d of device.data) {
             let dTime = new Date(d.timestamp_local);
             let timeDiff = (time - dTime) / 1000 / 60; // in minutes
             if (timeDiff > 60) {
-                data.push({x: dTime, y: d[pollutant]});
+                data.push({ x: dTime, y: d[pollutant] });
                 time = dTime;
             }
             if (data.length > 24)
@@ -83,7 +83,7 @@ function PollutantsComponent(props) {
     };
     const options = {
         animationEnabled: true,
-        exportEnabled: true,
+        exportEnabled: false, // disabling this because there isn't a simple way to translate the text
         theme: "light2", // "light1", "dark1", "dark2"
         title: {
             text: ""
@@ -97,11 +97,11 @@ function PollutantsComponent(props) {
                 labelFontColor: Colors.green,
                 lineDashType: "dash",
                 thickness: 3,
-                label: t('Safe')
+                label: strings['Safe']
             }]
         },
         axisX: {
-            title: "Time",
+            title: strings["Graph"]["Time"],
             interval: 2,
             crosshair: {
                 enabled: true,
@@ -118,21 +118,21 @@ function PollutantsComponent(props) {
     return (
         <div>
             {device.data &&
-            <div>
-                <h2>{t('Pollutants')}</h2>
-                <Tabs className={classes.tabView}
-                      value={pollutantId}
-                      onChange={handleTabChange}
-                      indicatorColor="primary"
-                      textColor="primary"
-                      centered>
-                    <Tab label={Pollutants.PM25.name}/>
-                    <Tab label={Pollutants.CO.name}/>
-                    <Tab label={Pollutants.NO2.name}/>
-                    <Tab label={Pollutants.O3.name}/>
-                </Tabs>
-                <CanvasJSChart options={options}/>
-            </div>}
+                <div>
+                    <h2>{strings['Pollutants']}</h2>
+                    <Tabs className={classes.tabView}
+                        value={pollutantId}
+                        onChange={handleTabChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered>
+                        <Tab label={Pollutants.PM25.name} />
+                        <Tab label={Pollutants.CO.name} />
+                        <Tab label={Pollutants.NO2.name} />
+                        <Tab label={Pollutants.O3.name} />
+                    </Tabs>
+                    <CanvasJSChart options={options} />
+                </div>}
         </div>);
 }
 

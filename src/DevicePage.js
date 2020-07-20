@@ -30,17 +30,17 @@ const useStyles = makeStyles((theme) => ({
  */
 function DevicePage(props) {
     const classes = useStyles();
-    const { t, deviceId, bottomTab, deviceDict } = props;
+    const { queryParams, strings, deviceId, bottomTab, deviceDict } = props;
     const device = deviceDict[deviceId];
 
     let componentsToRender;
     let value;
 
-    if (bottomTab === t('Routes.Home')) {
-        componentsToRender = <DeviceHome t={t} device={device} />;
+    if (bottomTab === "Home") {
+        componentsToRender = <DeviceHome strings={strings} device={device} />;
         value = 0;
-    } else if (bottomTab === t('Routes.Map')) {
-        componentsToRender = <DeviceMap t={t} deviceId={deviceId} deviceDict={deviceDict} />;
+    } else if (bottomTab === "Map") {
+        componentsToRender = <DeviceMap strings={strings} deviceId={deviceId} deviceDict={deviceDict} />;
         value = 1;
     } else {
         // TODO: update this at some point to show something nicer
@@ -59,10 +59,10 @@ function DevicePage(props) {
                 className={classes.botNav}
                 value={value}
                 showLabels>
-                <BottomNavigationAction component={Link} label={t('BottomNav.Home')} icon={<HomeIcon />}
-                    to={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Home')} />
-                <BottomNavigationAction component={Link} label={t('BottomNav.Map')} icon={<LocationOnIcon />}
-                    to={process.env.PUBLIC_URL + '/' + device.id + '/' + t('BottomNav.Map')} />
+                <BottomNavigationAction component={Link} label={strings["BottomNav"]["Home"]} icon={<HomeIcon />}
+                    to={`${process.env.PUBLIC_URL}/${device.id}/Home${queryParams}`} />
+                <BottomNavigationAction component={Link} label={strings["BottomNav"]["Map"]} icon={<LocationOnIcon />}
+                    to={`${process.env.PUBLIC_URL}/${device.id}/Map${queryParams}`} />
             </BottomNavigation>
         </div>);
 }
