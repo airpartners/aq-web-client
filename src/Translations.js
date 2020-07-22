@@ -3,12 +3,18 @@
 export const supported = ["en", "es"]
 export const en = {
     "DrawerNav": {
-        "About us": "About us",
-        "Q&A": "Q&A"
+        "Contact us": "Contact us"
+    },
+    "AppBarText": {
+        "contact-us": "Contact us"
     },
     "BottomNav": {
         "Home": "Home",
         "Map": "Map"
+    },
+    "ContactUsPage": {
+        "Body": "If you have questions or feedback please contact us at ",
+        "Email": "adeairquality@gmail.com"
     },
     "WeatherComponent": {
         "Weather": "Weather",
@@ -38,12 +44,18 @@ export const en = {
 
 export const es = {
     "DrawerNav": {
-        "About us": "Sobre nosotros",
-        "Q&A": "Preguntas y respuestas"
+        "Contact us": "Contactarnos"
+    },
+    "AppBarText": {
+        "contact-us": "Contactarnos"
     },
     "BottomNav": {
         "Home": "Casa",
         "Map": "Mapa"
+    },
+    "ContactUsPage": {
+        "Body": "If you have questions or feedback please contact us at ",
+        "Email": "adeairquality@gmail.com"
     },
     "WeatherComponent": {
         "Weather": "Tiempo",

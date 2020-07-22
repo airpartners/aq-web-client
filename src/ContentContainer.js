@@ -3,8 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import DevicePage from "./DevicePage";
-import AboutPage from "./AboutPage";
-import QuestionPage from "./QuestionPage";
+import ContactUsPage from "./ContactUsPage";
 import NavigationDrawer from "./NavigationDrawer";
 import { deviceList, deviceInitData, needUpdate } from "./Utils";
 import { getData } from "./FirebaseComponent";
@@ -86,10 +85,8 @@ function ContentContainer(props) {
     if (deviceList.includes(path)) {
         const deviceId = path;
         componentsToRender = <DevicePage queryParams={queryParams} strings={strings} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
-    } else if (path === "about-us") {
-        componentsToRender = <AboutPage strings={strings} />;
-    } else if (path === "q&a") {
-        componentsToRender = <QuestionPage strings={strings} />;
+    } else if (path === "contact-us") {
+        componentsToRender = <ContactUsPage strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);

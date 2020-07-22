@@ -12,15 +12,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function QuestionPage(props) {
+function ContactUsPage(props) {
     const { strings } = props;
     const classes = useStyles();
     return (
         <div className={classes.content}>
             <Typography paragraph>
-                {strings["DrawerNav"]["Q&A"]}
+                {strings["ContactUsPage"]["Body"] + strings["ContactUsPage"]["Email"] + "."}
             </Typography>
         </div>);
 }
 
-export default QuestionPage;
+export default ContactUsPage;

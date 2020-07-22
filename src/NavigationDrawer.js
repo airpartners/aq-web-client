@@ -59,7 +59,7 @@ function NavigationDrawer(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const appBarText = deviceList.includes(path) ? deviceDict[path].name : path;
+    const appBarText = deviceList.includes(path) ? deviceDict[path].name : strings["AppBarText"][path];
     const drawer = (clickBehavior) => (
         <div>
             <div className={classes.toolbar} />
@@ -78,17 +78,11 @@ function NavigationDrawer(props) {
             </List>
             <Divider />
             <List>
-                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/about-us${queryParams}`}
-                    key='about-us' selected={path === "about-us"}
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/contact-us${queryParams}`}
+                    key='contact-us' selected={path === "contact-us"}
                     onClick={clickBehavior}>
                     <ListItemIcon><InfoIcon /></ListItemIcon>
-                    <ListItemText primary={strings["DrawerNav"]["About us"]} />
-                </ListItem>
-                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/q&a${queryParams}`}
-                    key='Q&A' selected={path === "q&a"}
-                    onClick={clickBehavior}>
-                    <ListItemIcon><HelpIcon /></ListItemIcon>
-                    <ListItemText primary={strings["DrawerNav"]["Q&A"]} />
+                    <ListItemText primary={strings["DrawerNav"]["Contact us"]} />
                 </ListItem>
             </List>
         </div>
