@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
 }));
 
+
 function ContentContainer(props) {
     const { path, subPath } = useParams();
     let queryParams = useLocation().search;
@@ -98,13 +99,14 @@ function ContentContainer(props) {
         <div className={classes.root}>
             <CssBaseline />
             {/* Navigation Drawer */}
+            <div id="webonly">
             <NavigationDrawer
                 queryParams={queryParams}
                 strings={strings}
                 path={path}
                 bottomTab={bottomTab}
-                deviceDict={deviceDict}
-            />
+                deviceDict={deviceDict}/>
+            </div>
 
             {/* Main Content */}
             <main className={classes.main}>
