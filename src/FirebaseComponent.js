@@ -46,9 +46,6 @@ function FirebaseComponent(props) {
         firebase.initializeApp(firebaseConfig);
     }
 
-    // TODO: find import for this when needed.
-    //var database = firebase.database();
-
     return (
         <div>
             {/* The core Firebase JS SDK is always required and must be listed first */}
