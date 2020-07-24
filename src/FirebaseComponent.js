@@ -17,13 +17,13 @@ const firebaseConfig = {
 export const getData = async (deviceId = 'SN000-072') => {
     switch (deviceId) {
         case 'SN000-045':
-            deviceId = 'SN000-081';
+            deviceId = 'SN000-062';
             break;
         case 'SN000-046':
-            deviceId = 'SN000-082';
+            deviceId = 'SN000-067';
             break;
         case 'SN000-049':
-            deviceId = 'SN000-085';
+            deviceId = 'SN000-075';
             break;
         case 'SN000-062':
             deviceId = 'SN000-088';
