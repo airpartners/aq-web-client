@@ -66,7 +66,7 @@ function DeviceMap(props) {
     const getMarker = (id) => {
         let device = deviceDict[id];
         let marker, infoWindow;
-        if (isGeoDataAvailable(device)) {
+        if (typeof device.latest.wind_dir !== 'undefined') {
             marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
                 transform={`rotate(${device.latest.wind_dir})`} />
             infoWindow = <AtAGlanceComponent device={device} strings={strings} />
