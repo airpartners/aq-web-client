@@ -41,6 +41,7 @@ function truncateVal(value, pollutant) {
 function AtAGlanceComponent(props) {
     let { strings, device } = props;
     const classes = useStyles();
+    const lastUpdatedDateTime = device.latest && new Date(device.latest.timestamp_local);
 
     return (
         <div>
@@ -59,7 +60,7 @@ function AtAGlanceComponent(props) {
                         })}
                     </Grid>
                     <Grid container justify="flex-end">
-                        <p>{strings['AtAGlance']['Last updated at'] + " " + device.lastUpdated.toLocaleTimeString(navigator.language, {
+                        <p>{strings['AtAGlance']['Last updated at'] + " " + lastUpdatedDateTime.toLocaleTimeString(navigator.language, {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</p>
