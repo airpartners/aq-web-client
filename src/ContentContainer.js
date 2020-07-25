@@ -69,8 +69,9 @@ function ContentContainer(props) {
             setIsFetching(prevState => ({ ...prevState, [deviceId]: true }));
             // make deep copy so references aren't shared with old state
             const newDevice = JSON.parse(JSON.stringify(deviceDict[deviceId]));
-            getData(deviceId).then((latest) => {
-                newDevice.latest = latest;
+            getData(deviceId).then((data) => {
+                newDevice.latest = data.latest;
+                newDevice.graph = data.graph;
                 newDevice.lastUpdated = new Date();
                 // have to set states here since fetch is async
                 setDeviceDict(prevState => ({ ...prevState, [deviceId]: newDevice }));
@@ -97,12 +98,12 @@ function ContentContainer(props) {
             <CssBaseline />
             {/* Navigation Drawer */}
             <div id="webonly">
-            <NavigationDrawer
-                queryParams={queryParams}
-                strings={strings}
-                path={path}
-                bottomTab={bottomTab}
-                deviceDict={deviceDict}/>
+                <NavigationDrawer
+                    queryParams={queryParams}
+                    strings={strings}
+                    path={path}
+                    bottomTab={bottomTab}
+                    deviceDict={deviceDict} />
             </div>
 
             {/* Main Content */}

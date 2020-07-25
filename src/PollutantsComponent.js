@@ -62,22 +62,13 @@ function PollutantsComponent(props) {
         }
     };
     const getData = (device, pollutantId) => {
+        let data = [];
         let pollutant = getPollutant(pollutantId);
         if (!isPollutantDataAvailable(device, pollutant))
-            return [];
+            return data;
 
-        // Filter data so that only pick data points that are at least one hour apart
-        let time = new Date(device.graph[0].timestamp_local);
-        let data = [{ x: time, y: device.graph[0][pollutant] }];
-        for (let d of device.graph) {
-            let dTime = new Date(d.timestamp_local);
-            let timeDiff = (time - dTime) / 1000 / 60; // in minutes
-            if (timeDiff > 60) {
-                data.push({ x: dTime, y: d[pollutant] });
-                time = dTime;
-            }
-            if (data.length > 24)
-                break;
+        for (let dataPoint of device.graph) {
+            data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutant] });
         }
         return data;
     };
@@ -91,14 +82,14 @@ function PollutantsComponent(props) {
         axisY: {
             title: getUnit(pollutantId),
             includeZero: false,
-            stripLines: [{
-                value: getSafeValue(pollutantId),
-                color: Colors.green,
-                labelFontColor: Colors.green,
-                lineDashType: "dash",
-                thickness: 3,
-                label: strings['Safe']
-            }]
+            // stripLines: [{
+            //     value: getSafeValue(pollutantId),
+            //     color: Colors.green,
+            //     labelFontColor: Colors.green,
+            //     lineDashType: "dash",
+            //     thickness: 3,
+            //     label: strings['Safe']
+            // }]
         },
         axisX: {
             title: strings["Graph"]["Time"],

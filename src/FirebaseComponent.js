@@ -37,8 +37,9 @@ export const getData = async (deviceId = 'SN000-072') => {
         default:
             deviceId = 'SN000-088';
     }
-    const snapshot = await firebase.app().database().ref(`/${deviceId}/latest`).once('value');
-    return snapshot.val();
+    const latestSnapshot = await firebase.app().database().ref(`/${deviceId}/latest`).once('value');
+    const graphSnapshot = await firebase.app().database().ref(`/${deviceId}/graph`).once('value');
+    return { latest: latestSnapshot.val(), graph: graphSnapshot.val() };
 }
 
 function FirebaseComponent(props) {
