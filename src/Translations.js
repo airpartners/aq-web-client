@@ -3,49 +3,40 @@
 export const supported = ["en", "es"]
 export const en = {
     "DrawerNav": {
-        "About us": "About us",
-        "Q&A": "Q&A"
+        "Contact us": "Contact us"
+    },
+    "AppBarText": {
+        "contact-us": "Contact us"
     },
     "BottomNav": {
         "Home": "Home",
         "Map": "Map"
     },
-    "Bubble": {
-        "PM2.5": {
-            "standardText2": "EPA 24 hour",
-            "standardText3": "standard"
-        },
-        "CO": {
-            "standardText2": "EPA 1 hour",
-            "standardText3": "standard"
-        },
-        "NO2": {
-            "standardText2": "EPA 8 hour",
-            "standardText3": "standard"
-        },
-        "O3": {
-            "standardText2": "EPA 8 hour",
-            "standardText3": "standard"
-        }
+    "ContactUsPage": {
+        "Body": "If you have questions or feedback please contact us at ",
+        "Email": "adeairquality@gmail.com"
     },
-    "Weather": "Weather",
-    "Temperature": "Temperature",
-    "Humidity": "Humidity",
-    "Wind": "Wind",
+    "WeatherComponent": {
+        "Weather": "Weather",
+        "Temperature": "Temperature",
+        "Humidity": "Humidity",
+        "Wind": "Wind"
+    },
+    "PollutantText": {
+        "CO Full Name": "Carbon Monoxide",
+        "CO": "CO",
+        "NO2 Full Name": "Nitrogen Dioxide",
+        "NO2": "NO\u2082",
+        "O3 Full Name": "Ozone",
+        "O3": "O\u2083",
+        "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
+        "PM25": "PM\u2082\u2085"
+    },
     "Pollutants": "Pollutants",
-    "Air Quality": "Air Quality",
-    "Now": "Now",
-    "Recommendations": "Recommendations",
-    "Recommendation": {
-        "Bad": "Avoid outdoor activity\nTurn on your HEPA Air Purifier\nClose windows",
-        "Fine": "Limit outside exposure\nTurn on your HEPA Air Purifier",
-        "Good": "Good time for being outside\nTurn off HEPA Air Purifier"
+    "AtAGlance": {
+        "Now": "Now",
+        "Last updated at": "Last updated at"
     },
-    "Bad": "Bad",
-    "Fine": "Fine",
-    "Good": "Good",
-    "Last updated at": "Last updated at",
-    "Safe": "Safe",
     "Graph": {
         "Time": "Time"
     }
@@ -53,49 +44,40 @@ export const en = {
 
 export const es = {
     "DrawerNav": {
-        "About us": "Sobre nosotros",
-        "Q&A": "Preguntas y respuestas"
+        "Contact us": "Contactarnos"
+    },
+    "AppBarText": {
+        "contact-us": "Contactarnos"
     },
     "BottomNav": {
         "Home": "Casa",
         "Map": "Mapa"
     },
-    "Bubble": {
-        "PM2.5": {
-            "standardText2": "EPA criterio",
-            "standardText3": "de 24 horas"
-        },
-        "CO": {
-            "standardText2": "EPA criterio",
-            "standardText3": "de 1 hora"
-        },
-        "NO2": {
-            "standardText2": "EPA criterio",
-            "standardText3": "de 8 horas"
-        },
-        "O3": {
-            "standardText2": "EPA criterio",
-            "standardText3": "de 8 horas"
-        }
+    "ContactUsPage": {
+        "Body": "If you have questions or feedback please contact us at ",
+        "Email": "adeairquality@gmail.com"
     },
-    "Weather": "Tiempo",
-    "Temperature": "Temperatura",
-    "Humidity": "Humedad",
-    "Wind": "Viento",
+    "WeatherComponent": {
+        "Weather": "Tiempo",
+        "Temperature": "Temperatura",
+        "Humidity": "Humedad",
+        "Wind": "Viento"
+    },
+    "PollutantText": {
+        "CO Full Name": "Carbon Monoxide",
+        "CO": "CO",
+        "NO2 Full Name": "Nitrogen Dioxide",
+        "NO2": "NO\u2082",
+        "O3 Full Name": "Ozone",
+        "O3": "O\u2083",
+        "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
+        "PM25": "PM\u2082\u2085"
+    },
     "Pollutants": "Contaminantes",
-    "Air Quality": "La Calidad del Aire",
-    "Now": "Ahora",
-    "Recommendations": "Recomendaci\xF3nes", // \xF3 o with forward accent
-    "Recommendation": {
-        "Bad": "Avoid outdoor activity\nTurn on your HEPA Air Purifier\nClose windows",
-        "Fine": "Limit outside exposure\nTurn on your HEPA Air Purifier",
-        "Good": "Good time for being outside\nTurn off HEPA Air Purifier"
+    "AtAGlance": {
+        "Now": "Ahora",
+        "Last updated at": "\xDAltima actualizaci\xF3n en"
     },
-    "Bad": "Mal",
-    "Fine": "Bien",
-    "Good": "Bueno",
-    "Last updated at": "\xDAltima actualizaci\xF3n en",
-    "Safe": "Seguro",
     "Graph": {
         "Time": "Tiempo"
     }

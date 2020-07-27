@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import WeatherComponent from "./WeatherComponent";
 import PollutantsComponent from "./PollutantsComponent";
-import AirQualityComponent from "./AirQualityComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
 import Paper from "@material-ui/core/Paper";
 
@@ -25,11 +24,6 @@ function DeviceHome(props) {
             {/* At a glance */}
             <Paper elevation={1} className={classes.paper}>
                 <AtAGlanceComponent device={device} strings={strings} />
-            </Paper>
-
-            {/* Air Quality */}
-            <Paper elevation={1} className={classes.paper}>
-                <AirQualityComponent device={device} strings={strings} />
             </Paper>
 
             {/* Pollutants */}

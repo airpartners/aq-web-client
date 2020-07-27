@@ -13,9 +13,9 @@ function WeatherComponent(props) {
     const { strings, device } = props;
     return (
         <div>
-            {device.data &&
+            {device.latest &&
                 <div>
-                    <h2>{strings['Weather']}</h2>
+                    <h2>{strings['WeatherComponent']['Weather']}</h2>
                     <Grid container justify="center">
                         {/* Temperature status */}
                         <Grid container item xs alignItems="center">
@@ -23,8 +23,8 @@ function WeatherComponent(props) {
                                 <ThermometerSVG />
                             </Grid>
                             <Grid>
-                                <p>{device.data[0].temp_manifold + "\u00b0 F"}</p>
-                                <p>{strings['Temperature']}</p>
+                                <p>{device.latest.temp_manifold + "\u00b0 F"}</p>
+                                <p>{strings['WeatherComponent']['Temperature']}</p>
                             </Grid>
                         </Grid>
                         {/* Humidity status */}
@@ -33,19 +33,19 @@ function WeatherComponent(props) {
                                 <DropletSVG />
                             </Grid>
                             <Grid>
-                                <p>{device.data[0].rh_manifold + " %"}</p>
-                                <p>{strings['Humidity']}</p>
+                                <p>{device.latest.rh_manifold + " %"}</p>
+                                <p>{strings['WeatherComponent']['Humidity']}</p>
                             </Grid>
                         </Grid>
                         {/* Wind status */}
                         <Grid container item xs alignItems="center">
                             <Grid>
                                 <Navigation style={{ color: Colors.primaryColor, fontSize: 50 }}
-                                    transform={`rotate(${device.data[0].wind_dir})`} />
+                                    transform={`rotate(${device.latest.wind_dir})`} />
                             </Grid>
                             <Grid>
-                                <p>{device.data[0].wind_speed + " m/s"}</p>
-                                <p>{strings['Wind']}</p>
+                                <p>{device.latest.wind_speed + " m/s"}</p>
+                                <p>{strings['WeatherComponent']['Wind']}</p>
                             </Grid>
                         </Grid>
                     </Grid>

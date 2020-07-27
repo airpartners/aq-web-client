@@ -8,6 +8,6 @@ test('firebase realtime data exists for each device', async () => {
     // TODO: do this for each device when data exists
     let deviceId = "SN000-088";
     let data = await getData(deviceId);
-    console.log(data.sn);
-    expect(data.sn).toEqual(deviceId);
+    console.log(data.latest.sn);
+    expect(data.latest.sn).toEqual(deviceId);
 });

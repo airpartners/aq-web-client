@@ -1,11 +1,12 @@
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
+export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
         name: 'St Andrew Road, EB',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.37,
@@ -15,8 +16,8 @@ export const deviceInitData = {
     'SN000-046': {
         id: 'SN000-046',
         name: 'Everett Street, EB',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.36,
@@ -26,8 +27,8 @@ export const deviceInitData = {
     'SN000-049': {
         id: 'SN000-049',
         name: 'Elmer Ave, Winthrop',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.38,
@@ -37,8 +38,8 @@ export const deviceInitData = {
     'SN000-062': {
         id: 'SN000-062',
         name: 'Sumner, EB',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.365,
@@ -48,8 +49,8 @@ export const deviceInitData = {
     'SN000-067': {
         id: 'SN000-067',
         name: 'Bay View Ave, Winthrop',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.34,
@@ -59,8 +60,8 @@ export const deviceInitData = {
     'SN000-072': {
         id: 'SN000-072',
         name: 'Anna Voy, EB',
-        data: null,
-        meta: null,
+        latest: null,
+        graph: null,
         lastUpdated: null,
         geo: {
             lat: 42.38,
@@ -84,7 +85,7 @@ export const Pollutants = {
     CO: {
         id: "co",
         name: "CO",
-        unit: "ppm",
+        unit: "ppb",
         safe: "??",
     },
     NO2: {

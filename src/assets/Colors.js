@@ -1,8 +1,7 @@
 const Colors = {
-    red: "#B53F3F",
-    yellow: "#F2C94C",
-    green: "#3FB571",
-    primaryColor: "#303F9F",
+    primaryColorLight: "#69C5ED",
+    primaryColor: "#1976A1",
+    secondaryColor: "#EB861A",
     grey: "#C5CAE9",
 }
 

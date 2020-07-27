@@ -6,7 +6,6 @@ import Colors from "./assets/Colors";
 import { Navigation, NotListedLocation } from "@material-ui/icons";
 import MarkerComponent from "./MarkerComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
-import CloudSVG from "./assets/svg/CloudSVG";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -28,7 +27,7 @@ const mapApiKey = 'AIzaSyCE7xH50-i4RcG5HygoL1SKXi3dLbstQtI';
  * @returns {boolean}: true if geo data is available
  */
 const isGeoDataAvailable = (device) => {
-    return Array.isArray(device.data) && device.data.length && device.data[0].geo;
+    return device.latest && device.latest.geo;
 }
 
 /**
@@ -39,7 +38,7 @@ const isGeoDataAvailable = (device) => {
  */
 const getLatLng = (device) => {
     if (isGeoDataAvailable(device)) {
-        return { lat: device.data[0].geo.lat, lng: device.data[0].geo.lon }; // Lat lng from the data
+        return { lat: device.latest.geo.lat, lng: device.latest.geo.lon }; // Lat lng from the data
     } else {
         return { lat: device.geo.lat, lng: device.geo.lng }; // Default lat lng
     }
@@ -56,7 +55,7 @@ function DeviceMap(props) {
     }, [focusedDevice]);
     useEffect(() => {
         setFocusedDevice(props.deviceDict[props.deviceId]);
-    }, [props.deviceId]);
+    }, [props.deviceId, props.deviceDict]);
 
     /**
      * Generate marker for the device based on id. If the device does not have geo location,
@@ -67,10 +66,10 @@ function DeviceMap(props) {
     const getMarker = (id) => {
         let device = deviceDict[id];
         let marker, infoWindow;
-        if (isGeoDataAvailable(device)) {
+        if (typeof device.latest.wind_dir !== 'undefined') {
             marker = <Navigation className={classes.marker} style={{ color: Colors.primaryColor }}
-                transform={`rotate(${device.data[0].wind_dir})`} />
-            infoWindow = <AtAGlanceComponent cloudWidth={CloudSVG.small} device={device} strings={strings} />
+                transform={`rotate(${device.latest.wind_dir})`} />
+            infoWindow = <AtAGlanceComponent device={device} strings={strings} />
         } else {
             marker = <NotListedLocation className={classes.marker} style={{ color: Colors.primaryColor }} />
             infoWindow = <div>Data Not Available</div>
