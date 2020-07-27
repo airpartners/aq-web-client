@@ -45,16 +45,11 @@ export const en = {
 
 export const es = {
     "DrawerNav": {
-<<<<<<< HEAD
         "Contact us": "Contactarnos"
     },
     "AppBarText": {
         "contact-us": "Contactarnos"
-=======
-        "About us": "Sobre nosotros",
-        "Q&A": "Preguntas y respuestas",
-        "Privacy Policy": "Política de privacidad"
->>>>>>> privacy policy
+        "privacy": "Política de privacidad"
     },
     "BottomNav": {
         "Home": "Casa",
