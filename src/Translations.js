@@ -6,7 +6,8 @@ export const en = {
         "Contact us": "Contact us"
     },
     "AppBarText": {
-        "contact-us": "Contact us"
+        "contact-us": "Contact us",
+        "privacy": "Privacy Policy"
     },
     "BottomNav": {
         "Home": "Home",
@@ -44,10 +45,16 @@ export const en = {
 
 export const es = {
     "DrawerNav": {
+<<<<<<< HEAD
         "Contact us": "Contactarnos"
     },
     "AppBarText": {
         "contact-us": "Contactarnos"
+=======
+        "About us": "Sobre nosotros",
+        "Q&A": "Preguntas y respuestas",
+        "Privacy Policy": "Política de privacidad"
+>>>>>>> privacy policy
     },
     "BottomNav": {
         "Home": "Casa",

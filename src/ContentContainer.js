@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DevicePage from "./DevicePage";
 import ContactUsPage from "./ContactUsPage";
 import NavigationDrawer from "./NavigationDrawer";
+import PrivacyPolicy from "./PrivacyPolicy";
 import { deviceList, deviceInitData, needUpdate } from "./Utils";
 import { getData } from "./FirebaseComponent";
 import { parse } from 'query-string';
@@ -88,6 +89,8 @@ function ContentContainer(props) {
         componentsToRender = <DevicePage queryParams={queryParams} strings={strings} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
     } else if (path === "contact-us") {
         componentsToRender = <ContactUsPage strings={strings} />;
+    } else if (path == "privacy") {
+        componentsToRender = <PrivacyPolicy strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);
