@@ -4,6 +4,7 @@ import WeatherComponent from "./WeatherComponent";
 import PollutantsComponent from "./PollutantsComponent";
 import AtAGlanceComponent from "./AtAGlanceComponent";
 import Paper from "@material-ui/core/Paper";
+import { ClipLoader } from "react-spinners";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -22,18 +23,24 @@ function DeviceHome(props) {
     return (
         <div className={classes.content}>
             {/* At a glance */}
-            <Paper elevation={1} className={classes.paper}>
-                <AtAGlanceComponent device={device} strings={strings} />
+            <Paper elevation={1} className={classes.paper} key="at-a-glance">
+                {device.latest ?
+                    (<AtAGlanceComponent device={device} strings={strings} />) :
+                    (<ClipLoader size={150} />)}
             </Paper>
 
             {/* Pollutants */}
-            <Paper elevation={1} className={classes.paper}>
-                <PollutantsComponent device={device} strings={strings} />
+            <Paper elevation={1} className={classes.paper} key="pollutants">
+                {device.graph ?
+                    (<PollutantsComponent device={device} strings={strings} />) :
+                    (<ClipLoader size={150} />)}
             </Paper>
 
             {/* Weather */}
-            <Paper elevation={1} className={classes.paper}>
-                <WeatherComponent device={device} strings={strings} />
+            <Paper elevation={1} className={classes.paper} key="weather">
+                {device.latest ?
+                    (<WeatherComponent device={device} strings={strings} />) :
+                    (<ClipLoader size={150} />)}
             </Paper>
         </div>);
 }
