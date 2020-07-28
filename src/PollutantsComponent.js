@@ -21,9 +21,6 @@ function PollutantsComponent(props) {
     const handleTabChange = (event, newId) => {
         setPollutantId(newId);
     };
-    const isPollutantDataAvailable = (device, pollutant) => {
-        return device.graph && (typeof device.graph[0][pollutant] !== 'undefined');
-    };
     const getPollutant = (id) => {
         switch (id) {
             case 0:
@@ -32,8 +29,10 @@ function PollutantsComponent(props) {
                 return Pollutants.CO.id;
             case 2:
                 return Pollutants.NO2.id;
-            default:
+            case 3:
                 return Pollutants.O3.id;
+            default:
+                return Pollutants.NO.id;
         }
     };
     const getUnit = (id) => {
@@ -44,8 +43,10 @@ function PollutantsComponent(props) {
                 return Pollutants.CO.unit;
             case 2:
                 return Pollutants.NO2.unit;
-            default:
+            case 3:
                 return Pollutants.O3.unit;
+            default:
+                return Pollutants.NO.unit;
         }
     };
     const getSafeValue = (id) => {
@@ -64,11 +65,12 @@ function PollutantsComponent(props) {
     const getData = (device, pollutantId) => {
         let data = [];
         let pollutant = getPollutant(pollutantId);
-        if (!isPollutantDataAvailable(device, pollutant))
+        if (!device.graph)
             return data;
 
         for (let dataPoint of device.graph) {
-            data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutant] });
+            if (typeof dataPoint[pollutant] != 'undefined')
+                data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutant] });
         }
         return data;
     };
@@ -121,6 +123,7 @@ function PollutantsComponent(props) {
                         <Tab label={pollutantNameHTML(Pollutants.CO.name)} />
                         <Tab label={pollutantNameHTML(Pollutants.NO2.name)} />
                         <Tab label={pollutantNameHTML(Pollutants.O3.name)} />
+                        <Tab label={pollutantNameHTML(Pollutants.NO.name)} />
                     </Tabs>
                     <CanvasJSChart options={options} />
                 </div>}

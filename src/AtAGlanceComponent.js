@@ -23,17 +23,8 @@ function truncateVal(value, pollutant) {
         case "PM25":
             ret = parseFloat(value.toFixed(3));
             break;
-        case "CO":
-            ret = parseInt(value);
-            break;
-        case "NO2":
-            ret = parseInt(value);
-            break;
-        case "O3":
-            ret = parseInt(value);
-            break;
         default:
-            ret = "??"
+            ret = parseInt(value);
     }
     return ret;
 }
