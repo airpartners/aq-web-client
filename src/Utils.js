@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
 export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25'];
@@ -72,14 +74,14 @@ export const deviceInitData = {
 export const Pollutants = {
     PM25: {
         id: "pm25",
-        name: "PM2.5",
-        unit: "ug/m3",
+        name: "PM25",
+        unit: "\xB5g/m\u00B3",
         safe: "??",
     },
     PM10: {
         id: "pm10",
         name: "PM10",
-        unit: "ug/m3",
+        unit: "\xB5g/m\u00B3",
         safe: "??",
     },
     CO: {
@@ -103,6 +105,32 @@ export const Pollutants = {
 };
 
 /**
+ * Return JSX formatted html elements for pollutant names
+ *
+ * @param {string} pollutant the pollutant name
+ */
+export const pollutantNameHTML = (pollutant) => {
+    let ret;
+    switch (pollutant) {
+        case "PM25":
+            ret = (<span>PM<sub>2.5</sub></span>);
+            break;
+        case "PM10":
+            ret = (<span>PM<sub>10</sub></span>);
+            break;
+        case "NO2":
+            ret = (<span>NO<sub>2</sub></span>);
+            break;
+        case "O3":
+            ret = (<span>O<sub>3</sub></span>);
+            break;
+        default:
+            ret = (<span>{pollutant}</span>);
+    }
+    return ret;
+};
+
+/**
  * Check whether we should fetch new data. Update when
  * - Data has just been initialized (lastUpdated == null)
  * - Last updated was 5 minutes ago or longer
@@ -117,4 +145,4 @@ export const needUpdate = (deviceDict, deviceId) => {
     let now = new Date();
     let timeDiff = (now - lastUpdated) / 1000 / 60; // in minutes
     return timeDiff >= 5;
-}
+};

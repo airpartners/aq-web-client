@@ -25,13 +25,9 @@ export const en = {
     },
     "PollutantText": {
         "CO Full Name": "Carbon Monoxide",
-        "CO": "CO",
         "NO2 Full Name": "Nitrogen Dioxide",
-        "NO2": "NO\u2082",
         "O3 Full Name": "Ozone",
-        "O3": "O\u2083",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "PM25": "PM\u2082\u2085"
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
@@ -100,13 +96,9 @@ export const es = {
     },
     "PollutantText": {
         "CO Full Name": "Carbon Monoxide",
-        "CO": "CO",
         "NO2 Full Name": "Nitrogen Dioxide",
-        "NO2": "NO\u2082",
         "O3 Full Name": "Ozone",
-        "O3": "O\u2083",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "PM25": "PM\u2082\u2085"
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {

@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { Pollutants } from "./Utils";
+import { Pollutants, pollutantNameHTML } from "./Utils";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -117,10 +117,10 @@ function PollutantsComponent(props) {
                         indicatorColor="primary"
                         textColor="primary"
                         centered>
-                        <Tab label={Pollutants.PM25.name} />
-                        <Tab label={Pollutants.CO.name} />
-                        <Tab label={Pollutants.NO2.name} />
-                        <Tab label={Pollutants.O3.name} />
+                        <Tab label={pollutantNameHTML(Pollutants.PM25.name)} />
+                        <Tab label={pollutantNameHTML(Pollutants.CO.name)} />
+                        <Tab label={pollutantNameHTML(Pollutants.NO2.name)} />
+                        <Tab label={pollutantNameHTML(Pollutants.O3.name)} />
                     </Tabs>
                     <CanvasJSChart options={options} />
                 </div>}
