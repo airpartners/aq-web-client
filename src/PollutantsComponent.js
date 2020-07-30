@@ -11,6 +11,21 @@ const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const useStyles = makeStyles((theme) => ({
     tabView: {
         marginBottom: theme.spacing(3),
+    },
+    tabRoot: {
+        minWidth: "72px",
+        [theme.breakpoints.up('sm')]: {
+            minWidth: "90px",
+        },
+        [theme.breakpoints.up('md')]: {
+            minWidth: "105px",
+        },
+        [theme.breakpoints.up('lg')]: {
+            minWidth: "160px",
+        },
+        [theme.breakpoints.up('xl')]: {
+            minWidth: "250px",
+        },
     }
 }))
 
@@ -81,7 +96,10 @@ function PollutantsComponent(props) {
                         textColor="primary"
                         centered>
                         {pollutantsToShow.map(pollutant => {
-                            return <Tab label={pollutantNameHTML(Pollutants[pollutant].name)} />
+                            return <Tab label={pollutantNameHTML(Pollutants[pollutant].name)} key={pollutant}
+                                classes={{
+                                    root: classes.tabRoot,
+                                }} />
                         })}
                     </Tabs>
                     <CanvasJSChart options={options} />

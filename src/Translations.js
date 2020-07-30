@@ -29,11 +29,13 @@ export const en = {
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
+        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
         "Now": "Now",
-        "Last updated at": "Last updated at"
+        "Last updated at": "Last updated at",
+        "Not available": "Not available"
     },
     "Graph": {
         "Time": "Time"
@@ -101,11 +103,13 @@ export const es = {
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
+        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {
         "Now": "Ahora",
-        "Last updated at": "\xDAltima actualizaci\xF3n en"
+        "Last updated at": "\xDAltima actualizaci\xF3n en",
+        "Not available": "Not available"
     },
     "Graph": {
         "Time": "Tiempo"

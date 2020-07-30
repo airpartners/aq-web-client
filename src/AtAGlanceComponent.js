@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             alignItems: 'center',
         },
     },
@@ -41,13 +41,13 @@ function AtAGlanceComponent(props) {
                     <h2>{strings['AtAGlance']['Now']}</h2>
                     <Grid className={classes.now} container>
                         {pollutantsToShow.map(pollutant => {
-                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : "Not available";
+                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings["AtAGlance"]["Not available"];
                             return <h3 key={pollutant}>
                                 {`${strings['PollutantText'][pollutant + " Full Name"]} (`}
                                 {pollutantNameHTML(pollutant)}
                                 {`): `}
                                 <span className={classes.val}>
-                                    {`${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                    {(val === strings["AtAGlance"]["Not available"]) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
                                 </span>
                             </h3>
                         })}
