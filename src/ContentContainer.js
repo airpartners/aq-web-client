@@ -6,7 +6,7 @@ import DevicePage from "./DevicePage";
 import ContactUsPage from "./ContactUsPage";
 import NavigationDrawer from "./NavigationDrawer";
 import PrivacyPolicy from "./PrivacyPolicy";
-import { deviceList, deviceInitData, needUpdate } from "./Utils";
+import { deviceList, deviceInitData, needUpdate, drawerWidth } from "./Utils";
 import { getData } from "./FirebaseComponent";
 import { parse } from 'query-string';
 import * as Translations from "./Translations"
@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     },
     main: {
         width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: `calc(100% - ${drawerWidth}px)`,
+        },
     },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
@@ -89,7 +92,7 @@ function ContentContainer(props) {
         componentsToRender = <DevicePage queryParams={queryParams} strings={strings} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
     } else if (path === "contact-us") {
         componentsToRender = <ContactUsPage strings={strings} />;
-    } else if (path == "privacy") {
+    } else if (path === "privacy") {
         componentsToRender = <PrivacyPolicy strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
