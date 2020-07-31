@@ -11,6 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [Login to Firebase](#login-to-firebase)
   - [Initialize Firebase and Configure Your Project](#initialize-firebase-and-configure-your-project)
   - [Deploy to Firebase](#deploy-to-firebase)
+- [Continuous Integration](#continuous-integration)
 - [Learn More](#learn-more)
   - [Code Splitting](#code-splitting)
   - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
@@ -123,6 +124,10 @@ When setting up GitHub pages hosting, it was necessary to add a homepage field t
 ```
 
 However, that field has to be removed for the `firebase deploy` to work properly. One of the benefits of Firebase hosting is that we have the option to route all urls to our index.html which GitHub pages doesn't support so direct url access doesn't work on our GitHub pages site because we use a single page React app with react-router-dom.
+
+## Continuous Integration
+
+For now, using GitHub workflows based on [this article](https://blog.logrocket.com/setting-up-continuous-deployment-with-react-firebase-and-github-actions/).
 
 ## Learn More
 
