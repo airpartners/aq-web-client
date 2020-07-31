@@ -1,15 +1,15 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import DropletSVG from "./assets/svg/DropletSVG";
 import ThermometerSVG from "./assets/svg/ThermometerSVG";
 import { Navigation } from "@material-ui/icons";
 import Colors from "./assets/Colors";
 
-const useStyles = makeStyles((theme) => ({}));
+// const useStyles = makeStyles((theme) => ({}));
 
 function WeatherComponent(props) {
-    const classes = useStyles();
+    // const classes = useStyles();
     const { strings, device } = props;
     return (
         <div>

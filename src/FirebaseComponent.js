@@ -59,7 +59,3 @@ function FirebaseComponent(props) {
 
 
 export default FirebaseComponent;
-
-{/* TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries 
-    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script> */}

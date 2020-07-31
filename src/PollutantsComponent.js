@@ -36,9 +36,9 @@ function PollutantsComponent(props) {
     const handleTabChange = (event, newId) => {
         setActiveTab(newId);
     };
-    const getSafeValue = (id) => {
-        return 0.045; // TODO: remove this when safe values are determined
-    };
+    // const getSafeValue = (id) => {
+    //     return 0.045; // TODO: remove this when safe values are determined
+    // };
     const getData = (device, pollutantId) => {
         let data = [];
         if (!device.graph)

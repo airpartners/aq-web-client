@@ -13,7 +13,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import DeviceIcon from '@material-ui/icons/Pages';
 import MenuIcon from '@material-ui/icons/Menu';
-import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import { Link } from "react-router-dom";
 import { drawerWidth, deviceList } from "./Utils";
