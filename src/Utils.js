@@ -1,6 +1,8 @@
+import React from 'react'; // so we can use JSX in pollutantNameHTML function
+
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
-export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25'];
+export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'SPC'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
@@ -72,14 +74,14 @@ export const deviceInitData = {
 export const Pollutants = {
     PM25: {
         id: "pm25",
-        name: "PM2.5",
-        unit: "ug/m3",
+        name: "PM25",
+        unit: "\xB5g/m\u00B3",
         safe: "??",
     },
     PM10: {
         id: "pm10",
         name: "PM10",
-        unit: "ug/m3",
+        unit: "\xB5g/m\u00B3",
         safe: "??",
     },
     CO: {
@@ -99,7 +101,45 @@ export const Pollutants = {
         name: "O3",
         unit: "ppb",
         safe: "??",
+    },
+    NO: {
+        id: "no",
+        name: "NO",
+        unit: "ppb",
+        safe: "??",
+    },
+    SPC: {
+        id: "bin0",
+        name: "SPC",
+        unit: "particles/cm\u00B3",
+        safe: "??",
     }
+};
+
+/**
+ * Return JSX formatted html elements for pollutant names
+ *
+ * @param {string} pollutant the pollutant name
+ */
+export const pollutantNameHTML = (pollutant) => {
+    let ret;
+    switch (pollutant) {
+        case "PM25":
+            ret = (<span>PM<sub>2.5</sub></span>);
+            break;
+        case "PM10":
+            ret = (<span>PM<sub>10</sub></span>);
+            break;
+        case "NO2":
+            ret = (<span>NO<sub>2</sub></span>);
+            break;
+        case "O3":
+            ret = (<span>O<sub>3</sub></span>);
+            break;
+        default:
+            ret = (<span>{pollutant}</span>);
+    }
+    return ret;
 };
 
 /**
@@ -117,4 +157,4 @@ export const needUpdate = (deviceDict, deviceId) => {
     let now = new Date();
     let timeDiff = (now - lastUpdated) / 1000 / 60; // in minutes
     return timeDiff >= 5;
-}
+};

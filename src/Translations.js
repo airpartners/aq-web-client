@@ -25,18 +25,17 @@ export const en = {
     },
     "PollutantText": {
         "CO Full Name": "Carbon Monoxide",
-        "CO": "CO",
         "NO2 Full Name": "Nitrogen Dioxide",
-        "NO2": "NO\u2082",
         "O3 Full Name": "Ozone",
-        "O3": "O\u2083",
+        "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "PM25": "PM\u2082\u2085"
+        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
         "Now": "Now",
-        "Last updated at": "Last updated at"
+        "Last updated at": "Last updated at",
+        "Not available": "Not available"
     },
     "Graph": {
         "Time": "Time"
@@ -100,18 +99,17 @@ export const es = {
     },
     "PollutantText": {
         "CO Full Name": "Carbon Monoxide",
-        "CO": "CO",
         "NO2 Full Name": "Nitrogen Dioxide",
-        "NO2": "NO\u2082",
         "O3 Full Name": "Ozone",
-        "O3": "O\u2083",
+        "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "PM25": "PM\u2082\u2085"
+        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {
         "Now": "Ahora",
-        "Last updated at": "\xDAltima actualizaci\xF3n en"
+        "Last updated at": "\xDAltima actualizaci\xF3n en",
+        "Not available": "Not available"
     },
     "Graph": {
         "Time": "Tiempo"

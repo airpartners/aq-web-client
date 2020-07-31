@@ -1,14 +1,14 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { pollutantsToShow, Pollutants } from "./Utils";
+import { pollutantsToShow, Pollutants, pollutantNameHTML } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     now: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             alignItems: 'center',
         },
     },
@@ -21,19 +21,10 @@ function truncateVal(value, pollutant) {
     let ret;
     switch (pollutant) {
         case "PM25":
-            ret = parseInt(value);
-            break;
-        case "CO":
-            ret = parseInt(value);
-            break;
-        case "NO2":
-            ret = parseInt(value);
-            break;
-        case "O3":
-            ret = parseInt(value);
+            ret = parseFloat(value.toFixed(3));
             break;
         default:
-            ret = "??"
+            ret = parseInt(value);
     }
     return ret;
 }
@@ -50,11 +41,13 @@ function AtAGlanceComponent(props) {
                     <h2>{strings['AtAGlance']['Now']}</h2>
                     <Grid className={classes.now} container>
                         {pollutantsToShow.map(pollutant => {
-                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : "Not available";
+                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings["AtAGlance"]["Not available"];
                             return <h3 key={pollutant}>
-                                {`${strings['PollutantText'][pollutant + " Full Name"]} (${strings['PollutantText'][pollutant]}): `}
+                                {`${strings['PollutantText'][pollutant + " Full Name"]} (`}
+                                {pollutantNameHTML(pollutant)}
+                                {`): `}
                                 <span className={classes.val}>
-                                    {`${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                    {(val === strings["AtAGlance"]["Not available"]) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
                                 </span>
                             </h3>
                         })}

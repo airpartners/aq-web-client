@@ -4,71 +4,49 @@ import { makeStyles } from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { Pollutants } from "./Utils";
+import { Pollutants, pollutantNameHTML, pollutantsToShow } from "./Utils";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const useStyles = makeStyles((theme) => ({
     tabView: {
         marginBottom: theme.spacing(3),
+    },
+    tabRoot: {
+        minWidth: "72px",
+        [theme.breakpoints.up('sm')]: {
+            minWidth: "90px",
+        },
+        [theme.breakpoints.up('md')]: {
+            minWidth: "105px",
+        },
+        [theme.breakpoints.up('lg')]: {
+            minWidth: "160px",
+        },
+        [theme.breakpoints.up('xl')]: {
+            minWidth: "250px",
+        },
     }
 }))
 
 function PollutantsComponent(props) {
     const classes = useStyles();
     const { strings, device } = props;
-    const [pollutantId, setPollutantId] = React.useState(0);
+    const [activeTab, setActiveTab] = React.useState(0);
     const handleTabChange = (event, newId) => {
-        setPollutantId(newId);
-    };
-    const isPollutantDataAvailable = (device, pollutant) => {
-        return device.graph && (typeof device.graph[0][pollutant] !== 'undefined');
-    };
-    const getPollutant = (id) => {
-        switch (id) {
-            case 0:
-                return Pollutants.PM25.id;
-            case 1:
-                return Pollutants.CO.id;
-            case 2:
-                return Pollutants.NO2.id;
-            default:
-                return Pollutants.O3.id;
-        }
-    };
-    const getUnit = (id) => {
-        switch (id) {
-            case 0:
-                return Pollutants.PM25.unit;
-            case 1:
-                return Pollutants.CO.unit;
-            case 2:
-                return Pollutants.NO2.unit;
-            default:
-                return Pollutants.O3.unit;
-        }
+        setActiveTab(newId);
     };
     const getSafeValue = (id) => {
         return 0.045; // TODO: remove this when safe values are determined
-        switch (id) {
-            case 0:
-                return Pollutants.PM25.safe;
-            case 1:
-                return Pollutants.CO.safe;
-            case 2:
-                return Pollutants.NO2.safe;
-            default:
-                return Pollutants.O3.safe;
-        }
     };
     const getData = (device, pollutantId) => {
         let data = [];
-        let pollutant = getPollutant(pollutantId);
-        if (!isPollutantDataAvailable(device, pollutant))
+        if (!device.graph)
             return data;
 
         for (let dataPoint of device.graph) {
-            data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutant] });
+            if (typeof dataPoint[pollutantId] != 'undefined')
+                data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
         }
         return data;
     };
@@ -80,7 +58,7 @@ function PollutantsComponent(props) {
             text: ""
         },
         axisY: {
-            title: getUnit(pollutantId),
+            title: Pollutants[pollutantsToShow[activeTab]].unit,
             includeZero: false,
             // stripLines: [{
             //     value: getSafeValue(pollutantId),
@@ -103,7 +81,7 @@ function PollutantsComponent(props) {
             type: "spline",
             color: Colors.primaryColor,
             xValueFormatString: "DDD hh:mm",
-            dataPoints: getData(device, pollutantId),
+            dataPoints: getData(device, Pollutants[pollutantsToShow[activeTab]].id),
         }]
     }
     return (
@@ -112,15 +90,17 @@ function PollutantsComponent(props) {
                 <div>
                     <h2>{strings['Pollutants']}</h2>
                     <Tabs className={classes.tabView}
-                        value={pollutantId}
+                        value={activeTab}
                         onChange={handleTabChange}
                         indicatorColor="primary"
                         textColor="primary"
                         centered>
-                        <Tab label={Pollutants.PM25.name} />
-                        <Tab label={Pollutants.CO.name} />
-                        <Tab label={Pollutants.NO2.name} />
-                        <Tab label={Pollutants.O3.name} />
+                        {pollutantsToShow.map(pollutant => {
+                            return <Tab label={pollutantNameHTML(Pollutants[pollutant].name)} key={pollutant}
+                                classes={{
+                                    root: classes.tabRoot,
+                                }} />
+                        })}
                     </Tabs>
                     <CanvasJSChart options={options} />
                 </div>}
