@@ -45,6 +45,8 @@ function ContentContainer(props) {
         if (deviceList.includes(path)) {
             updateDeviceIfNeeded(path);
         }
+        // disabling react-hooks/exhaustive-deps warning for updateDeviceIfNeeded function
+        // eslint-disable-next-line
     }, [path]);
 
     useEffect(() => {
@@ -57,6 +59,9 @@ function ContentContainer(props) {
         if (Translations.supported.includes(lang)) {
             setStrings(Translations[lang]);
         } else {
+            // disabling react-hooks/exhaustive-deps warning for queryParams
+            // it's fine for now if the value is lost on each render
+            // eslint-disable-next-line
             queryParams = "";
         }
     }, [lang]);
@@ -66,6 +71,8 @@ function ContentContainer(props) {
         for (let deviceId of deviceList) {
             updateDeviceIfNeeded(deviceId);
         }
+        // disabling react-hooks/exhaustive-deps warning for updateDeviceIfNeeded function
+        // eslint-disable-next-line
     }, []);
 
     const updateDeviceIfNeeded = (deviceId) => {
