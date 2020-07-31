@@ -18,7 +18,10 @@ function ContactUsPage(props) {
     return (
         <div className={classes.content}>
             <Typography paragraph>
-                {strings["ContactUsPage"]["Body"] + strings["ContactUsPage"]["Email"] + "."}
+                {strings["ContactUsPage"]["Body"]}
+                <a rel="noopener noreferrer" target="_blank" href="mailto:adeairquality@gmail.com">
+                    {strings["ContactUsPage"]["Email"] + "."}
+                </a>
             </Typography>
         </div>);
 }
