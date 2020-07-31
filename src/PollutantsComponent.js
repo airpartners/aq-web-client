@@ -13,7 +13,10 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(3),
     },
     tabRoot: {
-        minWidth: "72px",
+        // responsiveness tested down to 320px width
+        // based on minimum viewport size listed here: https://mediag.com/blog/popular-screen-resolutions-designing-for-all/
+        minWidth: `calc((100%-100px)/${pollutantsToShow.length})`,
+        padding: 0,
         [theme.breakpoints.up('sm')]: {
             minWidth: "90px",
         },
