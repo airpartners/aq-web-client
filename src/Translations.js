@@ -38,7 +38,12 @@ export const en = {
         "Not available": "Not available"
     },
     "Graph": {
-        "Time": "Time"
+        "Time": "Time",
+        "GraphDropdown": {
+            "ListAriaLabel": "Pollutant selection for graph",
+            "ListItemAriaLabel": "showing graph data for",
+            "ListItemText": "Showing graph data for"
+        }
     },
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
@@ -112,7 +117,12 @@ export const es = {
         "Not available": "Not available"
     },
     "Graph": {
-        "Time": "Tiempo"
+        "Time": "Tiempo",
+        "GraphDropdown": {
+            "ListAriaLabel": "Pollutant selection for graph",
+            "ListItemAriaLabel": "showing graph data for",
+            "ListItemText": "Showing graph data for"
+        }
     },
     // This needs to be translated
     "Privacy Policy": {

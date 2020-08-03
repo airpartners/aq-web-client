@@ -5,12 +5,17 @@ import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Pollutants, pollutantAbbreviationHTML, pollutantsToShow } from "./Utils";
+import GraphDropdown from "./GraphDropdown";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const useStyles = makeStyles((theme) => ({
     tabView: {
         marginBottom: theme.spacing(3),
+        display: "none",
+        [theme.breakpoints.up('sm')]: {
+            display: "initial",
+        },
     },
     tabRoot: {
         // responsiveness tested down to 320px width
@@ -18,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
         minWidth: `calc((100%-100px)/${pollutantsToShow.length})`,
         padding: 0,
         [theme.breakpoints.up('sm')]: {
-            minWidth: "90px",
+            minWidth: "80px",
         },
         [theme.breakpoints.up('md')]: {
-            minWidth: "105px",
+            minWidth: "99px",
         },
         [theme.breakpoints.up('lg')]: {
             minWidth: "160px",
@@ -105,6 +110,10 @@ function PollutantsComponent(props) {
                                 }} />
                         })}
                     </Tabs>
+                    <GraphDropdown strings={strings}
+                        options={pollutantsToShow}
+                        currentIndex={activeTab}
+                        parentHandleMenuItemClick={handleTabChange} />
                     <CanvasJSChart options={options} />
                 </div>}
         </div>);
