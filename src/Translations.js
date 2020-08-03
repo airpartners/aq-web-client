@@ -28,8 +28,8 @@ export const en = {
         "NO2 Full Name": "Nitrogen Dioxide",
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
-        "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
+        "PM25 Full Name": "Particulate Matter smaller than 2.5 micrometers (\xB5m)",
+        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)"
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
@@ -102,8 +102,8 @@ export const es = {
         "NO2 Full Name": "Nitrogen Dioxide",
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
-        "PM25 Full Name": "Particulate Matter 2.5 micrometers (\xB5m) and smaller",
-        "SPC Full Name": "Small Particle Concentration 300-500 nanometers (nm)"
+        "PM25 Full Name": "Particulate Matter smaller than 2.5 micrometers (\xB5m)",
+        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)"
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {

@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { Pollutants, pollutantNameHTML, pollutantsToShow } from "./Utils";
+import { Pollutants, pollutantAbbreviationHTML, pollutantsToShow } from "./Utils";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -99,7 +99,7 @@ function PollutantsComponent(props) {
                         textColor="primary"
                         centered>
                         {pollutantsToShow.map(pollutant => {
-                            return <Tab label={pollutantNameHTML(Pollutants[pollutant].name)} key={pollutant}
+                            return <Tab label={pollutantAbbreviationHTML(Pollutants[pollutant].name)} key={pollutant}
                                 classes={{
                                     root: classes.tabRoot,
                                 }} />

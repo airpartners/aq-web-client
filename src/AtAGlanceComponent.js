@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { pollutantsToShow, Pollutants, pollutantNameHTML } from "./Utils";
+import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
     now: {
@@ -12,8 +12,16 @@ const useStyles = makeStyles((theme) => ({
             alignItems: 'center',
         },
     },
-    val: {
+    pollutantVal: {
         color: theme.palette.secondary.main,
+    },
+    pollutantName: {
+        opacity: "0.5",
+    },
+    pollutantHeaderBreak: {
+        [theme.breakpoints.up('lg')]: {
+            display: "none",
+        },
     }
 }));
 
@@ -43,11 +51,15 @@ function AtAGlanceComponent(props) {
                         {pollutantsToShow.map(pollutant => {
                             let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings["AtAGlance"]["Not available"];
                             return <h3 key={pollutant}>
-                                {`${strings['PollutantText'][pollutant + " Full Name"]} (`}
-                                {pollutantNameHTML(pollutant)}
-                                {`): `}
-                                <span className={classes.val}>
+                                {pollutantAbbreviationHTML(pollutant)}
+                                {`: `}
+                                <span className={classes.pollutantVal}>
                                     {(val === strings["AtAGlance"]["Not available"]) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                </span>
+                                <br className={classes.pollutantHeaderBreak}></br>
+                                <span className={classes.pollutantName}>
+                                    {` - `}
+                                    {`${strings['PollutantText'][pollutant + " Full Name"]}`}
                                 </span>
                             </h3>
                         })}

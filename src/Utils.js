@@ -2,7 +2,7 @@ import React from 'react'; // so we can use JSX in pollutantNameHTML function
 
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
-export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'SPC'];
+export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
@@ -108,9 +108,9 @@ export const Pollutants = {
         unit: "ppb",
         safe: "??",
     },
-    SPC: {
+    PNC: {
         id: "bin0",
-        name: "SPC",
+        name: "PNC",
         unit: "particles/cm\u00B3",
         safe: "??",
     }
@@ -121,7 +121,7 @@ export const Pollutants = {
  *
  * @param {string} pollutant the pollutant name
  */
-export const pollutantNameHTML = (pollutant) => {
+export const pollutantAbbreviationHTML = (pollutant) => {
     let ret;
     switch (pollutant) {
         case "PM25":
@@ -135,6 +135,9 @@ export const pollutantNameHTML = (pollutant) => {
             break;
         case "O3":
             ret = (<span>O<sub>3</sub></span>);
+            break;
+        case "PNC":
+            ret = (<span>PNC<sub>0.3-0.5</sub></span>);
             break;
         default:
             ret = (<span>{pollutant}</span>);
