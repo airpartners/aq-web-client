@@ -1,7 +1,8 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from "./Utils";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from './Utils';
+import InfoIconPopover from './InfoIconPopover';
 
 const useStyles = makeStyles((theme) => ({
     now: {
@@ -12,15 +13,19 @@ const useStyles = makeStyles((theme) => ({
             alignItems: 'center',
         },
     },
+    pollutantFullInfo: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
     pollutantVal: {
         color: theme.palette.secondary.main,
     },
     pollutantName: {
-        opacity: "0.5",
+        opacity: '0.5',
     },
     pollutantHeaderBreak: {
         [theme.breakpoints.up('lg')]: {
-            display: "none",
+            display: 'none',
         },
     }
 }));
@@ -28,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 function truncateVal(value, pollutant) {
     let ret;
     switch (pollutant) {
-        case "PM25":
+        case 'PM25':
             ret = parseFloat(value.toFixed(3));
             break;
         default:
@@ -49,23 +54,28 @@ function AtAGlanceComponent(props) {
                     <h2>{strings['AtAGlance']['Now']}</h2>
                     <Grid className={classes.now} container>
                         {pollutantsToShow.map(pollutant => {
-                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings["AtAGlance"]["Not available"];
-                            return <h3 key={pollutant}>
-                                {pollutantAbbreviationHTML(pollutant)}
-                                {`: `}
-                                <span className={classes.pollutantVal}>
-                                    {(val === strings["AtAGlance"]["Not available"]) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
-                                </span>
-                                <br className={classes.pollutantHeaderBreak}></br>
-                                <span className={classes.pollutantName}>
-                                    {` - `}
-                                    {`${strings['PollutantText'][pollutant + " Full Name"]}`}
-                                </span>
-                            </h3>
+                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Not available'];
+                            return (
+                                <div key={pollutant} className={classes.pollutantFullInfo}>
+                                    {Pollutants[pollutant].showInfo &&
+                                        <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
+                                    <h3>
+                                        {pollutantAbbreviationHTML(pollutant)}
+                                        {`: `}
+                                        <span className={classes.pollutantVal}>
+                                            {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                        </span>
+                                        <br className={classes.pollutantHeaderBreak} />
+                                        <span className={classes.pollutantName}>
+                                            {` - `}
+                                            {strings['PollutantText'][pollutant + ' Full Name']}
+                                        </span>
+                                    </h3>
+                                </div>)
                         })}
                     </Grid>
-                    <Grid container justify="flex-end">
-                        <p>{strings['AtAGlance']['Last updated at'] + " " + lastUpdatedDateTime.toLocaleTimeString(navigator.language, {
+                    <Grid container justify='flex-end'>
+                        <p>{strings['AtAGlance']['Last updated at'] + ' ' + lastUpdatedDateTime.toLocaleTimeString(navigator.language, {
                             hour: '2-digit',
                             minute: '2-digit'
                         })}</p>

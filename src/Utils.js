@@ -77,42 +77,49 @@ export const Pollutants = {
         name: "PM25",
         unit: "\xB5g/m\u00B3",
         safe: "??",
+        showInfo: false,
     },
     PM10: {
         id: "pm10",
         name: "PM10",
         unit: "\xB5g/m\u00B3",
         safe: "??",
+        showInfo: false,
     },
     CO: {
         id: "co",
         name: "CO",
         unit: "ppb",
         safe: "??",
+        showInfo: false,
     },
     NO2: {
         id: "no2",
         name: "NO2",
         unit: "ppb",
         safe: "??",
+        showInfo: false,
     },
     O3: {
         id: "o3",
         name: "O3",
         unit: "ppb",
         safe: "??",
+        showInfo: false,
     },
     NO: {
         id: "no",
         name: "NO",
         unit: "ppb",
         safe: "??",
+        showInfo: false,
     },
     PNC: {
         id: "bin0",
         name: "PNC",
         unit: "particles/cm\u00B3",
         safe: "??",
+        showInfo: true,
     }
 };
 

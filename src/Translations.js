@@ -1,4 +1,5 @@
 //See http://kourbatov.com/faq/accentedcharacters.htm for accented characters
+import React from "react";
 
 export const supported = ["en", "es"]
 export const en = {
@@ -29,7 +30,8 @@ export const en = {
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter smaller than 2.5 micrometers (\xB5m)",
-        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)"
+        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)",
+        "PNC Info": (<span>Small particles are the most dangerous for human health, because they are able to penetrate deeply into the lungs and have long lifetimes in the air. This is a measure of the particle number concentration (PNC) of particles in the smallest size range our instrument measures (300-500 nm). While this is larger than the ultrafine particle (UFP) size range (smaller than 100 nm), combined with combustion-related gas phase pollutants like NO and CO, PNC<sub>0.3-0.5</sub> gives us a sense of when the smallest particles, including UFPs, are high in concentration.</span>)
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
@@ -108,7 +110,8 @@ export const es = {
         "O3 Full Name": "Ozone",
         "NO Full Name": "Nitrogen Monoxide",
         "PM25 Full Name": "Particulate Matter smaller than 2.5 micrometers (\xB5m)",
-        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)"
+        "PNC Full Name": "Particle Number Concentration between 300-500 nanometers (nm)",
+        "PNC Info": (<span>Small particles are the most dangerous for human health, because they are able to penetrate deeply into the lungs and have long lifetimes in the air. This is a measure of the particle number concentration (PNC) of particles in the smallest size range our instrument measures (300-500 nm). While this is larger than the ultrafine particle (UFP) size range (smaller than 100 nm), combined with combustion-related gas phase pollutants like NO and CO, PNC<sub>0.3-0.5</sub> gives us a sense of when the smallest particles, including UFPs, are high in concentration.</span>)
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {
