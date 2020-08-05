@@ -72,7 +72,6 @@ function ContentContainer(props) {
             updateDeviceIfNeeded(deviceId);
         }
         // disabling react-hooks/exhaustive-deps warning for updateDeviceIfNeeded function
-        // eslint-disable-next-line
     }, []);
 
     const updateDeviceIfNeeded = (deviceId) => {
