@@ -2,8 +2,9 @@ name: Test feature
 on:
   push:
     branches-ignore:
-      # will trigger on push events to any branch except master
+      # will trigger on push events to any branch except master and gh-pages
       - master
+      - gh-pages
 
 jobs:
   test:
