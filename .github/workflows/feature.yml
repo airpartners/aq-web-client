@@ -1,9 +1,13 @@
 name: Test feature
 on:
   push:
+    paths-ignore:
+      - '.github/**'
+      - 'README.md'
     branches-ignore:
-      # will trigger on push events to any branch except master
+      # will trigger on push events to any branch except master and gh-pages
       - master
+      - gh-pages
 
 jobs:
   test:
