@@ -1,0 +1,23 @@
+name: Test feature
+on:
+  push:
+    branches-ignore:
+      # will trigger on push events to any branch except master
+      - master
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests
+        env:
+          CI: true
+        run: npm test
+      - name: Build
+        # only included to catch lint errors, should be udpated later to just do that rather than build the whole thing to save time
+        run: npm run build
