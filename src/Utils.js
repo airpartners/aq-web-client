@@ -1,7 +1,7 @@
 import React from 'react'; // so we can use JSX in pollutantNameHTML function
 
 export const drawerWidth = 300;
-export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-072'];
+export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067'];
 export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
@@ -11,19 +11,19 @@ export const deviceInitData = {
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.37,
-            lng: -72.03,
+            lat: 42.385,
+            lng: -71.002,
         },
     },
     'SN000-046': {
         id: 'SN000-046',
-        name: 'Everett Street, EB',
+        name: 'Harrison Ave, Roxbury',
         latest: null,
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.36,
-            lng: -71,
+            lat: 42.329,
+            lng: -71.083,
         },
     },
     'SN000-049': {
@@ -33,13 +33,13 @@ export const deviceInitData = {
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.38,
-            lng: -71.01,
+            lat: 42.373,
+            lng: -70.994,
         },
     },
     'SN000-062': {
         id: 'SN000-062',
-        name: 'Sumner, EB',
+        name: 'Sumner Street, EB',
         latest: null,
         graph: null,
         lastUpdated: null,
@@ -55,8 +55,8 @@ export const deviceInitData = {
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.34,
-            lng: -71.02,
+            lat: 42.361,
+            lng: -70.972,
         },
     },
     'SN000-072': {
@@ -66,8 +66,8 @@ export const deviceInitData = {
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.38,
-            lng: -71.015,
+            lat: 42.384,
+            lng: -71,
         },
     }
 };

@@ -3,6 +3,7 @@ import React from "react";
 
 export const supported = ["en", "es"]
 export const en = {
+    "code": "en",
     "DrawerNav": {
         "Contact us": "Contact us"
     },
@@ -36,7 +37,7 @@ export const en = {
     "Pollutants": "Pollutants",
     "AtAGlance": {
         "Now": "Now",
-        "Last updated at": "Last updated at",
+        "Last updated": "Last updated",
         "Not available": "Not available"
     },
     "Graph": {
@@ -83,23 +84,24 @@ export const en = {
 };
 
 export const es = {
+    "code": "es",
     "DrawerNav": {
-        "Contact us": "Contactarnos"
+        "Contact us": "Contactenos"
     },
     "AppBarText": {
-        "contact-us": "Contactarnos",
+        "contact-us": "Contactenos",
         "privacy": "Política de privacidad"
     },
     "BottomNav": {
-        "Home": "Casa",
+        "Home": "Inicio",
         "Map": "Mapa"
     },
     "ContactUsPage": {
-        "Body": "If you have questions or feedback please contact us at ",
+        "Body": "Si tiene preguntas o comentarios, por favor contactenos en ",
         "Email": "adeairquality@gmail.com"
     },
     "WeatherComponent": {
-        "Weather": "Tiempo",
+        "Weather": "Clima",
         "Temperature": "Temperatura",
         "Humidity": "Humedad",
         "Wind": "Viento"
@@ -115,16 +117,16 @@ export const es = {
     },
     "Pollutants": "Contaminantes",
     "AtAGlance": {
-        "Now": "Ahora",
-        "Last updated at": "\xDAltima actualizaci\xF3n en",
-        "Not available": "Not available"
+        "Now": "Actual",
+        "Last updated": "\xDAltima actualizaci\xF3n",
+        "Not available": "No esta disponible"
     },
     "Graph": {
-        "Time": "Tiempo",
+        "Time": "Hora",
         "GraphDropdown": {
-            "ListAriaLabel": "Pollutant selection for graph",
-            "ListItemAriaLabel": "showing graph data for",
-            "ListItemText": "Showing graph data for"
+            "ListAriaLabel": "Selección de contaminante para la gráfica",
+            "ListItemAriaLabel": "datos del gráfico para",
+            "ListItemText": "Datos del gráfico para"
         }
     },
     // This needs to be translated

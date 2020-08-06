@@ -75,9 +75,9 @@ function AtAGlanceComponent(props) {
                         })}
                     </Grid>
                     <Grid container justify='flex-end'>
-                        <p>{strings['AtAGlance']['Last updated at'] + ' ' + lastUpdatedDateTime.toLocaleTimeString(navigator.language, {
-                            hour: '2-digit',
-                            minute: '2-digit'
+                        <p>{strings['AtAGlance']['Last updated'] + ': ' + lastUpdatedDateTime.toLocaleString(strings['code'], {
+                            dateStyle: 'medium',
+                            timeStyle: 'short'
                         })}</p>
                     </Grid>
                 </div>}
