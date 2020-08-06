@@ -3,6 +3,7 @@ import React from "react";
 
 export const supported = ["en", "es"]
 export const en = {
+    "code": "en",
     "DrawerNav": {
         "Contact us": "Contact us"
     },
@@ -36,7 +37,7 @@ export const en = {
     "Pollutants": "Pollutants",
     "AtAGlance": {
         "Now": "Now",
-        "Last updated at": "Last updated at",
+        "Last updated": "Last updated",
         "Not available": "Not available"
     },
     "Graph": {
@@ -83,6 +84,7 @@ export const en = {
 };
 
 export const es = {
+    "code": "es",
     "DrawerNav": {
         "Contact us": "Contactarnos"
     },
@@ -116,7 +118,7 @@ export const es = {
     "Pollutants": "Contaminantes",
     "AtAGlance": {
         "Now": "Ahora",
-        "Last updated at": "\xDAltima actualizaci\xF3n en",
+        "Last updated": "\xDAltima actualizaci\xF3n",
         "Not available": "Not available"
     },
     "Graph": {
