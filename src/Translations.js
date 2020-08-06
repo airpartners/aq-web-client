@@ -118,8 +118,8 @@ export const es = {
     "Pollutants": "Contaminantes",
     "AtAGlance": {
         "Now": "Actual",
-        "Last updated": "\xDAltima actualizaci\xF3n",
-        "Not available": "No esta disponible"
+        "Last updated": "Última actualización",
+        "Not available": "No está disponible"
     },
     "Graph": {
         "Time": "Hora",
