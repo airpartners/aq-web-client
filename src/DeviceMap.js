@@ -27,7 +27,8 @@ const mapApiKey = 'AIzaSyCE7xH50-i4RcG5HygoL1SKXi3dLbstQtI';
  * @returns {boolean}: true if geo data is available
  */
 const isGeoDataAvailable = (device) => {
-    return device.latest && device.latest.geo;
+    // return device.latest && device.latest.geo;
+    return false;
 }
 
 /**
