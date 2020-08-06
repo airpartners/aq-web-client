@@ -1,8 +1,6 @@
 name: Test feature
 on:
   push:
-    paths-ignore:
-      - 'README.md'
     branches-ignore:
       # will trigger on push events to any branch except master and gh-pages
       - master
