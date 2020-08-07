@@ -6,7 +6,7 @@ export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
-        name: 'St Andrew Road, EB',
+        name: 'Orient Heights, East Boston',
         latest: null,
         graph: null,
         lastUpdated: null,
@@ -17,7 +17,7 @@ export const deviceInitData = {
     },
     'SN000-046': {
         id: 'SN000-046',
-        name: 'Harrison Ave, Roxbury',
+        name: 'Roxbury Reference Site',
         latest: null,
         graph: null,
         lastUpdated: null,
@@ -28,7 +28,7 @@ export const deviceInitData = {
     },
     'SN000-049': {
         id: 'SN000-049',
-        name: 'Elmer Ave, Winthrop',
+        name: 'Chelsea Point, Winthrop',
         latest: null,
         graph: null,
         lastUpdated: null,
@@ -39,7 +39,7 @@ export const deviceInitData = {
     },
     'SN000-062': {
         id: 'SN000-062',
-        name: 'Sumner Street, EB',
+        name: 'Jeffries Point, East Boston',
         latest: null,
         graph: null,
         lastUpdated: null,
@@ -50,7 +50,7 @@ export const deviceInitData = {
     },
     'SN000-067': {
         id: 'SN000-067',
-        name: 'Bay View Ave, Winthrop',
+        name: 'Point Shirley, Winthrop',
         latest: null,
         graph: null,
         lastUpdated: null,
