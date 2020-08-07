@@ -11,7 +11,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [Login to Firebase](#login-to-firebase)
   - [Initialize Firebase and Configure Your Project](#initialize-firebase-and-configure-your-project)
   - [Deploy to Firebase](#deploy-to-firebase)
-- [Continuous Deployment](#continuous-deployment)
+- [GitHub Workflows](#github-workflows)
+  - [Continuous integration (CI)](#continuous-integration-ci)
+  - [Continuous deployment (CD)](#continuous-deployment-cd)
 - [Learn More](#learn-more)
   - [Code Splitting](#code-splitting)
   - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
@@ -125,9 +127,23 @@ When setting up GitHub pages hosting, it was necessary to add a homepage field t
 
 However, that field has to be removed for the `firebase deploy` to work properly. One of the benefits of Firebase hosting is that we have the option to route all urls to our index.html which GitHub pages doesn't support so direct url access doesn't work on our GitHub pages site because we use a single page React app with react-router-dom.
 
-## Continuous Deployment
+## GitHub Workflows
 
-For now, using GitHub workflows based on [this article](https://blog.logrocket.com/setting-up-continuous-deployment-with-react-firebase-and-github-actions/). Heads up that you can't have any errors or warnings when executing `npm run build`. If you do the GitHub workflow will fail on the "Build" step.
+Go to the [Actions tab of this repository](https://github.com/airpartners/aq-web-client/actions) to see all current and previous jobs, logs, and statuses.
+
+It is highly recommended to run `npm test`, `npm start` (without any lint warnings or errors) and `npm run build`, before pushing to any branch. Otherwise, CI/CD workflows may fail unexpectedly causing you to add a fixing commit.
+
+### Continuous integration (CI)
+
+Although unit tests will run automatically, it's still important to do manual testing using `npm start` to run the application locally. Make sure there are no lint warnings or errors otherwise the GitHub workflow will fail. Use `// eslint-disable-next-line` to suppress warnings or errors sparingly. See this Goooooooooogle Doc for more detailed manual testing instructions.
+
+Any time a push is made to a feature branch, the GitHub workflow at `./.github/workflows/feature.yml` will run. After installing dependencies, it will run `npm test` and `npm run build` (which runs the linter also). Any issues will cause a failure and prevent merging a pull request to master without using admin privileges to override this check. To view and/or edit these branch protection settings go to [Setting > Branches](https://github.com/airpartners/aq-web-client/settings/branches).
+
+### Continuous deployment (CD)
+
+After any push to master (except changes that only affect README.md), the GitHub workflow at `./.github/workflows/main.yml` will run. After installing dependencies, it will run `npm test`. Any issues will cause a failure and the changes will not be deployed. It will then build and deploy the project to Firebase hosting.
+
+Initial setup for GitHub workflows was based on [this article](https://blog.logrocket.com/setting-up-continuous-deployment-with-react-firebase-and-github-actions/).
 
 ## Learn More
 
