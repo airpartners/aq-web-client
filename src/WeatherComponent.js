@@ -23,7 +23,7 @@ function WeatherComponent(props) {
                                 <ThermometerSVG />
                             </Grid>
                             <Grid>
-                                <p>{device.latest.temp_manifold + "\u00b0 F"}</p>
+                                <p>{device.latest.temp_manifold + "\u00b0 C"}</p>
                                 <p>{strings['WeatherComponent']['Temperature']}</p>
                             </Grid>
                         </Grid>
