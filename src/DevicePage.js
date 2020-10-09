@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         width: '100%',
         bottom: 0,
+        boxShadow: "16px -1px 28px rgba(0,0,0,0.25)",
         [theme.breakpoints.up('md')]: {
             width: `calc(100% - ${drawerWidth}px)`,
         },
