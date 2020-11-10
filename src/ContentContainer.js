@@ -6,6 +6,7 @@ import DevicePage from "./DevicePage";
 import ContactUsPage from "./ContactUsPage";
 import NavigationDrawer from "./NavigationDrawer";
 import PrivacyPolicy from "./PrivacyPolicy";
+import FAQ from "./FAQ";
 import { deviceList, deviceInitData, needUpdate, drawerWidth } from "./Utils";
 import { getData } from "./FirebaseComponent";
 import { parse } from 'query-string';
@@ -101,6 +102,8 @@ function ContentContainer(props) {
         componentsToRender = <ContactUsPage strings={strings} />;
     } else if (path === "privacy") {
         componentsToRender = <PrivacyPolicy strings={strings} />;
+		} else if (path === "faq") {
+				componentsToRender = <FAQ strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);

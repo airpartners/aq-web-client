@@ -47,6 +47,10 @@ export const en = {
             "ListItemText": "Showing graph data for"
         }
     },
+		"FAQ": {
+				"IntroTitle": "Frequently Asked Questions",
+				"IntroText": "Find below a knowledge base about air quality and frequently asked questions about it."
+		},
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
         "IntroText": `Air Partners built the Air Partners app as a Free app. This SERVICE is provided by Air Partners at no cost and is intended for use as is.
