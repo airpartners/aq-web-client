@@ -132,6 +132,11 @@ export const es = {
             "ListItemText": "Datos del gráfico para"
         }
     },
+		// needs translating
+		"FAQ": {
+				"IntroTitle": "Frequently Asked Questions",
+				"IntroText": "Find below a knowledge base about air quality and frequently asked questions about it."
+		},
     // This needs to be translated
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
