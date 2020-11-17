@@ -4,7 +4,8 @@ export const supported = ["en", "es"]
 export const en = {
     "code": "en",
     "DrawerNav": {
-        "Contact us": "Contact us"
+        "Contact us": "Contact us",
+				"Frequently Asked Questions":"Frequently Asked Questions"
     },
     "AppBarText": {
         "contact-us": "Contact us",
@@ -89,7 +90,8 @@ export const en = {
 export const es = {
     "code": "es",
     "DrawerNav": {
-        "Contact us": "Contactenos"
+        "Contact us": "Contactenos",
+				"Frequently Asked Questions":"Preguntas Frecuentes"
     },
     "AppBarText": {
         "contact-us": "Contactenos",
