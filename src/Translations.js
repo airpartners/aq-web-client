@@ -19,13 +19,16 @@ export const en = {
         "Body": "If you have questions or feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
     },
-    "WeatherComponent": {
+		"FAQPage" : {
+				"Title": "Frequently Asked Questions coming soon!"
+		},
+				"WeatherComponent": {
         "Weather": "Weather",
         "Temperature": "Temperature",
         "Humidity": "Humidity",
         "Wind": "Wind"
     },
-    "PollutantText": {
+				"PollutantText": {
         "CO Full Name": "Carbon Monoxide",
         "NO2 Full Name": "Nitrogen Dioxide",
         "O3 Full Name": "Ozone",
@@ -105,6 +108,9 @@ export const es = {
         "Body": "Si tiene preguntas o comentarios, por favor contactenos en ",
         "Email": "adeairquality@gmail.com"
     },
+		"FAQPage" : {
+				"Title": "Frequently Asked Questions coming soon!"
+		},
     "WeatherComponent": {
         "Weather": "Clima",
         "Temperature": "Temperatura",
