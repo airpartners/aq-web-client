@@ -44,13 +44,13 @@ function FAQ(props) {
 
     return (
         <div className={classes.content}>
-										<Card className={classes.customCard}>
-												<CardHeader title="Frequently Asked Questions coming soon!"/>
-												<CardContent>
-														<Typography variant="body2" color="textSecondary" component="p">
-														</Typography>
-												</CardContent>
-										</Card>
+						<Card className={classes.customCard}>
+								<CardHeader title={strings["FAQPage"]["Title"]}/>
+								<CardContent>
+										<Typography variant="body2" color="textSecondary" component="p">
+										</Typography>
+								</CardContent>
+						</Card>
         </div>);
 }
 
