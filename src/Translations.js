@@ -4,7 +4,8 @@ export const supported = ["en", "es"]
 export const en = {
     "code": "en",
     "DrawerNav": {
-        "Contact us": "Contact us"
+        "Contact us": "Contact us",
+				"Frequently Asked Questions":"Frequently Asked Questions"
     },
     "AppBarText": {
         "contact-us": "Contact us",
@@ -18,13 +19,16 @@ export const en = {
         "Body": "If you have questions or feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
     },
-    "WeatherComponent": {
+		"FAQPage" : {
+				"Title": "Frequently Asked Questions coming soon!"
+		},
+				"WeatherComponent": {
         "Weather": "Weather",
         "Temperature": "Temperature",
         "Humidity": "Humidity",
         "Wind": "Wind"
     },
-    "PollutantText": {
+				"PollutantText": {
         "CO Full Name": "Carbon Monoxide",
         "NO2 Full Name": "Nitrogen Dioxide",
         "O3 Full Name": "Ozone",
@@ -47,6 +51,10 @@ export const en = {
             "ListItemText": "Showing graph data for"
         }
     },
+		"FAQ": {
+				"IntroTitle": "Frequently Asked Questions",
+				"IntroText": "Find below a knowledge base about air quality and frequently asked questions about it."
+		},
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
         "IntroText": `Air Partners built the Air Partners app as a Free app. This SERVICE is provided by Air Partners at no cost and is intended for use as is.
@@ -85,7 +93,8 @@ export const en = {
 export const es = {
     "code": "es",
     "DrawerNav": {
-        "Contact us": "Contactenos"
+        "Contact us": "Contactenos",
+				"Frequently Asked Questions":"Preguntas Frecuentes"
     },
     "AppBarText": {
         "contact-us": "Contactenos",
@@ -99,6 +108,9 @@ export const es = {
         "Body": "Si tiene preguntas o comentarios, por favor contactenos en ",
         "Email": "adeairquality@gmail.com"
     },
+		"FAQPage" : {
+				"Title": "Frequently Asked Questions coming soon!"
+		},
     "WeatherComponent": {
         "Weather": "Clima",
         "Temperature": "Temperatura",
@@ -128,6 +140,11 @@ export const es = {
             "ListItemText": "Datos del gráfico para"
         }
     },
+		// needs translating
+		"FAQ": {
+				"IntroTitle": "Frequently Asked Questions",
+				"IntroText": "Find below a knowledge base about air quality and frequently asked questions about it."
+		},
     // This needs to be translated
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
