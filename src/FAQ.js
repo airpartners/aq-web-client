@@ -9,10 +9,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
     },
-		customCard: {
-				marginBottom: theme.spacing(3),
-				padding: theme.spacing(3)
-		},
+    customCard: {
+        marginBottom: theme.spacing(3),
+        padding: theme.spacing(3)
+    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
@@ -21,20 +21,20 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
         marginBottom: theme.spacing(3)
     },
-		media: {
+    media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-		},
-		expand: {
-				transform: 'rotate(0deg)',
-				marginLeft: 'auto',
-				transition: theme.transitions.create('transform', {
-						duration: theme.transitions.duration.shortest,
-				}),
-		},
-		expandOpen: {
-				transform: 'rotate(180deg)',
-		},
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
 
 }));
 
@@ -44,13 +44,13 @@ function FAQ(props) {
 
     return (
         <div className={classes.content}>
-						<Card className={classes.customCard}>
-								<CardHeader title={strings["FAQPage"]["Title"]}/>
-								<CardContent>
-										<Typography variant="body2" color="textSecondary" component="p">
-										</Typography>
-								</CardContent>
-						</Card>
+            <Card className={classes.customCard}>
+                <CardHeader title={strings["FAQPage"]["Title"]}/>
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                    </Typography>
+                </CardContent>
+            </Card>
         </div>);
 }
 
