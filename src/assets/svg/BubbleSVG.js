@@ -30,13 +30,13 @@ function BubbleSVG(props) {
                   d={`M ${padding + offsetX} ${padding + radius - offsetY} 
                       A ${radius} ${radius} 0 ${largeArcFlag} 0 ${padding + diameter - offsetX} ${padding + radius - offsetY}
                       L ${padding + offsetX} ${padding + radius - offsetY}`}/>
-            {/* Safe lines */}
+            {/* Baseline lines */}
             <line x1={diameter + padding * 2} y1={radius + padding}
                   x2={diameter + padding} y2={radius + padding}
                   stroke="black" strokeWidth="1"/>
             <line x1={padding} y1={radius + padding}
                   x2={diameter + padding} y2={radius + padding}
-                  stroke={Colors.grey}
+                  stroke={Colors.lightGrey}
                   strokeWidth="3"
                   strokeDasharray="3 3"/>
             <text x={diameter + padding * 2.5} y={height / 2 - padding * 2}
@@ -62,7 +62,7 @@ BubbleSVG.defaultProps = {
     color: Colors.green,
     currentText: "?? ug/m3", // The current concentration
     pollutantText: "PM2.5", // The name of the pollutant
-    standardText1: "?? ug/m3", // The safe concentration
+    standardText1: "?? ug/m3", // The baseline threshold
     standardText2: "EPA 1 hour",
     standardText3: "standard",
     currentTextLength: 56,

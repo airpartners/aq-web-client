@@ -18,7 +18,7 @@ function CloudSVG(props) {
 
 CloudSVG.defaultProps = {
     size: 315,
-    color: Colors.yellow,
+    color: Colors.orange,
     strokeColor: Colors.primaryColor,
     strokeWidth: "3",
 }

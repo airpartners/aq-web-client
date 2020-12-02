@@ -41,7 +41,11 @@ export const en = {
     "AtAGlance": {
         "Now": "Now",
         "Last updated": "Last updated",
-        "Not available": "Not available"
+        "Not available": "Not available",
+        "Baseline unavailable": "Baseline unavailable",
+        "Data not available": "Data not available",
+        "Above baseline": "above baseline",
+        "Below baseline": "below baseline",
     },
     "Graph": {
         "Time": "Time",
@@ -130,7 +134,11 @@ export const es = {
     "AtAGlance": {
         "Now": "Actual",
         "Last updated": "Última actualización",
-        "Not available": "No está disponible"
+        "Not available": "No está disponible",
+        "Baseline unavailable": "Baseline unavailable", // TODO: Needs translating
+        "Data not available": "Data not available", // TODO: Needs translating
+        "Above baseline": "above baseline", // TODO: Needs translating
+        "Below baseline": "below baseline", // TODO: Needs translating
     },
     "Graph": {
         "Time": "Hora",
@@ -140,12 +148,11 @@ export const es = {
             "ListItemText": "Datos del gráfico para"
         }
     },
-    // needs translating
+    // TODO: needs translating
     "FAQ": {
         "IntroTitle": "Frequently Asked Questions",
         "IntroText": "Find below a knowledge base about air quality and frequently asked questions about it."
     },
-    // This needs to be translated
     "Privacy Policy": {
         "IntroTitle": "Privacy Policy",
         "IntroText": `Air Partners built the Air Partners app as a Free app. This SERVICE is provided by Air Partners at no cost and is intended for use as is.
