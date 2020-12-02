@@ -44,8 +44,8 @@ function PollutantsComponent(props) {
     const handleTabChange = (event, newId) => {
         setActiveTab(newId);
     };
-    // const getSafeValue = (id) => {
-    //     return 0.045; // TODO: remove this when safe values are determined
+    // const getBaselineValue = (id) => {
+    //     return 0.045; // TODO: remove this when baseline values are determined
     // };
     const getData = (device, pollutantId) => {
         let data = [];
@@ -69,12 +69,12 @@ function PollutantsComponent(props) {
             title: Pollutants[pollutantsToShow[activeTab]].unit,
             includeZero: false,
             // stripLines: [{
-            //     value: getSafeValue(pollutantId),
+            //     value: getBaselineValue(pollutantId),
             //     color: Colors.green,
             //     labelFontColor: Colors.green,
             //     lineDashType: "dash",
             //     thickness: 3,
-            //     label: strings['Safe']
+            //     label: strings['baseline']
             // }]
         },
         axisX: {

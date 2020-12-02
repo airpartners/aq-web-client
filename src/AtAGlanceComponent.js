@@ -1,16 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from './Utils';
-import InfoIconPopover from './InfoIconPopover';
+import { pollutantsToShow, Pollutants } from './Utils';
+import PollutantBarComponent from "./PollutantBarComponent";
 
 const useStyles = makeStyles((theme) => ({
     now: {
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'flex-start',
         [theme.breakpoints.up('lg')]: {
-            alignItems: 'center',
+            // alignItems: 'center',
         },
     },
     pollutantFullInfo: {
@@ -30,18 +29,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function truncateVal(value, pollutant) {
-    let ret;
-    switch (pollutant) {
-        case 'PM25':
-            ret = parseFloat(value.toFixed(3));
-            break;
-        default:
-            ret = parseInt(value);
-    }
-    return ret;
-}
-
 function AtAGlanceComponent(props) {
     let { strings, device } = props;
     const classes = useStyles();
@@ -54,24 +41,25 @@ function AtAGlanceComponent(props) {
                     <h2>{strings['AtAGlance']['Now']}</h2>
                     <Grid className={classes.now} container>
                         {pollutantsToShow.map(pollutant => {
-                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Not available'];
+                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
                             return (
-                                <div key={pollutant} className={classes.pollutantFullInfo}>
-                                    {Pollutants[pollutant].showInfo &&
-                                        <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
-                                    <h3>
-                                        {pollutantAbbreviationHTML(pollutant)}
-                                        {`: `}
-                                        <span className={classes.pollutantVal}>
-                                            {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
-                                        </span>
-                                        <br className={classes.pollutantHeaderBreak} />
-                                        <span className={classes.pollutantName}>
-                                            {` - `}
-                                            {strings['PollutantText'][pollutant + ' Full Name']}
-                                        </span>
-                                    </h3>
-                                </div>)
+                                <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
+                                // <div key={pollutant} className={classes.pollutantFullInfo}>
+                                //     {Pollutants[pollutant].showInfo &&
+                                //         <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
+                                //     <h3>
+                                //         {pollutantAbbreviationHTML(pollutant)}
+                                //         {`: `}
+                                //         <span className={classes.pollutantVal}>
+                                //             {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                //         </span>
+                                //         <br className={classes.pollutantHeaderBreak} />
+                                //         <span className={classes.pollutantName}>
+                                //             {` - `}
+                                //             {strings['PollutantText'][pollutant + ' Full Name']}
+                                //         </span>
+                                //     </h3>
+                                // </div>)
                         })}
                     </Grid>
                     <Grid container justify='flex-end'>
