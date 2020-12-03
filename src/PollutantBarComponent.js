@@ -9,6 +9,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import {pollutantAbbreviationHTML, Pollutants} from "./Utils";
 import Colors from "./assets/Colors";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -66,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     greyText: {
         color: Colors.grey,
     },
+    blackText: {
+        color: Colors.black,
+    },
     primaryColorText: {
         color: Colors.primaryColor,
     },
@@ -90,18 +95,24 @@ const useStyles = makeStyles((theme) => ({
             background: Colors.grey,
         },
     },
-    primaryColorBackground: {
-        background: Colors.primaryColor,
+    blackBackground: {
+        background: Colors.black,
         '&:hover': {
             opacity: "80%",
-            background: Colors.primaryColor,
+            background: Colors.black,
         },
-    },
-    dialogContentText: {
-        color: Colors.grey,
     },
     dialogTitle: {
         lineHeight: 1,
+    },
+    dialogContent: {
+        color: Colors.black,
+    },
+    dialogContentText: {
+        marginBottom: 0,
+    },
+    dialogContentSubtext: {
+        marginBottom: "12px",
     },
 }));
 
@@ -146,9 +157,11 @@ function PollutantBarComponent(props) {
     }
 
     const getTextColor = () => {
-        if (val === strings['AtAGlance']['Data not available'] || Pollutants[pollutant].baseline === 0)
+        if (val === strings['AtAGlance']['Data not available']) {
             return classes.greyText;
-        else if (val > Pollutants[pollutant].baseline) {
+        } else if (Pollutants[pollutant].baseline === 0) {
+            return classes.blackText;
+        } else if (val > Pollutants[pollutant].baseline) {
             return classes.orangeText;
         } else {
             return classes.greenText;
@@ -156,12 +169,46 @@ function PollutantBarComponent(props) {
     }
 
     const getBackgroundColor = () => {
-        if (val === strings['AtAGlance']['Data not available'] || Pollutants[pollutant].baseline === 0)
+        if (val === strings['AtAGlance']['Data not available']) {
             return classes.greyBackground;
-        else if (val > Pollutants[pollutant].baseline) {
+        } else if (Pollutants[pollutant].baseline === 0) {
+            return classes.blackBackground;
+        } else if (val > Pollutants[pollutant].baseline) {
             return classes.orangeBackground;
         } else {
             return classes.greenBackground;
+        }
+    }
+
+    const getCurrentReadingText = () => {
+        if (val === strings['AtAGlance']['Data not available']) {
+            return "_ _";
+        } else {
+            return truncateVal() + " " + Pollutants[pollutant].unit;
+        }
+    }
+
+    const getStandardText = () => {
+        if (Pollutants[pollutant].baseline === 0) {
+            return "_ _";
+        } else {
+            return strings['AtAGlance']['National Ambient Air Quality Standards'];
+        }
+    }
+
+    const getBaselineText = () => {
+        if (Pollutants[pollutant].baseline === 0) {
+            return "_ _";
+        } else {
+            return Pollutants[pollutant].baseline + " " + Pollutants[pollutant].unit;
+        }
+    }
+
+    const getAveragingTimeText = () => {
+        if (Pollutants[pollutant].baseline === 0) {
+            return "_ _"
+        } else {
+            return Pollutants[pollutant].averagingTime + "-" + strings['AtAGlance']['Hour'];
         }
     }
 
@@ -204,8 +251,23 @@ function PollutantBarComponent(props) {
                         id="scroll-dialog-description"
                         ref={descriptionElementRef}
                         tabIndex={-1}
-                        className={classes.dialogContentText}
+                        className={classes.dialogContent}
                     >
+                        <Grid container spacing={1}>
+                            <Grid item xs={6}>
+                                <h4 className={classes.dialogContentText}>Current reading</h4>
+                                <p className={classes.dialogContentSubtext}>{getCurrentReadingText()}</p>
+                                <h4 className={classes.dialogContentText}>Standard</h4>
+                                <p className={classes.dialogContentSubtext}>{getStandardText()}</p>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <h4 className={classes.dialogContentText}>Baseline</h4>
+                                <p className={classes.dialogContentSubtext}>{getBaselineText()}</p>
+                                <h4 className={classes.dialogContentText}>Averaging Time</h4>
+                                <p className={classes.dialogContentSubtext}>{getAveragingTimeText()}</p>
+                            </Grid>
+                        </Grid>
+
                         {[...new Array(50)]
                             .map(
                                 () => `This is a long text about the pollutant

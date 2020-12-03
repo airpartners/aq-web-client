@@ -46,6 +46,8 @@ export const en = {
         "Data not available": "Data not available",
         "Above baseline": "above baseline",
         "Below baseline": "below baseline",
+        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener nofollow">National Ambient Air Quality Standards</a>),
+        "Hour": "hour",
     },
     "Graph": {
         "Time": "Time",
@@ -139,6 +141,8 @@ export const es = {
         "Data not available": "Data not available", // TODO: Needs translating
         "Above baseline": "above baseline", // TODO: Needs translating
         "Below baseline": "below baseline", // TODO: Needs translating
+        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener nofollow">National Ambient Air Quality Standards</a>), // TODO: Needs translating
+        "Hour": "hour", // TODO: Needs translating
     },
     "Graph": {
         "Time": "Hora",

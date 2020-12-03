@@ -4,7 +4,8 @@ const Colors = {
     secondaryColor: "#EB861A",
     lightGrey: "#C5CAE9",
     green: "#2e7d32",
-    orange: "#388e3c",
+    orange: "#EB861A",
+    black: "rgba(0, 0, 0, 0.87)",
     grey: "#4f4f4f",
 }
 
