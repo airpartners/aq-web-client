@@ -78,6 +78,7 @@ export const Pollutants = {
         unit: "\xB5g/m\u00B3",
         baseline: 35,
         showInfo: false,
+        averagingTime: 24,
     },
     PM10: {
         id: "pm10",
@@ -85,6 +86,7 @@ export const Pollutants = {
         unit: "\xB5g/m\u00B3",
         baseline: 150,
         showInfo: false,
+        averagingTime: 24,
     },
     CO: {
         id: "co",
@@ -92,6 +94,7 @@ export const Pollutants = {
         unit: "ppb",
         baseline: 35000,
         showInfo: false,
+        averagingTime: 1,
     },
     NO2: {
         id: "no2",
@@ -99,6 +102,7 @@ export const Pollutants = {
         unit: "ppb",
         baseline: 100,
         showInfo: false,
+        averagingTime: 1,
     },
     O3: {
         id: "o3",
@@ -106,6 +110,7 @@ export const Pollutants = {
         unit: "ppb",
         baseline: 70,
         showInfo: false,
+        averagingTime: 8,
     },
     NO: {
         id: "no",
