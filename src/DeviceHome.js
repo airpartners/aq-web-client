@@ -13,7 +13,9 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(3),
-        marginBottom: theme.spacing(3)
+        marginBottom: theme.spacing(3),
+        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+        borderRadius: "4px",
     }
 }));
 
@@ -23,21 +25,21 @@ function DeviceHome(props) {
     return (
         <div className={classes.content}>
             {/* At a glance */}
-            <Paper elevation={1} className={classes.paper} key="at-a-glance">
+            <Paper className={classes.paper} key="at-a-glance">
                 {device.latest ?
                     (<AtAGlanceComponent device={device} strings={strings} />) :
                     (<ClipLoader size={150} />)}
             </Paper>
 
             {/* Pollutants */}
-            <Paper elevation={1} className={classes.paper} key="pollutants">
+            <Paper className={classes.paper} key="pollutants">
                 {device.graph ?
                     (<PollutantsComponent device={device} strings={strings} />) :
                     (<ClipLoader size={150} />)}
             </Paper>
 
             {/* Weather */}
-            <Paper elevation={1} className={classes.paper} key="weather">
+            <Paper className={classes.paper} key="weather">
                 {device.latest ?
                     (<WeatherComponent device={device} strings={strings} />) :
                     (<ClipLoader size={150} />)}

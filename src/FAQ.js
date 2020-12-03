@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
     },
     customCard: {
         marginBottom: theme.spacing(3),
-        padding: theme.spacing(3)
+        padding: theme.spacing(3),
+        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+        borderRadius: "4px",
     },
     content: {
         flexGrow: 1,
