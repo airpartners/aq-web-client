@@ -77,6 +77,7 @@ export const Pollutants = {
         name: "PM25",
         unit: "\xB5g/m\u00B3",
         baseline: 35,
+        experimentalBaseline: false,
         showInfo: false,
         averagingTime: 24,
     },
@@ -84,6 +85,7 @@ export const Pollutants = {
         id: "pm10",
         name: "PM10",
         unit: "\xB5g/m\u00B3",
+        experimentalBaseline: false,
         baseline: 150,
         showInfo: false,
         averagingTime: 24,
@@ -93,6 +95,7 @@ export const Pollutants = {
         name: "CO",
         unit: "ppb",
         baseline: 35000,
+        experimentalBaseline: false,
         showInfo: false,
         averagingTime: 1,
     },
@@ -101,6 +104,7 @@ export const Pollutants = {
         name: "NO2",
         unit: "ppb",
         baseline: 100,
+        experimentalBaseline: false,
         showInfo: false,
         averagingTime: 1,
     },
@@ -109,6 +113,7 @@ export const Pollutants = {
         name: "O3",
         unit: "ppb",
         baseline: 70,
+        experimentalBaseline: false,
         showInfo: false,
         averagingTime: 8,
     },
@@ -116,14 +121,16 @@ export const Pollutants = {
         id: "no",
         name: "NO",
         unit: "ppb",
-        baseline: 0,
+        baseline: 20,
+        experimentalBaseline: true, // TODO: needs to find a baseline value
         showInfo: false,
     },
     PNC: {
         id: "bin0",
         name: "PNC",
         unit: "particles/cm\u00B3",
-        baseline: 0,
+        experimentalBaseline: true, // TODO: needs to find a baseline value
+        baseline: 20,
         showInfo: true,
     }
 };

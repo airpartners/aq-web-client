@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'flex-start',
         [theme.breakpoints.up('lg')]: {
-            // alignItems: 'center',
+
         },
     },
     pollutantFullInfo: {
@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
 
 function AtAGlanceComponent(props) {
     let { strings, device } = props;
+    let n = pollutantsToShow.length;
     const classes = useStyles();
     const lastUpdatedDateTime = device.latest && new Date(device.latest.timestamp_local);
-
+    console.log(pollutantsToShow.slice(Math.ceil(n/2)));
     return (
         <div>
             {device.latest &&
@@ -44,26 +45,7 @@ function AtAGlanceComponent(props) {
                         {pollutantsToShow.map(pollutant => {
                             let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
                             return (
-                                <div>
-                                <div key={pollutant} className={classes.pollutantFullInfo}>
-                                    {Pollutants[pollutant].showInfo &&
-                                        <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
-                                    <h3>
-                                        {pollutantAbbreviationHTML(pollutant)}
-                                        {`: `}
-                                        <span className={classes.pollutantVal}>
-                                            {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
-                                        </span>
-                                        <br className={classes.pollutantHeaderBreak} />
-                                        <span className={classes.pollutantName}>
-                                            {` - `}
-                                            {strings['PollutantText'][pollutant + ' Full Name']}
-                                        </span>
-                                    </h3>
-                                </div>
-                                <ThresholdBar value={truncateVal(val, pollutant)} threshold={30}></ThresholdBar>
-                                </div>
-                                )
+                                    <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
                         })}
                     </Grid>
                     <Grid container justify='flex-end'>
