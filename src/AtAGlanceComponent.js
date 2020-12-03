@@ -1,8 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { LinearProgress } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { pollutantsToShow, Pollutants } from './Utils';
-import PollutantBarComponent from "./PollutantBarComponent";
+import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from './Utils';
+import InfoIconPopover from './InfoIconPopover';
+import ThresholdBar from './ThresholdBar';
 
 const useStyles = makeStyles((theme) => ({
     now: {
@@ -43,23 +45,26 @@ function AtAGlanceComponent(props) {
                         {pollutantsToShow.map(pollutant => {
                             let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
                             return (
-                                <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
-                                // <div key={pollutant} className={classes.pollutantFullInfo}>
-                                //     {Pollutants[pollutant].showInfo &&
-                                //         <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
-                                //     <h3>
-                                //         {pollutantAbbreviationHTML(pollutant)}
-                                //         {`: `}
-                                //         <span className={classes.pollutantVal}>
-                                //             {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
-                                //         </span>
-                                //         <br className={classes.pollutantHeaderBreak} />
-                                //         <span className={classes.pollutantName}>
-                                //             {` - `}
-                                //             {strings['PollutantText'][pollutant + ' Full Name']}
-                                //         </span>
-                                //     </h3>
-                                // </div>)
+                                <div>
+                                <div key={pollutant} className={classes.pollutantFullInfo}>
+                                    {Pollutants[pollutant].showInfo &&
+                                        <InfoIconPopover content={strings['PollutantText'][pollutant + ' Info']} />}
+                                    <h3>
+                                        {pollutantAbbreviationHTML(pollutant)}
+                                        {`: `}
+                                        <span className={classes.pollutantVal}>
+                                            {(val === strings['AtAGlance']['Not available']) ? val : `${truncateVal(val, pollutant)} ${Pollutants[pollutant].unit}`}
+                                        </span>
+                                        <br className={classes.pollutantHeaderBreak} />
+                                        <span className={classes.pollutantName}>
+                                            {` - `}
+                                            {strings['PollutantText'][pollutant + ' Full Name']}
+                                        </span>
+                                    </h3>
+                                </div>
+                                <ThresholdBar value={truncateVal(val, pollutant)} threshold={30}></ThresholdBar>
+                                </div>
+                                )
                         })}
                     </Grid>
                     <Grid container justify='flex-end'>
