@@ -140,7 +140,7 @@ function PollutantBarComponent(props) {
         } else {
             let value = truncateVal();
             let baseline = Pollutants[pollutant].baseline;
-            let percentage = ((value - baseline) / baseline).toFixed(2);
+            let percentage = ((value - baseline) / baseline * 100).toFixed(1);
             return percentage + "% " + (percentage > 0 ? strings['AtAGlance']['Above baseline'] : strings['AtAGlance']['Below baseline']);
         }
     }
