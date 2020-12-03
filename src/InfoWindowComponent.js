@@ -28,11 +28,12 @@ function InfoWindowComponent(props) {
         </Paper>
     );
 }
+let minWidth = 400;
 InfoWindowComponent.defaultProps = {
     top: 0,
-    left: -90,
+    left: -(minWidth / 2 - 15),
     right: 0,
     bottom: 0,
-    minWidth: 200,
+    minWidth: minWidth,
 }
 export default InfoWindowComponent;
