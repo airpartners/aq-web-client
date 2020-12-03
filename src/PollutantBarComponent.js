@@ -9,19 +9,30 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import {pollutantAbbreviationHTML, Pollutants} from "./Utils";
 import Colors from "./assets/Colors";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import ThresholdBar from "./ThresholdBar";
 
 const useStyles = makeStyles((theme) => ({
     content: {
-        display: 'flex',
+        display: "flex",
+        width: "100%",
+        maxWidth: "500px",
+        flexDirection: "column",
+        marginBottom: "1.5rem",
+    },
+    topContent: {
+        display: "flex",
         width: "100%",
         flexDirection: 'row',
-        marginBottom: "1rem",
+        marginBottom: ".3rem",
     },
-    textContent: {
+    textTopContent: {
         width: "70%",
-        maxWidth: "500px",
+    },
+    buttonTopContent: {
+        display: "flex",
+        justifyContent: "flex-end",
+        width: "30%",
     },
     pollutantTitle: {
         marginBottom: 0,
@@ -42,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: 1.5,
         fontWeight: "500",
         fontSize: ".8em",
+        marginBottom: ".4rem",
     },
     roundBtn: {
         color: "white",
@@ -58,52 +70,13 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.between('xs', 'sm')]: {
             padding: ".6rem .45rem",
         },
-    },
-    greenText: {
-        color: Colors.green,
-    },
-    orangeText: {
-        color: Colors.orange,
-    },
-    greyText: {
-        color: Colors.grey,
-    },
-    blackText: {
-        color: Colors.black,
-    },
-    primaryColorText: {
-        color: Colors.primaryColor,
-    },
-    greenBackground: {
-        background: Colors.green,
         '&:hover': {
             opacity: "80%",
-            background: Colors.green,
-        },
-    },
-    orangeBackground: {
-        background: Colors.orange,
-        '&:hover': {
-            opacity: "80%",
-            background: Colors.orange,
-        },
-    },
-    greyBackground: {
-        background: Colors.grey,
-        '&:hover': {
-            opacity: "80%",
-            background: Colors.grey,
-        },
-    },
-    blackBackground: {
-        background: Colors.black,
-        '&:hover': {
-            opacity: "80%",
-            background: Colors.black,
         },
     },
     dialogTitle: {
         lineHeight: 1,
+        marginBottom: "1rem",
     },
     dialogContent: {
         color: Colors.black,
@@ -121,7 +94,15 @@ function PollutantBarComponent(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [scroll, setScroll] = React.useState('paper');
-
+    const descriptionElementRef = React.useRef(null);
+    React.useEffect(() => {
+        if (open) {
+            const {current: descriptionElement} = descriptionElementRef;
+            if (descriptionElement !== null) {
+                descriptionElement.focus();
+            }
+        }
+    }, [open]);
     const handleClickOpen = (scrollType) => () => {
         setOpen(true);
         setScroll(scrollType);
@@ -132,21 +113,19 @@ function PollutantBarComponent(props) {
     };
 
     const truncateVal = () => {
-        let ret;
-        switch (pollutant) {
-            case 'PM25':
-                ret = parseFloat(val.toFixed(3));
-                break;
-            default:
-                ret = parseInt(val);
+        if (val === strings['AtAGlance']['Data not available']) {
+            return 0;
+        } else if (pollutant === 'PM25') {
+            return parseFloat(val.toFixed(3));
+        } else {
+            return parseInt(val);
         }
-        return ret;
     }
 
     const getAboveAverageText = () => {
-        if (val === strings['AtAGlance']['Data not available'])
+        if (val === strings['AtAGlance']['Data not available']) {
             return strings['AtAGlance']['Data not available'];
-        else if (Pollutants[pollutant].baseline === 0) {
+        } else if (Pollutants[pollutant].experimentalBaseline) {
             return strings['AtAGlance']['Baseline unavailable'];
         } else {
             let value = truncateVal();
@@ -156,27 +135,15 @@ function PollutantBarComponent(props) {
         }
     }
 
-    const getTextColor = () => {
+    const getColor = () => {
         if (val === strings['AtAGlance']['Data not available']) {
-            return classes.greyText;
-        } else if (Pollutants[pollutant].baseline === 0) {
-            return classes.blackText;
+            return Colors.grey;
+        } else if (Pollutants[pollutant].experimentalBaseline) {
+            return Colors.black;
         } else if (val > Pollutants[pollutant].baseline) {
-            return classes.orangeText;
+            return Colors.orange;
         } else {
-            return classes.greenText;
-        }
-    }
-
-    const getBackgroundColor = () => {
-        if (val === strings['AtAGlance']['Data not available']) {
-            return classes.greyBackground;
-        } else if (Pollutants[pollutant].baseline === 0) {
-            return classes.blackBackground;
-        } else if (val > Pollutants[pollutant].baseline) {
-            return classes.orangeBackground;
-        } else {
-            return classes.greenBackground;
+            return Colors.green;
         }
     }
 
@@ -189,7 +156,7 @@ function PollutantBarComponent(props) {
     }
 
     const getStandardText = () => {
-        if (Pollutants[pollutant].baseline === 0) {
+        if (Pollutants[pollutant].experimentalBaseline) {
             return "_ _";
         } else {
             return strings['AtAGlance']['National Ambient Air Quality Standards'];
@@ -212,26 +179,26 @@ function PollutantBarComponent(props) {
         }
     }
 
-    const descriptionElementRef = React.useRef(null);
-    React.useEffect(() => {
-        if (open) {
-            const {current: descriptionElement} = descriptionElementRef;
-            if (descriptionElement !== null) {
-                descriptionElement.focus();
-            }
-        }
-    }, [open]);
     return (
         <div className={classes.content}>
-            <div className={classes.textContent}>
-                <h3 className={`${classes.pollutantTitle} ${getTextColor()}`}>
-                    {pollutantAbbreviationHTML(pollutant)}, {strings['PollutantText'][pollutant + ' Full Name']}
-                </h3>
-                <p className={`${classes.baselineText} ${getTextColor()}`}>{getAboveAverageText(val, strings, pollutant)}</p>
+            <div className={classes.topContent}>
+                <div className={classes.textTopContent}>
+                    <h3 className={classes.pollutantTitle} style={{color: getColor()}}>
+                        {pollutantAbbreviationHTML(pollutant)}, {strings['PollutantText'][pollutant + ' Full Name']}
+                    </h3>
+                    <p className={classes.baselineText}
+                       style={{color: getColor()}}>{getAboveAverageText(val, strings, pollutant)}</p>
+                </div>
+                <div className={classes.buttonTopContent}>
+                    <Button className={classes.roundBtn}
+                            style={{background: getColor()}}
+                            onClick={handleClickOpen('paper')}>
+                        Learn more
+                    </Button>
+                </div>
             </div>
-            <Button className={`${classes.roundBtn} ${getBackgroundColor()}`} onClick={handleClickOpen('paper')}>
-                Learn more
-            </Button>
+            <ThresholdBar value={truncateVal()} threshold={Pollutants[pollutant].baseline}
+                          showVerticalBar={!Pollutants[pollutant].experimentalBaseline} barColor={getColor()}/>
 
             <Dialog
                 open={open}
@@ -241,10 +208,14 @@ function PollutantBarComponent(props) {
                 aria-describedby="scroll-dialog-description"
             >
                 <DialogTitle className={classes.dialogTitle} id="scroll-dialog-title">
-                    <h3 className={`${classes.pollutantDialogTitle} ${getTextColor()}`}>
+                    <h3 className={classes.pollutantDialogTitle} style={{color: getColor()}}>
                         {pollutantAbbreviationHTML(pollutant)}, {strings['PollutantText'][pollutant + ' Full Name']}
                     </h3>
-                    <p className={`${classes.baselineDialogText} ${getTextColor()}`}>{getAboveAverageText(val, strings, pollutant)}</p>
+                    <p className={classes.baselineDialogText}
+                       style={{color: getColor()}}>{getAboveAverageText(val, strings, pollutant)}
+                    </p>
+                    <ThresholdBar value={truncateVal()} threshold={Pollutants[pollutant].baseline}
+                                  showVerticalBar={!Pollutants[pollutant].experimentalBaseline} barColor={getColor()}/>
                 </DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
                     <DialogContentText
@@ -267,14 +238,6 @@ function PollutantBarComponent(props) {
                                 <p className={classes.dialogContentSubtext}>{getAveragingTimeText()}</p>
                             </Grid>
                         </Grid>
-
-                        {[...new Array(50)]
-                            .map(
-                                () => `This is a long text about the pollutant
-                                        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-                            )
-                            .join('\n\n')}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
