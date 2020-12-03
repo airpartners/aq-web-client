@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { LinearProgress } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from './Utils';
 import InfoIconPopover from './InfoIconPopover';
