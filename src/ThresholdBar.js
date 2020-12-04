@@ -2,6 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Colors from "./assets/Colors";
 
+const verticalBarPercent = 35;
 const useStyles = makeStyles((theme) => ({
     thresholdBar: {
         position: "relative",
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         top: "-2px",
         width: "1px",
         height: '14px',
-        marginLeft: "30%",
+        marginLeft: verticalBarPercent + "%",
     }
 }));
 
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 function ThresholdBar(props) {
     let {value, threshold, barColor, showVerticalBar} = props;
     const classes = useStyles();
-    let percentage = value / threshold * 30;
+    let percentage = value / threshold * verticalBarPercent;
     percentage = Math.min(100, Math.max(percentage, 2));
     return (
         <div className={classes.thresholdBar}>

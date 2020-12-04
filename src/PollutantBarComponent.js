@@ -115,7 +115,7 @@ function PollutantBarComponent(props) {
     const truncateVal = () => {
         if (val === strings['AtAGlance']['Data not available']) {
             return 0;
-        } else if (pollutant === 'PM25') {
+        } else if (pollutant === 'PM25' || pollutant === 'PM10') {
             return parseFloat(val.toFixed(3));
         } else {
             return parseInt(val);
@@ -126,7 +126,7 @@ function PollutantBarComponent(props) {
         if (val === strings['AtAGlance']['Data not available']) {
             return strings['AtAGlance']['Data not available'];
         } else if (Pollutants[pollutant].experimentalBaseline) {
-            return strings['AtAGlance']['Baseline unavailable'];
+            return truncateVal(val, pollutant) + " " + Pollutants[pollutant].unit + ", " + strings['AtAGlance']['Baseline unavailable'];
         } else {
             let value = truncateVal();
             let baseline = Pollutants[pollutant].baseline;
@@ -164,7 +164,7 @@ function PollutantBarComponent(props) {
     }
 
     const getBaselineText = () => {
-        if (Pollutants[pollutant].baseline === 0) {
+        if (Pollutants[pollutant].experimentalBaseline) {
             return "_ _";
         } else {
             return Pollutants[pollutant].baseline + " " + Pollutants[pollutant].unit;
@@ -172,7 +172,7 @@ function PollutantBarComponent(props) {
     }
 
     const getAveragingTimeText = () => {
-        if (Pollutants[pollutant].baseline === 0) {
+        if (Pollutants[pollutant].experimentalBaseline) {
             return "_ _"
         } else {
             return Pollutants[pollutant].averagingTime + "-" + strings['AtAGlance']['Hour'];
@@ -184,7 +184,7 @@ function PollutantBarComponent(props) {
             <div className={classes.topContent}>
                 <div className={classes.textTopContent}>
                     <h3 className={classes.pollutantTitle} style={{color: getColor()}}>
-                        {pollutantAbbreviationHTML(pollutant)}, {strings['PollutantText'][pollutant + ' Full Name']}
+                        {pollutantAbbreviationHTML(pollutant)}, {strings['PollutantText'][pollutant + ' Shorten Full Name']}
                     </h3>
                     <p className={classes.baselineText}
                        style={{color: getColor()}}>{getAboveAverageText(val, strings, pollutant)}</p>
