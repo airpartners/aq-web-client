@@ -1,17 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { pollutantsToShow, Pollutants, pollutantAbbreviationHTML } from './Utils';
-import InfoIconPopover from './InfoIconPopover';
-import ThresholdBar from './ThresholdBar';
+import {pollutantsToShow, Pollutants} from './Utils';
+import PollutantBarComponent from "./PollutantBarComponent";
 
 const useStyles = makeStyles((theme) => ({
     now: {
         flexDirection: 'column',
         alignItems: 'flex-start',
-        [theme.breakpoints.up('lg')]: {
-
-        },
+        [theme.breakpoints.up('lg')]: {},
     },
     pollutantFullInfo: {
         display: 'flex',
@@ -31,30 +28,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AtAGlanceComponent(props) {
-    let { strings, device } = props;
-    let n = pollutantsToShow.length;
+    let {strings, device} = props;
     const classes = useStyles();
     const lastUpdatedDateTime = device.latest && new Date(device.latest.timestamp_local);
-    console.log(pollutantsToShow.slice(Math.ceil(n/2)));
     return (
         <div>
             {device.latest &&
-                <div>
-                    <h2>{strings['AtAGlance']['Now']}</h2>
-                    <Grid className={classes.now} container>
-                        {pollutantsToShow.map(pollutant => {
-                            let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
-                            return (
-                                    <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
-                        })}
-                    </Grid>
-                    <Grid container justify='flex-end'>
-                        <p>{strings['AtAGlance']['Last updated'] + ': ' + lastUpdatedDateTime.toLocaleString(strings['code'], {
-                            dateStyle: 'medium',
-                            timeStyle: 'short'
-                        })}</p>
-                    </Grid>
-                </div>}
+            <div>
+                <h2>{strings['AtAGlance']['Now']}</h2>
+                <Grid className={classes.now} container>
+                    {pollutantsToShow.map(pollutant => {
+                        let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
+                        return (
+                            <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
+                    })}
+                </Grid>
+                <Grid container justify='flex-end'>
+                    <p>{strings['AtAGlance']['Last updated'] + ': ' + lastUpdatedDateTime.toLocaleString(strings['code'], {
+                        dateStyle: 'medium',
+                        timeStyle: 'short'
+                    })}</p>
+                </Grid>
+            </div>}
         </div>);
 }
 
