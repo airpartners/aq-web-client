@@ -38,7 +38,7 @@ function AtAGlanceComponent(props) {
                 <h2>{strings['AtAGlance']['Now']}</h2>
                 <Grid className={classes.now} container>
                     {pollutantsToShow.map(pollutant => {
-                        let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data not available'];
+                        let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data unavailable'];
                         return (
                             <PollutantBarComponent key={pollutant} pollutant={pollutant} strings={strings} val={val}/>)
                     })}
