@@ -54,7 +54,7 @@ export const en = {
         "Data unavailable": "Data unavailable",
         "Above baseline": "above baseline",
         "Below baseline": "below baseline",
-        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener nofollow">National Ambient Air Quality Standards</a>),
+        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener noreferrer">National Ambient Air Quality Standards</a>),
         "Hour": "hour",
         "What is ppb": "What is ppb?",
         "What is ppb answer": "Parts per billion (ppb) is a term that expresses the number of units (parts) of a given substance that exist as a portion of a greater substance composed of one billion parts.",
@@ -75,8 +75,8 @@ export const en = {
                 "Harmful effects": (<span>CO at high levels can be harmful to humans by impairing the amount of oxygen transported in the bloodstream to critical organs. The most common effects of CO exposure are fatigue, headaches, confusion, and dizziness due to inadequate oxygen delivery to the brain.
                     <br/>For people with cardiovascular disease, short-term CO exposure can further reduce their body’s already compromised ability to respond to the increased oxygen demands of exercise, exertion, or stress. Inadequate oxygen delivery to the heart muscle leads to chest pain and decreased exercise tolerance. Unborn babies whose mothers experience high levels of CO exposure during pregnancy are at risk of adverse developmental effects. New evidence also reveals that long-term exposure to low concentrations is also associated with a wide range of health effects. [1, 2]</span>),
                 "At risk populations": (<span>Unborn babies, infants, elderly people, and people with anemia or with a history of heart or respiratory disease are most likely to experience health effects with exposure to elevated levels of CO. [2]</span>),
-                "Sources": (<span>[1] <a href="https://www.who.int/airpollution/ambient/pollutants/en/" target="_blank" rel="noopener nofollow">Ambient air pollution: Pollutants | WHO Air Quality Guidelines</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/carbon-monoxide-and-health" target="_blank" rel="noopener nofollow">Carbon Monoxide & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.who.int/airpollution/ambient/pollutants/en/" target="_blank" rel="noopener noreferrer">Ambient air pollution: Pollutants | WHO Air Quality Guidelines</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/carbon-monoxide-and-health" target="_blank" rel="noopener noreferrer">Carbon Monoxide & Health | California Air Resources Board</a>
                     </span>),
             },
         },
@@ -93,8 +93,8 @@ export const en = {
                     Nitrogen oxides are released to the air from the exhaust of motor vehicles, the burning of coal, oil, or natural gas, and during processes such as arc welding, electroplating, engraving, and dynamite blasting. They are also produced commercially by reacting nitric acid with metals or cellulose. [1]</span>),
                 "Harmful effects": (<span>Low levels of nitrogen oxides in the air can irritate your eyes, nose, throat, and lungs, possibly causing you to cough and experience shortness of breath, tiredness, and nausea. Exposure to low levels can also result in fluid build-up in the lungs 1 or 2 days after exposure. Breathing high levels of nitrogen oxides can cause rapid burning, spasms, and swelling of tissues in the throat and upper respiratory tract, reduced oxygenation of body tissues, a build-up of fluid in your lungs, and death. [1]</span>),
                 "At risk populations": (<span>Infants and children are particularly at risk because they have disproportionately higher exposure to NO<sub>2</sub> than adults due to their greater breathing rate for their body weight and their typically greater outdoor exposure duration. Several studies have shown that long-term NO<sub>2</sub> exposure during childhood, the period of rapid lung growth, can lead to smaller lungs at maturity in children with higher compared to lower levels of exposure. In addition, children with asthma have a greater degree of airway responsiveness compared with adult asthmatics. In adults, the greatest risk is to people who have chronic respiratory diseases, such as asthma and chronic obstructive pulmonary disease. [2]</span>),
-                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener nofollow">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/nitrogen-dioxide-and-health" target="_blank" rel="noopener nofollow">Nitrogen Dioxide & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener noreferrer">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/nitrogen-dioxide-and-health" target="_blank" rel="noopener noreferrer">Nitrogen Dioxide & Health | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -112,8 +112,8 @@ export const en = {
                     <br/>However, there are a number of reasons why children may be more susceptible to ozone and other pollutants. Children and teens spend nearly twice as much time outdoors and engage in vigorous activities as adults. Children breathe more rapidly than adults and inhale more pollution per pound of their body weight than adults. Also, children are less likely than adults to notice their own symptoms and avoid harmful exposures.
                     <br/>Further research may be able to better distinguish between health effects in children and adults. Children, adolescents, and adults who exercise or work outdoors, where ozone concentrations are the highest, are at the greatest risk of harm from this pollutant. [2]
                     </span>),
-                "Sources": (<span>[1] <a href="https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone" target="_blank" rel="noopener nofollow">What is Ozone? | Ozone and Your Patients' Health | US EPA</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/ozone-and-health" target="_blank" rel="noopener nofollow">Ozone & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone" target="_blank" rel="noopener noreferrer">What is Ozone? | Ozone and Your Patients' Health | US EPA</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/ozone-and-health" target="_blank" rel="noopener noreferrer">Ozone & Health | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -133,7 +133,7 @@ export const en = {
                 "At risk populations": (<span>Research points to older adults with chronic heart or lung disease, children and asthmatics as the groups most likely to experience adverse health effects with exposure to PM<sub>10</sub> and PM<sub>2.5</sub>.
                     <br/>Also, children and infants are susceptible to harm from inhaling pollutants such as PM because they inhale more air per pound of body weight than do adults - they breathe faster, spend more time outdoors and have smaller body sizes. In addition, children's immature immune systems may cause them to be more susceptible to PM than healthy adults.
                     <br/>Research from the California Air Resources Board (CARB)-initiated Children’s Health Study found that children living in communities with high levels of PM<sub>2.5</sub> had slower lung growth, and had smaller lungs at age 18 compared to children who lived in communities with low PM<sub>2.5</sub> levels. [1]</span>),
-                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener nofollow">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener noreferrer">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -152,7 +152,7 @@ export const en = {
                 "At risk populations": (<span>Research points to older adults with chronic heart or lung disease, children and asthmatics as the groups most likely to experience adverse health effects with exposure to PM<sub>10</sub> and PM<sub>2.5</sub>.
                     <br/>Also, children and infants are susceptible to harm from inhaling pollutants such as PM because they inhale more air per pound of body weight than do adults - they breathe faster, spend more time outdoors and have smaller body sizes. In addition, children's immature immune systems may cause them to be more susceptible to PM than healthy adults.
                     <br/>Research from the California Air Resources Board (CARB)-initiated Children’s Health Study found that children living in communities with high levels of PM<sub>2.5</sub> had slower lung growth, and had smaller lungs at age 18 compared to children who lived in communities with low PM<sub>2.5</sub> levels. [1]</span>),
-                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener nofollow">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener noreferrer">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -168,8 +168,8 @@ export const en = {
                 "Harmful effects": (<span>It can cause breathing problems, headaches, chronically reduced lung function, eye irritation, loss of appetite and corroded teeth.
                     Also emitted in diesel fumes are solid particles which can penetrate deep into the lungs and cause cancer, chronic breathing problems and premature death in people with heart or lung disease. [2]</span>),
                 "At risk populations": "",
-                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener nofollow">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
-                    <br/>[2] <a href="https://phys.org/news/2015-09-nox-gases-diesel-car-fumes.html" target="_blank" rel="noopener nofollow">NO<sub>x</sub> gases in diesel car fumes: Why are they so dangerous? (phys.org)</a>
+                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener noreferrer">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
+                    <br/>[2] <a href="https://phys.org/news/2015-09-nox-gases-diesel-car-fumes.html" target="_blank" rel="noopener noreferrer">NO<sub>x</sub> gases in diesel car fumes: Why are they so dangerous? (phys.org)</a>
                     </span>),
             }
         },
@@ -184,7 +184,7 @@ export const en = {
                 "What is it": (<span>Particle Number Concentration (PNC) is a measure of particles in the smallest size range our instrument measures (300-500 nm). While this is larger than the ultrafine particle (UFP) size range (smaller than 100 nm), combined with combustion-related gas phase pollutants like NO and CO, PNC<sub>0.3-0.5</sub> gives us a sense of when the smallest particles, including UFPs, are high in concentration.</span>),
                 "Harmful effects": (<span>Small particles are the most dangerous for human health because they are able to penetrate deeply into the lungs and have long lifetimes in the air. [1]</span>),
                 "At risk populations": "",
-                "Sources": (<span>[1] <a href="https://www.lung.org/clean-air/outdoors/what-makes-air-unhealthy/particle-pollution" target="_blank" rel="noopener nofollow">Particle Pollution (lung.org)</a>
+                "Sources": (<span>[1] <a href="https://www.lung.org/clean-air/outdoors/what-makes-air-unhealthy/particle-pollution" target="_blank" rel="noopener noreferrer">Particle Pollution (lung.org)</a>
                     </span>),
             }
         },
@@ -281,16 +281,17 @@ export const es = {
         "PNC Info": (<span>Small particles are the most dangerous for human health, because they are able to penetrate deeply into the lungs and have long lifetimes in the air. This is a measure of the particle number concentration (PNC) of particles in the smallest size range our instrument measures (300-500 nm). While this is larger than the ultrafine particle (UFP) size range (smaller than 100 nm), combined with combustion-related gas phase pollutants like NO and CO, PNC<sub>0.3-0.5</sub> gives us a sense of when the smallest particles, including UFPs, are high in concentration.</span>)
     },
     "Pollutants": "Contaminantes",
+    // TODO: Needs translating
     "AtAGlance": {
         "Now": "Actual",
         "Last updated": "Última actualización",
         "Not available": "No está disponible",
-        "Baseline unavailable": "Baseline unavailable", // TODO: Needs translating
-        "Data unavailable": "Data unavailable", // TODO: Needs translating
-        "Above baseline": "above baseline", // TODO: Needs translating
-        "Below baseline": "below baseline", // TODO: Needs translating
-        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener nofollow">National Ambient Air Quality Standards</a>), // TODO: Needs translating
-        "Hour": "hour", // TODO: Needs translating
+        "Baseline unavailable": "Baseline unavailable",
+        "Data unavailable": "Data unavailable",
+        "Above baseline": "above baseline",
+        "Below baseline": "below baseline",
+        "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener noreferrer">National Ambient Air Quality Standards</a>), // TODO: Needs translating
+        "Hour": "hour",
         "What is ppb": "What is ppb?",
         "What is ppb answer": "Parts per billion (ppb) is a term that expresses the number of units (parts) of a given substance that exist as a portion of a greater substance composed of one billion parts.",
         "Why data is not available": "Why data is not available?",
@@ -310,8 +311,8 @@ export const es = {
                 "Harmful effects": (<span>CO at high levels can be harmful to humans by impairing the amount of oxygen transported in the bloodstream to critical organs. The most common effects of CO exposure are fatigue, headaches, confusion, and dizziness due to inadequate oxygen delivery to the brain.
                     <br/>For people with cardiovascular disease, short-term CO exposure can further reduce their body’s already compromised ability to respond to the increased oxygen demands of exercise, exertion, or stress. Inadequate oxygen delivery to the heart muscle leads to chest pain and decreased exercise tolerance. Unborn babies whose mothers experience high levels of CO exposure during pregnancy are at risk of adverse developmental effects. New evidence also reveals that long-term exposure to low concentrations is also associated with a wide range of health effects. [1, 2]</span>),
                 "At risk populations": (<span>Unborn babies, infants, elderly people, and people with anemia or with a history of heart or respiratory disease are most likely to experience health effects with exposure to elevated levels of CO. [2]</span>),
-                "Sources": (<span>[1] <a href="https://www.who.int/airpollution/ambient/pollutants/en/" target="_blank" rel="noopener nofollow">Ambient air pollution: Pollutants | WHO Air Quality Guidelines</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/carbon-monoxide-and-health" target="_blank" rel="noopener nofollow">Carbon Monoxide & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.who.int/airpollution/ambient/pollutants/en/" target="_blank" rel="noopener noreferrer">Ambient air pollution: Pollutants | WHO Air Quality Guidelines</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/carbon-monoxide-and-health" target="_blank" rel="noopener noreferrer">Carbon Monoxide & Health | California Air Resources Board</a>
                     </span>),
             },
         },
@@ -328,8 +329,8 @@ export const es = {
                     Nitrogen oxides are released to the air from the exhaust of motor vehicles, the burning of coal, oil, or natural gas, and during processes such as arc welding, electroplating, engraving, and dynamite blasting. They are also produced commercially by reacting nitric acid with metals or cellulose. [1]</span>),
                 "Harmful effects": (<span>Low levels of nitrogen oxides in the air can irritate your eyes, nose, throat, and lungs, possibly causing you to cough and experience shortness of breath, tiredness, and nausea. Exposure to low levels can also result in fluid build-up in the lungs 1 or 2 days after exposure. Breathing high levels of nitrogen oxides can cause rapid burning, spasms, and swelling of tissues in the throat and upper respiratory tract, reduced oxygenation of body tissues, a build-up of fluid in your lungs, and death. [1]</span>),
                 "At risk populations": (<span>Infants and children are particularly at risk because they have disproportionately higher exposure to NO<sub>2</sub> than adults due to their greater breathing rate for their body weight and their typically greater outdoor exposure duration. Several studies have shown that long-term NO<sub>2</sub> exposure during childhood, the period of rapid lung growth, can lead to smaller lungs at maturity in children with higher compared to lower levels of exposure. In addition, children with asthma have a greater degree of airway responsiveness compared with adult asthmatics. In adults, the greatest risk is to people who have chronic respiratory diseases, such as asthma and chronic obstructive pulmonary disease. [2]</span>),
-                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener nofollow">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/nitrogen-dioxide-and-health" target="_blank" rel="noopener nofollow">Nitrogen Dioxide & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener noreferrer">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/nitrogen-dioxide-and-health" target="_blank" rel="noopener noreferrer">Nitrogen Dioxide & Health | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -347,8 +348,8 @@ export const es = {
                     <br/>However, there are a number of reasons why children may be more susceptible to ozone and other pollutants. Children and teens spend nearly twice as much time outdoors and engage in vigorous activities as adults. Children breathe more rapidly than adults and inhale more pollution per pound of their body weight than adults. Also, children are less likely than adults to notice their own symptoms and avoid harmful exposures.
                     <br/>Further research may be able to better distinguish between health effects in children and adults. Children, adolescents, and adults who exercise or work outdoors, where ozone concentrations are the highest, are at the greatest risk of harm from this pollutant. [2]
                     </span>),
-                "Sources": (<span>[1] <a href="https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone" target="_blank" rel="noopener nofollow">What is Ozone? | Ozone and Your Patients' Health | US EPA</a>
-                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/ozone-and-health" target="_blank" rel="noopener nofollow">Ozone & Health | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone" target="_blank" rel="noopener noreferrer">What is Ozone? | Ozone and Your Patients' Health | US EPA</a>
+                    <br/>[2] <a href="https://ww2.arb.ca.gov/resources/ozone-and-health" target="_blank" rel="noopener noreferrer">Ozone & Health | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -368,7 +369,7 @@ export const es = {
                 "At risk populations": (<span>Research points to older adults with chronic heart or lung disease, children and asthmatics as the groups most likely to experience adverse health effects with exposure to PM<sub>10</sub> and PM<sub>2.5</sub>.
                     <br/>Also, children and infants are susceptible to harm from inhaling pollutants such as PM because they inhale more air per pound of body weight than do adults - they breathe faster, spend more time outdoors and have smaller body sizes. In addition, children's immature immune systems may cause them to be more susceptible to PM than healthy adults.
                     <br/>Research from the California Air Resources Board (CARB)-initiated Children’s Health Study found that children living in communities with high levels of PM<sub>2.5</sub> had slower lung growth, and had smaller lungs at age 18 compared to children who lived in communities with low PM<sub>2.5</sub> levels. [1]</span>),
-                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener nofollow">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener noreferrer">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -387,7 +388,7 @@ export const es = {
                 "At risk populations": (<span>Research points to older adults with chronic heart or lung disease, children and asthmatics as the groups most likely to experience adverse health effects with exposure to PM<sub>10</sub> and PM<sub>2.5</sub>.
                     <br/>Also, children and infants are susceptible to harm from inhaling pollutants such as PM because they inhale more air per pound of body weight than do adults - they breathe faster, spend more time outdoors and have smaller body sizes. In addition, children's immature immune systems may cause them to be more susceptible to PM than healthy adults.
                     <br/>Research from the California Air Resources Board (CARB)-initiated Children’s Health Study found that children living in communities with high levels of PM<sub>2.5</sub> had slower lung growth, and had smaller lungs at age 18 compared to children who lived in communities with low PM<sub>2.5</sub> levels. [1]</span>),
-                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener nofollow">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
+                "Sources": (<span>[1] <a href="https://ww2.arb.ca.gov/resources/inhalable-particulate-matter-and-health" target="_blank" rel="noopener noreferrer">Inhalable Particulate Matter and Health (PM<sub>2.5</sub> and PM<sub>10</sub>) | California Air Resources Board</a>
                     </span>),
             }
         },
@@ -403,8 +404,8 @@ export const es = {
                 "Harmful effects": (<span>It can cause breathing problems, headaches, chronically reduced lung function, eye irritation, loss of appetite and corroded teeth.
                     Also emitted in diesel fumes are solid particles which can penetrate deep into the lungs and cause cancer, chronic breathing problems and premature death in people with heart or lung disease. [2]</span>),
                 "At risk populations": "",
-                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener nofollow">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
-                    <br/>[2] <a href="https://phys.org/news/2015-09-nox-gases-diesel-car-fumes.html" target="_blank" rel="noopener nofollow">NO<sub>x</sub> gases in diesel car fumes: Why are they so dangerous? (phys.org)</a>
+                "Sources": (<span>[1] <a href="https://www.atsdr.cdc.gov/toxfaqs/tfacts175.pdf" target="_blank" rel="noopener noreferrer">Nitrogen Oxides (nitric oxide, nitrogen dioxide, etc.) | CDC</a>
+                    <br/>[2] <a href="https://phys.org/news/2015-09-nox-gases-diesel-car-fumes.html" target="_blank" rel="noopener noreferrer">NO<sub>x</sub> gases in diesel car fumes: Why are they so dangerous? (phys.org)</a>
                     </span>),
             }
         },
@@ -419,7 +420,7 @@ export const es = {
                 "What is it": (<span>Particle Number Concentration (PNC) is a measure of particles in the smallest size range our instrument measures (300-500 nm). While this is larger than the ultrafine particle (UFP) size range (smaller than 100 nm), combined with combustion-related gas phase pollutants like NO and CO, PNC<sub>0.3-0.5</sub> gives us a sense of when the smallest particles, including UFPs, are high in concentration.</span>),
                 "Harmful effects": (<span>Small particles are the most dangerous for human health because they are able to penetrate deeply into the lungs and have long lifetimes in the air. [1]</span>),
                 "At risk populations": "",
-                "Sources": (<span>[1] <a href="https://www.lung.org/clean-air/outdoors/what-makes-air-unhealthy/particle-pollution" target="_blank" rel="noopener nofollow">Particle Pollution (lung.org)</a>
+                "Sources": (<span>[1] <a href="https://www.lung.org/clean-air/outdoors/what-makes-air-unhealthy/particle-pollution" target="_blank" rel="noopener noreferrer">Particle Pollution (lung.org)</a>
                     </span>),
             }
         },
