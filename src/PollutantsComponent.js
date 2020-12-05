@@ -44,9 +44,6 @@ function PollutantsComponent(props) {
     const handleTabChange = (event, newId) => {
         setActiveTab(newId);
     };
-    // const getBaselineValue = (id) => {
-    //     return 0.045; // TODO: remove this when baseline values are determined
-    // };
     const getData = (device, pollutantId) => {
         let data = [];
         if (!device.graph)
@@ -69,7 +66,7 @@ function PollutantsComponent(props) {
             title: Pollutants[pollutantsToShow[activeTab]].unit,
             includeZero: false,
             // stripLines: [{
-            //     value: getBaselineValue(pollutantId),
+            //     value: Pollutants[pollutantsToShow[activeTab]].baseline,
             //     color: Colors.green,
             //     labelFontColor: Colors.green,
             //     lineDashType: "dash",
