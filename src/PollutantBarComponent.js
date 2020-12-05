@@ -1,4 +1,3 @@
-import Typography from "@material-ui/core/Typography";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -112,8 +111,8 @@ function PollutantBarComponent(props) {
         setOpen(false);
     };
 
-    const truncateVal = () => {
-        if (val === strings['AtAGlance']['Data not available']) {
+    const getNumericalVal = () => {
+        if (val === strings['AtAGlance']['Data unavailable']) {
             return 0;
         } else if (pollutant === 'PM25' || pollutant === 'PM10') {
             return parseFloat(val.toFixed(3));
@@ -123,12 +122,12 @@ function PollutantBarComponent(props) {
     }
 
     const getAboveAverageText = () => {
-        if (val === strings['AtAGlance']['Data not available']) {
-            return strings['AtAGlance']['Data not available'];
+        if (val === strings['AtAGlance']['Data unavailable']) {
+            return strings['AtAGlance']['Data unavailable'];
         } else if (Pollutants[pollutant].experimentalBaseline) {
-            return truncateVal(val, pollutant) + " " + Pollutants[pollutant].unit + ", " + strings['AtAGlance']['Baseline unavailable'];
+            return getNumericalVal(val, pollutant) + " " + Pollutants[pollutant].unit + ", " + strings['AtAGlance']['Baseline unavailable'];
         } else {
-            let value = truncateVal();
+            let value = getNumericalVal();
             let baseline = Pollutants[pollutant].baseline;
             let percentage = ((value - baseline) / baseline * 100).toFixed(1);
             return percentage + "% " + (percentage > 0 ? strings['AtAGlance']['Above baseline'] : strings['AtAGlance']['Below baseline']);
@@ -136,7 +135,7 @@ function PollutantBarComponent(props) {
     }
 
     const getColor = () => {
-        if (val === strings['AtAGlance']['Data not available']) {
+        if (val === strings['AtAGlance']['Data unavailable']) {
             return Colors.grey;
         } else if (Pollutants[pollutant].experimentalBaseline) {
             return Colors.black;
@@ -148,10 +147,10 @@ function PollutantBarComponent(props) {
     }
 
     const getCurrentReadingText = () => {
-        if (val === strings['AtAGlance']['Data not available']) {
+        if (val === strings['AtAGlance']['Data unavailable']) {
             return "_ _";
         } else {
-            return truncateVal() + " " + Pollutants[pollutant].unit;
+            return getNumericalVal() + " " + Pollutants[pollutant].unit;
         }
     }
 
@@ -197,7 +196,7 @@ function PollutantBarComponent(props) {
                     </Button>
                 </div>
             </div>
-            <ThresholdBar value={truncateVal()} threshold={Pollutants[pollutant].baseline}
+            <ThresholdBar value={getNumericalVal()} threshold={Pollutants[pollutant].baseline}
                           showVerticalBar={!Pollutants[pollutant].experimentalBaseline} barColor={getColor()}/>
 
             <Dialog
@@ -214,7 +213,7 @@ function PollutantBarComponent(props) {
                     <p className={classes.baselineDialogText}
                        style={{color: getColor()}}>{getAboveAverageText(val, strings, pollutant)}
                     </p>
-                    <ThresholdBar value={truncateVal()} threshold={Pollutants[pollutant].baseline}
+                    <ThresholdBar value={getNumericalVal()} threshold={Pollutants[pollutant].baseline}
                                   showVerticalBar={!Pollutants[pollutant].experimentalBaseline} barColor={getColor()}/>
                 </DialogTitle>
                 <DialogContent dividers={scroll === 'paper'}>
@@ -238,6 +237,31 @@ function PollutantBarComponent(props) {
                                 <p className={classes.dialogContentSubtext}>{getAveragingTimeText()}</p>
                             </Grid>
                         </Grid>
+                        <div>
+                            <h3 className={classes.dialogContentText}>{strings['AtAGlance'][pollutant]['Questions']['What is it']}</h3>
+                            <p className={classes.dialogContentSubtext}>{strings['AtAGlance'][pollutant]['Answers']['What is it']}</p>
+                            <h3 className={classes.dialogContentText}>{strings['AtAGlance'][pollutant]['Questions']['Harmful effects']}</h3>
+                            <p className={classes.dialogContentSubtext}>{strings['AtAGlance'][pollutant]['Answers']['Harmful effects']}</p>
+                            <h3 className={classes.dialogContentText}>{strings['AtAGlance'][pollutant]['Questions']['At risk populations']}</h3>
+                            <p className={classes.dialogContentSubtext}>{strings['AtAGlance'][pollutant]['Answers']['At risk populations']}</p>
+                            {Pollutants[pollutant].unit === "ppb" &&
+                            <div>
+                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['What is ppb']}</h3>
+                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['What is ppb answer']}</p>
+                            </div>}
+                            {getNumericalVal() === 0 &&
+                            <div>
+                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why data is not available']}</h3>
+                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why data is not available answer']}</p>
+                            </div>}
+                            {Pollutants[pollutant].experimentalBaseline &&
+                            <div>
+                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why baseline is not available']}</h3>
+                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why baseline is not available answer']}</p>
+                            </div>}
+                            <h3 className={classes.dialogContentText}>{strings['AtAGlance'][pollutant]['Questions']['Sources']}</h3>
+                            <p className={classes.dialogContentSubtext}>{strings['AtAGlance'][pollutant]['Answers']['Sources']}</p>
+                        </div>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -2,7 +2,7 @@ import React from 'react'; // so we can use JSX in pollutantNameHTML function
 
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067'];
-export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'PNC'];
+export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'PM10', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
