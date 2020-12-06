@@ -58,10 +58,10 @@ export const en = {
         "Hour": "hour",
         "What is ppb": "What is ppb?",
         "What is ppb answer": "Parts per billion (ppb) is a term that expresses the number of units (parts) of a given substance that exist as a portion of a greater substance composed of one billion parts.",
-        "Why data is not available": "Why data is not available?",
-        "Why data is not available answer": "Our device is not working properly at the moment!",
-        "Why baseline is not available": "Why baseline is not available?",
-        "Why baseline is not available answer": "This pollutant is currently unregulated.",
+        "Why are some data not available": "Why are some data not available?",
+        "Why are some data not available answer": "Our device is not working properly at the moment!",
+        "Why is baseline for this pollutant not available": "Why is baseline for this pollutant not available?",
+        "Why is baseline for this pollutant not available answer": "This pollutant is currently unregulated.",
         "CO": {
             "Questions": {
                 "What is it": "What is Carbon Monoxide and what produces it?",
@@ -294,10 +294,10 @@ export const es = {
         "Hour": "hour",
         "What is ppb": "What is ppb?",
         "What is ppb answer": "Parts per billion (ppb) is a term that expresses the number of units (parts) of a given substance that exist as a portion of a greater substance composed of one billion parts.",
-        "Why data is not available": "Why data is not available?",
-        "Why data is not available answer": "Our device is not working properly at the moment!",
-        "Why baseline is not available": "Why baseline is not available?",
-        "Why baseline is not available answer": "This pollutant is currently unregulated.",
+        "Why are some data not available": "Why are some data not available?",
+        "Why are some data not available answer": "Our device is not working properly at the moment!",
+        "Why is baseline for this pollutant not available": "Why is baseline for this pollutant not available?",
+        "Why is baseline for this pollutant not available answer": "This pollutant is currently unregulated.",
         "CO": {
             "Questions": {
                 "What is it": "What is Carbon Monoxide and what produces it?",

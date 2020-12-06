@@ -251,13 +251,13 @@ function PollutantBarComponent(props) {
                             </div>}
                             {getNumericalVal() === 0 &&
                             <div>
-                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why data is not available']}</h3>
-                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why data is not available answer']}</p>
+                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why are some data not available']}</h3>
+                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why are some data not available answer']}</p>
                             </div>}
                             {Pollutants[pollutant].experimentalBaseline &&
                             <div>
-                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why baseline is not available']}</h3>
-                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why baseline is not available answer']}</p>
+                                <h3 className={classes.dialogContentText}>{strings['AtAGlance']['Why is baseline for this pollutant not available']}</h3>
+                                <p className={classes.dialogContentSubtext}>{strings['AtAGlance']['Why is baseline for this pollutant not available answer']}</p>
                             </div>}
                             <h3 className={classes.dialogContentText}>{strings['AtAGlance'][pollutant]['Questions']['Sources']}</h3>
                             <p className={classes.dialogContentSubtext}>{strings['AtAGlance'][pollutant]['Answers']['Sources']}</p>
