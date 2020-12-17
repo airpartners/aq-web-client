@@ -138,7 +138,7 @@ function PollutantBarComponent(props) {
         if (val === strings['AtAGlance']['Data unavailable']) {
             return Colors.grey;
         } else if (Pollutants[pollutant].experimentalBaseline) {
-            return Colors.black;
+            return Colors.green;
         } else if (val > Pollutants[pollutant].baseline) {
             return Colors.orange;
         } else {
