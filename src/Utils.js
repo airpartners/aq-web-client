@@ -2,7 +2,7 @@ import React from 'react'; // so we can use JSX in pollutantNameHTML function
 
 export const drawerWidth = 300;
 export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067'];
-export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'NO', 'PNC'];
+export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'PM10', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
         id: 'SN000-045',
@@ -76,49 +76,61 @@ export const Pollutants = {
         id: "pm25",
         name: "PM25",
         unit: "\xB5g/m\u00B3",
-        safe: "??",
+        baseline: 35,
+        experimentalBaseline: false,
         showInfo: false,
+        averagingTime: 24,
     },
     PM10: {
         id: "pm10",
         name: "PM10",
         unit: "\xB5g/m\u00B3",
-        safe: "??",
+        experimentalBaseline: false,
+        baseline: 150,
         showInfo: false,
+        averagingTime: 24,
     },
     CO: {
         id: "co",
         name: "CO",
         unit: "ppb",
-        safe: "??",
+        baseline: 35000,
+        experimentalBaseline: false,
         showInfo: false,
+        averagingTime: 1,
     },
     NO2: {
         id: "no2",
         name: "NO2",
         unit: "ppb",
-        safe: "??",
+        baseline: 100,
+        experimentalBaseline: false,
         showInfo: false,
+        averagingTime: 1,
     },
     O3: {
         id: "o3",
         name: "O3",
         unit: "ppb",
-        safe: "??",
+        baseline: 70,
+        experimentalBaseline: false,
         showInfo: false,
+        averagingTime: 8,
     },
     NO: {
         id: "no",
         name: "NO",
         unit: "ppb",
-        safe: "??",
+        baseline: 20,
+        experimentalBaseline: true, // TODO: needs to find a baseline value
         showInfo: false,
     },
     PNC: {
         id: "bin0",
         name: "PNC",
         unit: "particles/cm\u00B3",
-        safe: "??",
+        experimentalBaseline: true, // TODO: needs to find a baseline value
+        baseline: 20,
         showInfo: true,
     }
 };
