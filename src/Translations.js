@@ -175,8 +175,8 @@ export const en = {
         },
         "PNC": {
             "Questions": {
-                "What is it": "What is Nitrogen Oxides and what produces it?",
-                "Harmful effects": "What kinds of harmful effects can Nitrogen Oxides cause?",
+                "What is it": "What is Particle Number Concentration and what produces it?",
+                "Harmful effects": "What kinds of harmful effects can Particle Number Concentration cause?",
                 "At risk populations": "",
                 "Sources": "Sources",
             },
