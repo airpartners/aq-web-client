@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import DevicePage from "./DevicePage";
 import ContactUsPage from "./ContactUsPage";
+import Feedback from "./Feedback";
 import NavigationDrawer from "./NavigationDrawer";
 import PrivacyPolicy from "./PrivacyPolicy";
 import FAQ from "./FAQ";
@@ -100,6 +101,8 @@ function ContentContainer(props) {
         componentsToRender = <DevicePage queryParams={queryParams} strings={strings} deviceId={deviceId} bottomTab={bottomTab} deviceDict={deviceDict} />;
     } else if (path === "contact-us") {
         componentsToRender = <ContactUsPage strings={strings} />;
+    } else if (path === "feedback") {
+        componentsToRender = <Feedback strings={strings} />;
     } else if (path === "privacy") {
         componentsToRender = <PrivacyPolicy strings={strings} />;
     } else if (path === "faq") {

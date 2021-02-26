@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     content: {
         display: "flex",
         width: "100%",
-        maxWidth: "500px",
         flexDirection: "column",
         marginBottom: "1.5rem",
     },
@@ -111,11 +110,11 @@ function PollutantBarComponent(props) {
         setOpen(false);
     };
 
-    const getNumericalVal = () => {
+    const getNumericalVal = () => { 
         if (val === strings['AtAGlance']['Data unavailable']) {
             return 0;
         } else if (pollutant === 'PM25' || pollutant === 'PM10') {
-            return parseFloat(val.toFixed(3));
+            return parseFloat(val).toFixed(3);
         } else {
             return parseInt(val);
         }

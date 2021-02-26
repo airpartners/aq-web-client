@@ -50,8 +50,9 @@ function PollutantsComponent(props) {
             return data;
 
         for (let dataPoint of device.graph) {
-            if (typeof dataPoint[pollutantId] != 'undefined')
+            if (typeof dataPoint[pollutantId] != 'undefined') {
                 data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
+            }
         }
         return data;
     };
