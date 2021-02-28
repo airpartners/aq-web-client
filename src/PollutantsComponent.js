@@ -53,7 +53,6 @@ function PollutantsComponent(props) {
             let currPollutant = PollutantByID(pollutantId);
             if (typeof dataPoint[pollutantId] != 'undefined')
                 if (currPollutant.hasOwnProperty('correctionFactor')) {
-                    console.log(currPollutant.correctionFactor)
                     data.push({ x: new Date(dataPoint.timestamp_local), y: currPollutant.correctionFactor * dataPoint[pollutantId] });
                 } else {
                     data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
