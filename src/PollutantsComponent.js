@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Colors from "./assets/Colors";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { Pollutants, pollutantAbbreviationHTML, pollutantsToShow } from "./Utils";
+import { Pollutants, pollutantAbbreviationHTML, pollutantsToShow, PollutantByID } from "./Utils";
 import GraphDropdown from "./GraphDropdown";
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -50,8 +50,14 @@ function PollutantsComponent(props) {
             return data;
 
         for (let dataPoint of device.graph) {
+            let currPollutant = PollutantByID(pollutantId);
             if (typeof dataPoint[pollutantId] != 'undefined')
-                data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
+                if (currPollutant.hasOwnProperty('correctionFactor')) {
+                    console.log(currPollutant.correctionFactor)
+                    data.push({ x: new Date(dataPoint.timestamp_local), y: currPollutant.correctionFactor * dataPoint[pollutantId] });
+                } else {
+                    data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
+                }
         }
         return data;
     };

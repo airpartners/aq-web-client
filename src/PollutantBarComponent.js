@@ -112,10 +112,16 @@ function PollutantBarComponent(props) {
     };
 
     const getNumericalVal = () => {
+        if (pollutant === 'PM25' || pollutant === 'PM10') {
+            // TODO: modularize with correctionFactor prop in Utils.js
+            // specification of pollutants
+            return parseFloat(val * 17).toFixed(3);
+        }
+
         if (val === strings['AtAGlance']['Data unavailable']) {
             return 0;
         } else if (pollutant === 'PM25' || pollutant === 'PM10') {
-            return parseFloat(val.toFixed(3));
+            return parseFloat(val).toFixed(3);
         } else {
             return parseInt(val);
         }
