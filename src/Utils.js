@@ -139,7 +139,7 @@ export const Pollutants = {
 
 
 /**
- *  Given the an pollutant id, get correction factor to apply to it.
+ *  Given the an pollutant id, get the pollutant object.
  *  A fix for pollutant display because QuantAQ underreports pollutant
  *  measurements for some particle types.
  * @param {string} pollutantId the id the pollutant
