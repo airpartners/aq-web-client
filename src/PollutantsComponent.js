@@ -51,12 +51,13 @@ function PollutantsComponent(props) {
 
         for (let dataPoint of device.graph) {
             let currPollutant = PollutantByID(pollutantId);
-            if (typeof dataPoint[pollutantId] != 'undefined')
+            if (typeof dataPoint[pollutantId] != 'undefined') {
                 if (currPollutant.hasOwnProperty('correctionFactor')) {
                     data.push({ x: new Date(dataPoint.timestamp_local), y: currPollutant.correctionFactor * dataPoint[pollutantId] });
                 } else {
                     data.push({ x: new Date(dataPoint.timestamp_local), y: dataPoint[pollutantId] });
                 }
+            }
         }
         return data;
     };
