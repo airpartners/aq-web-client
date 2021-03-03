@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     content: {
         display: "flex",
         width: "100%",
+        maxWidth: "500px",
         flexDirection: "column",
         marginBottom: "1.5rem",
     },
