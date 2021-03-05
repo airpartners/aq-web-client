@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {pollutantsToShow, Pollutants} from './Utils';
 import PollutantBarComponent from "./PollutantBarComponent";
+import ShareExample from "./shareButton"
 
 const useStyles = makeStyles((theme) => ({
     now: {
@@ -49,6 +50,9 @@ function AtAGlanceComponent(props) {
                         timeStyle: 'short'
                     })}</p>
                 </Grid>
+                <div>
+                    <ShareExample/>
+                </div>
             </div>}
         </div>);
 }
