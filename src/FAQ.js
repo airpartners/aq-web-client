@@ -96,7 +96,7 @@ function FAQ(props) {
 										<Card key={item.title} className={classes.customCard}>
 												<CardHeader title={item.title}/>
 												<CardContent>
-														<Typography variant="body2" color="textSecondary" component="p">
+														<Typography variant="body1" color="textSecondary" component="p">
 																{item.shortText}
 														</Typography>
 												</CardContent>
