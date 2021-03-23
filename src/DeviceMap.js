@@ -9,8 +9,10 @@ import AtAGlanceComponent from "./AtAGlanceComponent";
 
 const useStyles = makeStyles((theme) => ({
     content: {
-        height: `calc(100vh - 120px)`, // Height - Top and Bottom bars
-        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            height: `calc(100vh - 120px)`, // Height - Top and Bottom bars
+            width: '100%',
+        }
     },
     marker: {
         cursor: 'pointer',

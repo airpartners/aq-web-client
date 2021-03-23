@@ -11,6 +11,7 @@ import { deviceList, deviceInitData, needUpdate, drawerWidth } from "./Utils";
 import { getData } from "./FirebaseComponent";
 import { parse } from 'query-string';
 import * as Translations from "./Translations"
+import CacheComponent from "./CacheComponent"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +36,8 @@ function ContentContainer(props) {
     const lang = parse(queryParams).lang ? parse(queryParams).lang.slice(0, 2) : "";
     // devices use full language and country code but only "en" and "es" are supported
     // by the web app right now
+
+    const cache = new CacheComponent(300); // Create a new cache service instance with 5 min cache
 
     const [strings, setStrings] = useState(Translations.en);
     const [bottomTab, setBottomTab] = useState("Home");
@@ -81,7 +84,7 @@ function ContentContainer(props) {
             setIsFetching(prevState => ({ ...prevState, [deviceId]: true }));
             // make deep copy so references aren't shared with old state
             const newDevice = JSON.parse(JSON.stringify(deviceDict[deviceId]));
-            getData(deviceId).then((data) => {
+            cache.get(deviceId, () => getData(deviceId)).then((data) => {
                 newDevice.latest = data.latest;
                 newDevice.graph = data.graph;
                 newDevice.lastUpdated = new Date();
