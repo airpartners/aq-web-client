@@ -80,7 +80,6 @@ export const Pollutants = {
         experimentalBaseline: false,
         showInfo: false,
         averagingTime: 24,
-        correctionFactor: 17,
     },
     PM10: {
         id: "pm10",
@@ -90,7 +89,6 @@ export const Pollutants = {
         baseline: 150,
         showInfo: false,
         averagingTime: 24,
-        correctionFactor: 17,
     },
     CO: {
         id: "co",
@@ -136,23 +134,6 @@ export const Pollutants = {
         showInfo: true,
     }
 };
-
-
-/**
- *  Given the an pollutant id, get the pollutant object.
- *  A fix for pollutant display because QuantAQ underreports pollutant
- *  measurements for some particle types.
- * @param {string} pollutantId the id the pollutant
- */
-export const PollutantByID = (pollutantId) => {
-    let ret;
-    for (var prop in Pollutants) {
-        if (Pollutants[prop].id === pollutantId) {
-            ret = Pollutants[prop];
-        }
-    }
-    return ret;
-}
 
 /**
  * Return JSX formatted html elements for pollutant names
