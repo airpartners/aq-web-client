@@ -110,15 +110,7 @@ function PollutantBarComponent(props) {
         setOpen(false);
     };
 
-    const getNumericalVal = () => {
-        // correction factor of 17x on PM2.5 and PM10 due to a 
-        // sensor type inconsistency. In the future, this might get
-        // adjusted on QuantAQ's end, hopefully making this unnecessary 
-        if (pollutant === 'PM25' || pollutant === 'PM10') {
-            // TODO: modularize with correctionFactor prop in Utils.js
-            // specification of pollutants
-            return parseFloat(val * 17).toFixed(3);
-        }
+    const getNumericalVal = () => { 
         if (val === strings['AtAGlance']['Data unavailable']) {
             return 0;
         } else if (pollutant === 'PM25' || pollutant === 'PM10') {
