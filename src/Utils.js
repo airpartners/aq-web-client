@@ -1,7 +1,7 @@
 import React from 'react'; // so we can use JSX in pollutantNameHTML function
 
 export const drawerWidth = 300;
-export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067'];
+export const deviceList = ['SN000-045', 'SN000-046', 'SN000-049', 'SN000-062', 'SN000-067', 'SN000-114'];
 export const pollutantsToShow = ['CO', 'NO2', 'O3', 'PM25', 'PM10', 'NO', 'PNC'];
 export const deviceInitData = {
     'SN000-045': {
@@ -17,13 +17,13 @@ export const deviceInitData = {
     },
     'SN000-046': {
         id: 'SN000-046',
-        name: 'Roxbury Reference Site',
+        name: 'Gibson Park, Revere',
         latest: null,
         graph: null,
         lastUpdated: null,
         geo: {
-            lat: 42.329,
-            lng: -71.083,
+            lat: 42.386,
+            lng: -71.029,
         },
     },
     'SN000-049': {
@@ -68,6 +68,17 @@ export const deviceInitData = {
         geo: {
             lat: 42.384,
             lng: -71,
+        },
+    },
+    'SN000-114': {
+        id: 'SN000-114',
+        name: 'Beachmont, Revere',
+        latest: null,
+        graph: null,
+        lastUpdated: null,
+        geo: {
+            lat: 42.397,
+            lng: -70.988,
         },
     }
 };
