@@ -5,7 +5,8 @@ export const en = {
     "code": "en",
     "DrawerNav": {
         "Contact us": "Contact us",
-        "Frequently Asked Questions":"Frequently Asked Questions"
+        "Frequently Asked Questions":"Frequently Asked Questions",
+        "Feedback": "Feedback"
     },
     "AppBarText": {
         "contact-us": "Contact us",
@@ -16,8 +17,11 @@ export const en = {
         "Map": "Map"
     },
     "ContactUsPage": {
-        "Body": "If you have questions or feedback please contact us at ",
+        "Body": "If you have questions or other feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
+    },
+    "FeedbackPage": {
+        "Body": "If you have the chance, please provide feedback on some or all of the questions below!"
     },
     "FAQPage" : {
         "Title": "Frequently Asked Questions coming soon!"

@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import DevicePage from "./DevicePage";
 import ContactUsPage from "./ContactUsPage";
+import FeedbackPage from "./FeedbackPage";
 import NavigationDrawer from "./NavigationDrawer";
 import PrivacyPolicy from "./PrivacyPolicy";
 import FAQ from "./FAQ";
@@ -104,6 +105,8 @@ function ContentContainer(props) {
         componentsToRender = <PrivacyPolicy strings={strings} />;
     } else if (path === "faq") {
         componentsToRender = <FAQ strings={strings} />;
+    } else if (path === "feedback") {
+        componentsToRender = <FeedbackPage strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);
