@@ -18,11 +18,11 @@ export const en = {
         "Map": "Map"
     },
     "ContactUsPage": {
-        "Body": "If you have questions or feedback please contact us at ",
+        "Body": "If you have questions or other feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
     },
-    "Feedback": {
-        "Title": "Please provide feedback."
+    "FeedbackPage": {
+        "Body": "If you have the chance, please provide feedback on some or all of the questions below!"
     },
     "FAQPage" : {
         "Title": "Frequently Asked Questions coming soon!"

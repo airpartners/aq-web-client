@@ -12,9 +12,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 function ContactUsPage(props) {
     const { strings } = props;
     const classes = useStyles();
+
     return (
         <div className={classes.content}>
             <Typography paragraph>

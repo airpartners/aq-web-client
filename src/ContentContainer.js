@@ -107,6 +107,8 @@ function ContentContainer(props) {
         componentsToRender = <PrivacyPolicy strings={strings} />;
     } else if (path === "faq") {
         componentsToRender = <FAQ strings={strings} />;
+    } else if (path === "feedback") {
+        componentsToRender = <FeedbackPage strings={strings} />;
     } else {
         // TODO: update this at some point to show something nicer
         componentsToRender = (<h1>404 not found</h1>);
