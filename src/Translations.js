@@ -21,7 +21,7 @@ export const en = {
         "Body": "If you have questions or other feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
     },
-    "FeedbackPage": {
+    "Feedback": {
         "Body": "If you have the chance, please provide feedback on some or all of the questions below!"
     },
     "FAQPage" : {
