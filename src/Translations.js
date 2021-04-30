@@ -5,10 +5,12 @@ export const en = {
     "code": "en",
     "DrawerNav": {
         "Contact us": "Contact us",
+        "Feedback": "Feedback",
         "Frequently Asked Questions":"Frequently Asked Questions"
     },
     "AppBarText": {
         "contact-us": "Contact us",
+        "feedback": "Feedback",
         "privacy": "Privacy Policy"
     },
     "BottomNav": {
@@ -16,8 +18,11 @@ export const en = {
         "Map": "Map"
     },
     "ContactUsPage": {
-        "Body": "If you have questions or feedback please contact us at ",
+        "Body": "If you have questions or other feedback please contact us at ",
         "Email": "adeairquality@gmail.com"
+    },
+    "Feedback": {
+        "Body": "If you have the chance, please provide feedback on some or all of the questions below!"
     },
     "FAQPage" : {
         "Title": "Frequently Asked Questions coming soon!"
@@ -253,6 +258,9 @@ export const es = {
     "ContactUsPage": {
         "Body": "Si tiene preguntas o comentarios, por favor contactenos en ",
         "Email": "adeairquality@gmail.com"
+    },
+    "Feedback" : {
+        "Title": "Please give us feedback."
     },
     "FAQPage" : {
         "Title": "Frequently Asked Questions coming soon!"

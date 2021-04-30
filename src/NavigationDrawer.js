@@ -83,6 +83,12 @@ function NavigationDrawer(props) {
                     <ListItemIcon><InfoIcon /></ListItemIcon>
                     <ListItemText primary={strings["DrawerNav"]["Contact us"]} />
                 </ListItem>
+                <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/feedback${queryParams}`}
+                    key='feedback' selected={path === "feedback"}
+                    onClick={clickBehavior}>
+                    <ListItemIcon><InfoIcon /></ListItemIcon>
+                    <ListItemText primary={strings["DrawerNav"]["Feedback"]} />
+                </ListItem>
                 <ListItem button component={Link} to={`${process.env.PUBLIC_URL}/faq${queryParams}`}
                           key='faq' selected={path === "faq"}
                           onClick={clickBehavior}>
