@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const mapApiKey = 'AIzaSyCE7xH50-i4RcG5HygoL1SKXi3dLbstQtI';
+const mapApiKey = process.env.REACT_APP_MAPS_KEY;
 
 /**
  * Check if a device has geo data.
