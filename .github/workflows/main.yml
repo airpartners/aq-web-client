@@ -9,6 +9,8 @@ on:
 
 jobs:
   build:
+    env:
+      REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +21,6 @@ jobs:
       - name: Run Tests
         env:
           CI: true
-          REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
         run: npm test
       - name: Build
         run: npm run build
@@ -31,6 +32,8 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    env:
+      REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -46,4 +49,3 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
