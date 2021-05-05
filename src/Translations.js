@@ -52,6 +52,8 @@ export const en = {
     },
     "Pollutants": "Pollutants",
     "AtAGlance": {
+        "What is the at-a-glance?":"The at a glance section below shows the level of each pollutant compared to the usual amount of the pollutant over the sensor network's lifetime (how long they have been installed for). Click 'Learn More' to find out more about each pollutant, and to get links to sources about them.",
+        "How are baselines calculated?":"Baseline values are calculated as the mean pollutant concentration across the East Boston network over the entire lifetime of the network (since September 2019).",
         "Now": "Now",
         "Last updated": "Last updated",
         "Not available": "Not available",
@@ -59,6 +61,8 @@ export const en = {
         "Data unavailable": "Data unavailable",
         "Above baseline": "above baseline",
         "Below baseline": "below baseline",
+        "Above lifetime average":"Above lifetime average",
+        "Below lifetime average":"Below lifetime average",
         "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener noreferrer">National Ambient Air Quality Standards</a>),
         "Hour": "hour",
         "What is ppb": "What is ppb?",
@@ -291,6 +295,8 @@ export const es = {
     "Pollutants": "Contaminantes",
     // TODO: Needs translating
     "AtAGlance": {
+        "What is the at-a-glance?":"The at a glance section below shows the level of each pollutant compared to the usual amount of the pollutant over the sensor network's lifetime (how long they have been installed for). Click 'Learn More' to find out more about each pollutant, and to get links to sources about them.",
+        "How are baselines calculated?":"Baseline values are calculated as the mean pollutant concentration across the East Boston network over the entire lifetime of the network (since September 2019).",
         "Now": "Actual",
         "Last updated": "Última actualización",
         "Not available": "No está disponible",
@@ -298,8 +304,9 @@ export const es = {
         "Data unavailable": "Data unavailable",
         "Above baseline": "above baseline",
         "Below baseline": "below baseline",
+        "Above lifetime average":"Above lifetime average",
+        "Below lifetime average":"Below lifetime average",
         "National Ambient Air Quality Standards": (<a href="https://www.epa.gov/criteria-air-pollutants/naaqs-table" target="_blank" rel="noopener noreferrer">National Ambient Air Quality Standards</a>), // TODO: Needs translating
-        "Hour": "hour",
         "What is ppb": "What is ppb?",
         "What is ppb answer": "Parts per billion (ppb) is a term that expresses the number of units (parts) of a given substance that exist as a portion of a greater substance composed of one billion parts.",
         "Why are some data not available": "Why are some data not available?",
