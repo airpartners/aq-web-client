@@ -18,7 +18,8 @@ jobs:
       - name: Run Tests
         env:
           CI: true
+          REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
         run: npm test
       - name: Build
-        # only included to catch lint errors, should be udpated later to just do that rather than build the whole thing to save time
+        # only included to catch lint errors, should be updated later to just do that rather than build the whole thing to save time
         run: npm run build

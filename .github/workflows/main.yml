@@ -9,6 +9,8 @@ on:
 
 jobs:
   build:
+    env:
+      REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +32,8 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    env:
+      REACT_APP_MAPS_KEY: ${{ secrets.REACT_APP_MAPS_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
