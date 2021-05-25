@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from "@material-ui/core/Typography";
 import {pollutantsToShow, Pollutants} from './Utils';
 import PollutantBarComponent from "./PollutantBarComponent";
 
@@ -36,6 +37,13 @@ function AtAGlanceComponent(props) {
             {device.latest &&
             <div>
                 <h2>{strings['AtAGlance']['Now']}</h2>
+                <Typography paragraph>
+                    {strings["AtAGlance"]["What is the at-a-glance?"]}
+                </Typography>
+                <h3>About the baselines</h3>
+                <Typography paragraph>
+                    {strings["AtAGlance"]["How are baselines calculated?"]}
+                </Typography>
                 <Grid className={classes.now} container>
                     {pollutantsToShow.map(pollutant => {
                         let val = (typeof device.latest[Pollutants[pollutant].id] != 'undefined') ? device.latest[Pollutants[pollutant].id] : strings['AtAGlance']['Data unavailable'];

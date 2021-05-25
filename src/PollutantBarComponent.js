@@ -129,7 +129,7 @@ function PollutantBarComponent(props) {
             let value = getNumericalVal();
             let baseline = Pollutants[pollutant].baseline;
             let percentage = ((value - baseline) / baseline * 100).toFixed(1);
-            return percentage + "% " + (percentage > 0 ? strings['AtAGlance']['Above baseline'] : strings['AtAGlance']['Below baseline']);
+            return percentage + "% " + (percentage > 0 ? strings['AtAGlance']['Above lifetime average'] : strings['AtAGlance']['Below lifetime average']);
         }
     }
 
@@ -163,7 +163,7 @@ function PollutantBarComponent(props) {
 
     const getBaselineText = () => {
         if (Pollutants[pollutant].experimentalBaseline) {
-            return "_ _";
+            return "Mean value over sensor network history";
         } else {
             return Pollutants[pollutant].baseline + " " + Pollutants[pollutant].unit;
         }
@@ -171,9 +171,9 @@ function PollutantBarComponent(props) {
 
     const getAveragingTimeText = () => {
         if (Pollutants[pollutant].experimentalBaseline) {
-            return "_ _"
+            return "lifetime of sensors (Sept 2019)"
         } else {
-            return Pollutants[pollutant].averagingTime + "-" + strings['AtAGlance']['Hour'];
+            return Pollutants[pollutant].averagingTime;
         }
     }
 
